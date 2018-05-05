@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AnimatedCollectionViewLayout
 
 class MarvelCharViewController: UIViewController {
     
@@ -25,9 +26,10 @@ extension MarvelCharViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.characters = NSMutableArray()
-        self.setupTableView()
-        self.setupCollectionView()
+        self.tableView.isHidden = true
+        self.collectionView.isHidden = true
         self.activityIndicator.startAnimating()
         self.fetchCharacters()
         
@@ -39,9 +41,11 @@ extension MarvelCharViewController{
         MarvelCharInteractor().fetchCharacteres(limit: limit, offset: offset) { (characters, error) in
             self.characters.addObjects(from: characters)
             self.tableView.reloadData()
+            self.setupFavoriteCollectionView()
+
             self.activityIndicator.stopAnimating()
             self.offset += self.limit
-//            self.tableView.finishInfiniteScroll()
+            //            self.tableView.finishInfiniteScroll()
             if(self.showDataWithList){
                 self.setupTableView()
             }else{
@@ -70,7 +74,23 @@ extension MarvelCharViewController{
         self.collectionView.reloadData()
         self.collectionView.finishInfiniteScroll()
     }
+    
+    func setupFavoriteCollectionView(){
+        self.favoriteCollectionView.delegate = self
+        self.favoriteCollectionView.dataSource = self
+        self.favoriteCollectionView.isHidden = false
+        
+        let layout = AnimatedCollectionViewLayout()
+        layout.animator = ZoomInOutAttributesAnimator()
+        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        self.favoriteCollectionView.collectionViewLayout = layout
+        self.favoriteCollectionView.register(UINib(nibName:"MarvelCharFavoriteCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MarvelCharFavoriteCollectionViewCell")
+        favoriteCollectionView.collectionViewLayout.invalidateLayout()
 
+        self.favoriteCollectionView.reloadData()
+        
+    }
+    
 }
 
 extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
@@ -100,19 +120,36 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 extension MarvelCharViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    
+//    func 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if(characters.count == 0){
-            return UICollectionViewCell()
+        if(collectionView == self.favoriteCollectionView){
+            if(self.characters.count == 0){
+                return UICollectionViewCell()
+            }
+             let cell = self.favoriteCollectionView.dequeueReusableCell(withReuseIdentifier: "MarvelCharFavoriteCollectionViewCell", for: indexPath) as! MarvelCharFavoriteCollectionViewCell
+            let character = self.characters.object(at: indexPath.row) as! Character
+            cell.setupCell(char: character)
+            cell.favoriteImageCharacter.backgroundColor = .lightGray
+
+            return cell
+        }else{
+            
+            if(characters.count == 0){
+                return UICollectionViewCell()
+            }
+            
+            let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCollectionViewCell", for: indexPath) as! CharacterCollectionViewCell
+            let character = self.characters.object(at: indexPath.row) as! Character
+            cell.setupCell(char: character)
+            
+            return cell
         }
         
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCollectionViewCell", for: indexPath) as! CharacterCollectionViewCell
-        let character = self.characters.object(at: indexPath.row) as! Character
-        cell.setupCell(char: character)
-        
-        return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if collectionView == self.favoriteCollectionView{
+//            return 2
+//        }
         return self.characters.count
     }
     
@@ -129,8 +166,13 @@ extension MarvelCharViewController: UICollectionViewDelegate, UICollectionViewDa
 extension MarvelCharViewController:UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewSize = collectionView.frame.size.width
-        return CGSize(width: collectionViewSize, height: collectionViewSize)
+        if(collectionView == self.collectionView){
+            let collectionViewSize = collectionView.frame.size.width
+             return CGSize(width: collectionViewSize, height: collectionViewSize)
+        }
+        
+        return CGSize(width: collectionView.frame.size.width/5 - 8,
+                      height: collectionView.frame.size.width/5 - 8)
     }
 }
 

@@ -12,6 +12,7 @@ target 'marvelproj' do
     pod 'AlamofireImage', '~> 3.3'
     pod 'CryptoSwift',  '~>0.7.0'
     pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
+    pod 'AnimatedCollectionViewLayout'
 
     
   target 'marvelprojTests' do

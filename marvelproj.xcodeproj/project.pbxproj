@@ -27,6 +27,8 @@
 		F0765ED0209DDBF500AA10F1 /* UIImageView+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0765ECF209DDBF500AA10F1 /* UIImageView+Alamofire.swift */; };
 		F0765ED7209DF0A300AA10F1 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0765ED5209DF0A300AA10F1 /* CharacterCollectionViewCell.swift */; };
 		F0765ED8209DF0A300AA10F1 /* CharacterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0765ED6209DF0A300AA10F1 /* CharacterCollectionViewCell.xib */; };
+		F0765EDB209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0765ED9209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift */; };
+		F0765EDC209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0765EDA209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.xib */; };
 		F0DE0A03209D346E0006CDC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DE0A02209D346E0006CDC2 /* AppDelegate.swift */; };
 		F0DE0A05209D346E0006CDC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DE0A04209D346E0006CDC2 /* ViewController.swift */; };
 		F0DE0A08209D346E0006CDC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0DE0A06209D346E0006CDC2 /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		F0765ED1209DE37000AA10F1 /* marvelproj-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "marvelproj-Bridging-Header.h"; sourceTree = "<group>"; };
 		F0765ED5209DF0A300AA10F1 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0765ED6209DF0A300AA10F1 /* CharacterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCollectionViewCell.xib; sourceTree = "<group>"; };
+		F0765ED9209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		F0765EDA209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarvelCharFavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		F0DE09FF209D346E0006CDC2 /* marvelproj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marvelproj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DE0A02209D346E0006CDC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0DE0A04209D346E0006CDC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +136,8 @@
 				F0765EA6209D41A400AA10F1 /* CharacterTableViewCell.xib */,
 				F0765ED5209DF0A300AA10F1 /* CharacterCollectionViewCell.swift */,
 				F0765ED6209DF0A300AA10F1 /* CharacterCollectionViewCell.xib */,
+				F0765ED9209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift */,
+				F0765EDA209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.xib */,
 			);
 			path = xibs;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 				F0765EB6209D444900AA10F1 /* circular-bold.otf in Resources */,
 				F0765EB8209D444E00AA10F1 /* circular-book.otf in Resources */,
 				F0765EB4209D444400AA10F1 /* circular-black.otf in Resources */,
+				F0765EDC209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.xib in Resources */,
 				F0DE0A0A209D346E0006CDC2 /* Assets.xcassets in Resources */,
 				F0DE0A08209D346E0006CDC2 /* Main.storyboard in Resources */,
 				F0765EA8209D41A400AA10F1 /* CharacterTableViewCell.xib in Resources */,
@@ -377,6 +384,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-marvelproj/Pods-marvelproj-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AnimatedCollectionViewLayout/AnimatedCollectionViewLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -386,6 +394,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedCollectionViewLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -490,6 +499,7 @@
 				F0765EC9209D553C00AA10F1 /* Character.swift in Sources */,
 				F0765EBE209D4DDC00AA10F1 /* MarvelCharViewController.swift in Sources */,
 				F0DE0A03209D346E0006CDC2 /* AppDelegate.swift in Sources */,
+				F0765EDB209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift in Sources */,
 				F0765EC4209D4F0D00AA10F1 /* MarvelService.swift in Sources */,
 				F0765ECD209DD6B600AA10F1 /* Thumbnail.swift in Sources */,
 				F0765ED0209DDBF500AA10F1 /* UIImageView+Alamofire.swift in Sources */,

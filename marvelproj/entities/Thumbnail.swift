@@ -1,0 +1,43 @@
+//
+//  Thumbnail.swift
+//  marvelproj
+//
+//  Created by Andre Nogueira on 05/05/18.
+//  Copyright © 2018 Andre Nogueira. All rights reserved.
+//
+
+import UIKit
+import ObjectMapper
+
+struct Thumbnail{
+
+    var tExtension: String = ""
+    var path: String = ""
+}
+
+extension Thumbnail: Mappable{
+    
+    init?(map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        self.tExtension <- map["extension"]
+        self.path <- map["path"]
+    }
+    
+    func fullPath() -> String{
+        return self.securePath() + "." + self.tExtension
+    }
+    
+    func securePath() -> String {
+        if self.path.hasPrefix("http://") {
+            let range = path.range(of: "http://")
+            var newPath = path
+            newPath.removeSubrange(range!)
+            return "https://" + newPath
+        } else {
+            return path
+        }
+    }
+}

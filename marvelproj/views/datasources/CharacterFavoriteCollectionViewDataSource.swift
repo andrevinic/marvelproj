@@ -71,15 +71,4 @@ class CharacterFavoriteCollectionViewDelegate:NSObject, UICollectionViewDelegate
         
     }
 }
-//extension CharacterFavoriteCollectionViewDataSource:UICollectionViewDelegateFlowLayout{
-//func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    if(collectionView == self.collectionView){
-//        let collectionViewSize = collectionView.frame.size.width
-//        return CGSize(width: collectionViewSize, height: collectionViewSize)
-//    }
-//
-//    return CGSize(width: collectionView.frame.size.width/5 - 8,
-//                  height: collectionView.frame.size.width/5 - 8)
-//}
-//}
 

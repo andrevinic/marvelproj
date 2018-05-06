@@ -8,11 +8,9 @@
 
 import UIKit
 protocol MarvelCharacterDelegate: UICollectionViewDelegate{
+    func fetchCharacters()
+    func didSelectCharacter(index: IndexPath)
     
-}
-
-extension MarvelCharacterDelegate{
-    func fetchCharacters() {}
 }
 
 class MarvelCharViewController: UIViewController {
@@ -30,7 +28,7 @@ class MarvelCharViewController: UIViewController {
     
     var characters: NSMutableArray!
     var offset : Int = 0
-    var limit: Int = 10
+    var limit: Int = 5
     var showDataWithList = true
 }
 
@@ -67,7 +65,7 @@ extension MarvelCharViewController{
         self.tableView.isHidden = true
         self.showDataWithList = false
 
-        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self)
+        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!)
 
         self.collectionView.finishInfiniteScroll()
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, characters: self.characters)
@@ -121,6 +119,13 @@ extension MarvelCharViewController{
 }
 
 extension MarvelCharViewController: MarvelCharacterDelegate{
+    
+    func didSelectCharacter(index: IndexPath) {
+        let nextController = MarvelRouter.instantiateMarvelCharDetailViewController() 
+        self.navigationController?.pushViewController(nextController, animated: true)
+        nextController.character = characters.object(at: index.row) as? Character
+
+    }
     
     func fetchCharacters(){
         MarvelCharInteractor().fetchCharacteres(limit: limit, offset: offset) { (characters, error) in

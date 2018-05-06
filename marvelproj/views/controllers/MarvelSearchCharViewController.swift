@@ -27,17 +27,22 @@ class MarvelSearchCharViewController: UIViewController, UICollectionViewDelegate
 extension MarvelSearchCharViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         self.collectionView.isHidden = true
         self.initialSearchScreen.isHidden = false
         self.searchBar.delegate = self
         self.searchedCharacters = NSMutableArray()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
     func setupCollectionView(){
         
         self.collectionView.isHidden = false
         self.initialSearchScreen.isHidden = true
-        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self)
+        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters)
         
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, characters: self.searchedCharacters)
     }
@@ -86,6 +91,17 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
 }
 
 extension MarvelSearchCharViewController: MarvelCharacterDelegate{
+    
+    func didSelectCharacter(index: IndexPath) {
+        let nextController = MarvelRouter.instantiateMarvelCharDetailViewController()
+        self.navigationController?.pushViewController(nextController, animated: true)
+        nextController.character = searchedCharacters.object(at: index.row) as? Character
+    }
+    
+    func fetchCharacters() {
+        self.collectionView.finishInfiniteScroll()
+    }
+    
     
 }
 

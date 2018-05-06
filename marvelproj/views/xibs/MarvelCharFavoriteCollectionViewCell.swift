@@ -26,7 +26,7 @@ class MarvelCharFavoriteCollectionViewCell: UICollectionViewCell {
     func setupCell(char: Character){
         let thumbnail = char.thumbnail!
         self.favoriteImageCharacter.download(url: thumbnail.fullPath())
-        self.setCircularImageView()
+        self.favoriteImageCharacter.setCircularImageView()
         self.favoriteImageCharacter.backgroundColor = UIColor.black
     }
     
@@ -34,7 +34,4 @@ class MarvelCharFavoriteCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
     }
     
-    func setCircularImageView() {
-        self.favoriteImageCharacter.layer.cornerRadius = CGFloat(roundf(Float(self.favoriteImageCharacter.frame.size.width / 2.0)))
-    }
 }

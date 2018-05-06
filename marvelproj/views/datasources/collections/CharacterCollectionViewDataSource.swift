@@ -9,15 +9,13 @@
 import UIKit
 import AnimatedCollectionViewLayout
 
-class CharacterCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
     
-    var characters:NSMutableArray!
+    var characters:NSMutableArray?
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
-    var offset : Int = 0
-    var limit: Int = 10
     
-    init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, characters: NSMutableArray) {
+    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, characters: NSMutableArray) {
         self.collectionView = collectionView
         self.delegate = delegate
         self.characters = characters
@@ -28,55 +26,48 @@ class CharacterCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if(characters.count == 0){
+        if(characters?.count == 0){
             return UICollectionViewCell()
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCollectionViewCell", for: indexPath) as! CharacterCollectionViewCell
-        let character = self.characters.object(at: indexPath.row) as! Character
+        let character = self.characters?.object(at: indexPath.row) as! Character
         cell.setupCell(char: character)
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return self.characters.count
+        return (self.characters?.count)!
+    }
+    
+}
+
+class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    weak var delegate: MarvelCharacterDelegate?
+    weak var characters: NSMutableArray?
+    
+    init(_ delegate: MarvelCharacterDelegate, characters: NSMutableArray) {
+        self.delegate = delegate
+        self.characters = characters
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if(indexPath.row == (self.characters.count) - 1){
+        if(indexPath.row == (self.characters?.count)! - 1){
             collectionView.addInfiniteScroll(handler: { (collectionView) in
-//                                self.fetchCharacters()
-            
+                self.delegate?.fetchCharacters()
+     
             })
         }
     }
-}
-
-class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
-    let delegate: MarvelCharacterDelegate
-    
-    init(_ delegate: MarvelCharacterDelegate) {
-        self.delegate = delegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        self.delegate?.didSelectCharacter(index: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let collectionViewSize = collectionView.frame.size.width
             return CGSize(width: collectionViewSize, height: collectionViewSize)
-    }
-}
-
-extension CharacterCollectionViewDataSource{
-    func setupCollectionView(){
-        self.collectionView?.dataSource = self
-        self.collectionView?.delegate = self.delegate
-        self.collectionView?.reloadData()
-        
-        let layout = AnimatedCollectionViewLayout()
-        layout.animator = LinearCardAttributesAnimator()
-
-        self.collectionView?.collectionViewLayout = layout
     }
 }
 

@@ -13,6 +13,7 @@ target 'marvelproj' do
     pod 'CryptoSwift',  '~>0.7.0'
     pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
     pod 'AnimatedCollectionViewLayout'
+    #pod 'BlurryModalSegue'
 
     
   target 'marvelprojTests' do

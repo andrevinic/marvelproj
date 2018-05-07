@@ -158,10 +158,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hnk-ec-JoZ">
-                                        <rect key="frame" x="8" y="286" width="359" height="60"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="8" y="286" width="359" height="100"/>
+                                        <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="H6I-TQ-jxe"/>
+                                            <constraint firstAttribute="height" constant="100" id="H6I-TQ-jxe"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t2U-k0-TUE">
                                             <size key="itemSize" width="50" height="50"/>
@@ -171,7 +171,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2NH-Lj-dfv">
-                                                <rect key="frame" x="0.0" y="5" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="25" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -181,10 +181,10 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kRd-oR-wJ8">
-                                        <rect key="frame" x="10" y="410" width="355" height="60"/>
+                                        <rect key="frame" x="10" y="443" width="355" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="1AH-70-8YP"/>
+                                            <constraint firstAttribute="height" constant="100" id="1AH-70-8YP"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QsN-pK-Wrj">
                                             <size key="itemSize" width="50" height="50"/>
@@ -194,7 +194,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WiO-Ys-Djm">
-                                                <rect key="frame" x="0.0" y="5" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="25" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -213,7 +213,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Series" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk9-Vr-dQu">
-                                        <rect key="frame" x="10" y="370" width="355" height="22"/>
+                                        <rect key="frame" x="10" y="406" width="355" height="22"/>
                                         <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -232,7 +232,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" id="sZz-qg-nMh"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="CircularStd-Book" family="Circular Std" pointSize="20"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -318,13 +318,13 @@
                                     <constraint firstAttribute="trailing" secondItem="Hnk-ec-JoZ" secondAttribute="trailing" constant="8" id="Stw-7M-iXp"/>
                                     <constraint firstAttribute="trailing" secondItem="gAJ-A3-VAq" secondAttribute="trailing" id="dzk-wa-tTE"/>
                                     <constraint firstItem="Oyt-a8-IrT" firstAttribute="top" secondItem="9U9-xE-S4C" secondAttribute="top" id="eEV-kk-WxZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="kRd-oR-wJ8" secondAttribute="bottom" constant="133" id="h9M-bP-zH4"/>
+                                    <constraint firstAttribute="bottom" secondItem="kRd-oR-wJ8" secondAttribute="bottom" constant="60" id="h9M-bP-zH4"/>
                                     <constraint firstItem="cEB-0b-HcN" firstAttribute="centerX" secondItem="9U9-xE-S4C" secondAttribute="centerX" id="hk3-PM-I41"/>
                                     <constraint firstItem="kRd-oR-wJ8" firstAttribute="centerX" secondItem="9U9-xE-S4C" secondAttribute="centerX" id="iFy-QK-klv"/>
                                     <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Umi-6c-Jv4" secondAttribute="trailing" constant="10" id="ifx-gp-SF4"/>
                                     <constraint firstItem="kRd-oR-wJ8" firstAttribute="centerX" secondItem="Hnk-ec-JoZ" secondAttribute="centerX" id="jYp-2K-oDl"/>
                                     <constraint firstItem="kRd-oR-wJ8" firstAttribute="leading" secondItem="9U9-xE-S4C" secondAttribute="leading" constant="10" id="kKD-ES-GP3"/>
-                                    <constraint firstItem="kRd-oR-wJ8" firstAttribute="top" secondItem="sk9-Vr-dQu" secondAttribute="bottom" constant="18" id="kWr-U7-j9d"/>
+                                    <constraint firstItem="kRd-oR-wJ8" firstAttribute="top" secondItem="sk9-Vr-dQu" secondAttribute="bottom" constant="15" id="kWr-U7-j9d"/>
                                     <constraint firstItem="sk9-Vr-dQu" firstAttribute="leading" secondItem="9U9-xE-S4C" secondAttribute="leading" constant="10" id="l5w-KJ-v52"/>
                                     <constraint firstItem="gAJ-A3-VAq" firstAttribute="top" secondItem="9U9-xE-S4C" secondAttribute="top" id="nBO-Fm-o6h"/>
                                     <constraint firstItem="Oyt-a8-IrT" firstAttribute="leading" secondItem="9U9-xE-S4C" secondAttribute="leading" id="sOP-xn-eLQ"/>
@@ -353,6 +353,7 @@
                     <connections>
                         <outlet property="characterDetail" destination="Oyt-a8-IrT" id="tt0-5m-mVT"/>
                         <outlet property="characterDetailView" destination="Off-t6-xJv" id="6dK-tW-is3"/>
+                        <outlet property="comicsCollectionView" destination="Hnk-ec-JoZ" id="DiH-Is-Pvf"/>
                         <outlet property="pageControl" destination="cEB-0b-HcN" id="05p-IQ-3DN"/>
                         <outlet property="storiesView" destination="gAJ-A3-VAq" id="IZh-y7-9Ov"/>
                     </connections>

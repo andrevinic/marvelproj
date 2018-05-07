@@ -13,6 +13,10 @@
 		F00F59E8209F683900C7EFDB /* MarvelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E7209F683900C7EFDB /* MarvelRouter.swift */; };
 		F00F59EA209F745D00C7EFDB /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E9209F745D00C7EFDB /* Story.swift */; };
 		F00F59EC209FC22800C7EFDB /* StoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59EB209FC22800C7EFDB /* StoriesView.swift */; };
+		F00F59EE209FDBDC00C7EFDB /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59ED209FDBDC00C7EFDB /* Comics.swift */; };
+		F00F59F0209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59EF209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift */; };
+		F00FD6A3209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD6A1209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift */; };
+		F00FD6A4209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F00FD6A2209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib */; };
 		F0765EA7209D41A400AA10F1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0765EA5209D41A400AA10F1 /* CharacterTableViewCell.swift */; };
 		F0765EA8209D41A400AA10F1 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0765EA6209D41A400AA10F1 /* CharacterTableViewCell.xib */; };
 		F0765EB3209D444100AA10F1 /* circular-black-italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0765EB1209D443800AA10F1 /* circular-black-italic.otf */; };
@@ -68,6 +72,10 @@
 		F00F59E7209F683900C7EFDB /* MarvelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRouter.swift; sourceTree = "<group>"; };
 		F00F59E9209F745D00C7EFDB /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		F00F59EB209FC22800C7EFDB /* StoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesView.swift; sourceTree = "<group>"; };
+		F00F59ED209FDBDC00C7EFDB /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
+		F00F59EF209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		F00FD6A1209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCollectionViewCell.swift; sourceTree = "<group>"; };
+		F00FD6A2209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicsCollectionViewCell.xib; sourceTree = "<group>"; };
 		F0765EA5209D41A400AA10F1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		F0765EA6209D41A400AA10F1 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		F0765EAB209D443800AA10F1 /* circular-medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "circular-medium.otf"; sourceTree = "<group>"; };
@@ -166,6 +174,8 @@
 				F0765EDA209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.xib */,
 				F00F59E5209F610F00C7EFDB /* CharacterDetailView.swift */,
 				F00F59EB209FC22800C7EFDB /* StoriesView.swift */,
+				F00FD6A1209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift */,
+				F00FD6A2209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib */,
 			);
 			path = xibs;
 			sourceTree = "<group>";
@@ -230,6 +240,7 @@
 				F0765EC8209D553C00AA10F1 /* Character.swift */,
 				F0765ECC209DD6B600AA10F1 /* Thumbnail.swift */,
 				F00F59E9209F745D00C7EFDB /* Story.swift */,
+				F00F59ED209FDBDC00C7EFDB /* Comics.swift */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -257,6 +268,7 @@
 				F0A516DE209EA364003A6436 /* CharacterFavoriteCollectionViewDataSource.swift */,
 				F0A516DC209E9E20003A6436 /* CharacterCollectionViewDataSource.swift */,
 				F0A516E0209F4981003A6436 /* CharactersCollectionDataSourceInterface.swift */,
+				F00F59EF209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift */,
 			);
 			path = collections;
 			sourceTree = "<group>";
@@ -408,6 +420,7 @@
 			files = (
 				F0765EB7209D444C00AA10F1 /* circular-book-italic.otf in Resources */,
 				F0765EC2209D4ED600AA10F1 /* strings.plist in Resources */,
+				F00FD6A4209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib in Resources */,
 				F0765EB9209D445100AA10F1 /* circular-medium-italic.otf in Resources */,
 				F0765EB3209D444100AA10F1 /* circular-black-italic.otf in Resources */,
 				F0765ED8209DF0A300AA10F1 /* CharacterCollectionViewCell.xib in Resources */,
@@ -553,8 +566,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0765ED7209DF0A300AA10F1 /* CharacterCollectionViewCell.swift in Sources */,
+				F00FD6A3209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift in Sources */,
 				F0DE0A05209D346E0006CDC2 /* ViewController.swift in Sources */,
 				F0765EC6209D4F4900AA10F1 /* MarvelCharInteractor.swift in Sources */,
+				F00F59F0209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift in Sources */,
 				F0765EC9209D553C00AA10F1 /* Character.swift in Sources */,
 				F0765EBE209D4DDC00AA10F1 /* MarvelCharViewController.swift in Sources */,
 				F00F59EA209F745D00C7EFDB /* Story.swift in Sources */,
@@ -566,6 +581,7 @@
 				F0A516E1209F4981003A6436 /* CharactersCollectionDataSourceInterface.swift in Sources */,
 				F00F59E8209F683900C7EFDB /* MarvelRouter.swift in Sources */,
 				F0765EDB209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift in Sources */,
+				F00F59EE209FDBDC00C7EFDB /* Comics.swift in Sources */,
 				F0765EC4209D4F0D00AA10F1 /* MarvelService.swift in Sources */,
 				F0765ECD209DD6B600AA10F1 /* Thumbnail.swift in Sources */,
 				F00F59EC209FC22800C7EFDB /* StoriesView.swift in Sources */,

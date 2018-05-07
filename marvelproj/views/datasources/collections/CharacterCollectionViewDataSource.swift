@@ -11,34 +11,38 @@ import AnimatedCollectionViewLayout
 
 class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
     
-    var characters:NSMutableArray?
+    var array:NSMutableArray?
+    var nibName:String?
+    
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
     
-    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, characters: NSMutableArray) {
+    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String) {
         self.collectionView = collectionView
         self.delegate = delegate
-        self.characters = characters
+        self.array = array
+        self.nibName = nibName
+        
         super.init()
-        collectionView.register(UINib(nibName:"CharacterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CharacterCollectionViewCell")
+        collectionView.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
         self.setupCollectionView()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if(characters?.count == 0){
+        if(array?.count == 0){
             return UICollectionViewCell()
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCollectionViewCell", for: indexPath) as! CharacterCollectionViewCell
-        let character = self.characters?.object(at: indexPath.row) as! Character
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.nibName!, for: indexPath) as! CharacterCollectionViewCell
+        let character = self.array?.object(at: indexPath.row) as! Character
         cell.setupCell(char: character)
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return (self.characters?.count)!
+        return (self.array?.count)!
     }
     
 }

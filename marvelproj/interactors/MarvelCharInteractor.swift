@@ -90,9 +90,30 @@ class MarvelCharInteractor: NSObject {
                 completion(stories!, nil)
             }
         }
-        
     }
     
+    func fetchComics(comicsURL: String, completion: @escaping (_ comics: [Comics], _ error: Error?) -> Void){
+        let dict: KeyDict = MarvelService.getKeys()
+        let ts = NSDate().timeIntervalSince1970.description
+        let parametros : Parameters = [
+            "apikey" : dict.publicKey,
+            "ts" : ts,
+            "hash" : (ts + dict.privateKey + dict.publicKey).md5() ,
+            "orderBy" : "title",
+            ]
+        
+        Alamofire.request(comicsURL, parameters: parametros).responseJSON{ response in
+            switch response.result{
+            case .failure(let error):
+                return
+            case .success(let data):
+                let jsonResult = JSON(response.result.value!)
+                let comicsJSON = self.removeWrappers(json: jsonResult)
+                let comics = Mapper<Comics>().mapArray(JSONString: comicsJSON.rawString()!)
+                completion(comics!, nil)
+            }
+        }
+    }
     func removeWrappers(json: JSON) -> JSON{
         let arrayjson = json.dictionary!["data"]!["results"]
         return arrayjson

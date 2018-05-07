@@ -49,6 +49,17 @@ extension ComicsCharacter: Mappable{
         self.available <- map["available"]
     }
     
+    func securePath() -> String {
+        let url = self.collectionURI!
+        if (url.hasPrefix("http://")) {
+            let range = url.range(of: "http://")
+            var newPath = url
+            newPath.removeSubrange(range!)
+            return "https://" + newPath
+        } else {
+            return url
+        }
+    }
 }
 
 struct StoriesCharacter{

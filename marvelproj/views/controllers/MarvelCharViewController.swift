@@ -68,12 +68,12 @@ extension MarvelCharViewController{
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!)
 
         self.collectionView.finishInfiniteScroll()
-        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, characters: self.characters)
+        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: "CharacterCollectionViewCell")
     }
     
     func setupFavoriteCollectionView(){
         self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate()
-        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, characters: self.characters)
+        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.characters, nibName: "MarvelCharFavoriteCollectionViewCell")
 
     }
     

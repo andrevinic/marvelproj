@@ -1,15 +1,15 @@
 //
-//  CharacterFavoriteCollectionViewDataSource.swift
+//  ComicsCollectionViewDataSource.swift
 //  marvelproj
 //
-//  Created by Andre Nogueira on 05/05/18.
+//  Created by Andre Nogueira on 06/05/18.
 //  Copyright © 2018 Andre Nogueira. All rights reserved.
 //
 
 import UIKit
-import AnimatedCollectionViewLayout
 
-class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
+class ComicsCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
+
     var offset: Int?
     var array:NSMutableArray?
     var nibName: String?
@@ -17,7 +17,7 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
     
-    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String) {
+    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String){
         self.collectionView = collectionView
         self.delegate = delegate
         self.array = array
@@ -25,11 +25,6 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
         super.init()
         collectionView.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
         self.setupCollectionView()
-        let layout = AnimatedCollectionViewLayout()
-        layout.animator = ZoomInOutAttributesAnimator()
-        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
-        self.collectionView?.collectionViewLayout = layout
-        
         self.collectionView?.collectionViewLayout.invalidateLayout()
     }
     
@@ -39,11 +34,10 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
             return UICollectionViewCell()
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: nibName!, for: indexPath) as! MarvelCharFavoriteCollectionViewCell
-        let character = self.array?.object(at: indexPath.row) as! Character
-        cell.setupCell(char: character)
-        cell.favoriteImageCharacter.backgroundColor = .lightGray
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: nibName!, for: indexPath) as! ComicsCollectionViewCell
+        let comic = self.array?.object(at: indexPath.row) as! Comics
+        cell.setupComicsCell(comics: comic)
+
         return cell
         
     }
@@ -51,15 +45,11 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
         
         return (self.array?.count)!
     }
-    
 }
 
-
-class CharacterFavoriteCollectionViewDelegate:NSObject, UICollectionViewDelegateFlowLayout{
+class ComicsCollectionViewDelegate:NSObject, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width/5 - 8,
-                          height: collectionView.frame.size.width/5 - 8)
-        
+        let collectionViewSize = collectionView.frame.size.height
+        return CGSize(width: collectionViewSize, height: collectionViewSize)
     }
 }
-

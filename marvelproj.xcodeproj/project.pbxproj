@@ -10,6 +10,8 @@
 		59C936E37A5B876EDA6334AD /* Pods_marvelproj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA85213925C92F2E1DE859 /* Pods_marvelproj.framework */; };
 		659C5B0F20A0AD5E00746A64 /* StoriesCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C5B0E20A0AD5E00746A64 /* StoriesCharacter.swift */; };
 		659C5B1120A0AD7E00746A64 /* ComicsCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C5B1020A0AD7E00746A64 /* ComicsCharacter.swift */; };
+		659C5B1420A0E98800746A64 /* SwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C5B1320A0E98800746A64 /* SwiftMD5.swift */; };
+		659C5B1620A0E9A900746A64 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C5B1520A0E9A900746A64 /* String+MD5.swift */; };
 		F00F59E4209F609400C7EFDB /* MarvelCharDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E3209F609400C7EFDB /* MarvelCharDetailViewController.swift */; };
 		F00F59E6209F610F00C7EFDB /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E5209F610F00C7EFDB /* CharacterDetailView.swift */; };
 		F00F59E8209F683900C7EFDB /* MarvelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E7209F683900C7EFDB /* MarvelRouter.swift */; };
@@ -68,6 +70,8 @@
 		3EF0931F784B45BAAE95CDF2 /* Pods-marvelproj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marvelproj.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marvelproj/Pods-marvelproj.debug.xcconfig"; sourceTree = "<group>"; };
 		659C5B0E20A0AD5E00746A64 /* StoriesCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesCharacter.swift; sourceTree = "<group>"; };
 		659C5B1020A0AD7E00746A64 /* ComicsCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCharacter.swift; sourceTree = "<group>"; };
+		659C5B1320A0E98800746A64 /* SwiftMD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMD5.swift; sourceTree = "<group>"; };
+		659C5B1520A0E9A900746A64 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		C0FA85213925C92F2E1DE859 /* Pods_marvelproj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marvelproj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED5933A7200A0F1F3FE04B95 /* Pods_marvelprojTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marvelprojTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00F59E3209F609400C7EFDB /* MarvelCharDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelCharDetailViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +296,8 @@
 			isa = PBXGroup;
 			children = (
 				F0765ECF209DDBF500AA10F1 /* UIImageView+Alamofire.swift */,
+				659C5B1320A0E98800746A64 /* SwiftMD5.swift */,
+				659C5B1520A0E9A900746A64 /* String+MD5.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -582,10 +588,12 @@
 				F0765EBE209D4DDC00AA10F1 /* MarvelCharViewController.swift in Sources */,
 				F00F59EA209F745D00C7EFDB /* Story.swift in Sources */,
 				F00F59E6209F610F00C7EFDB /* CharacterDetailView.swift in Sources */,
+				659C5B1620A0E9A900746A64 /* String+MD5.swift in Sources */,
 				F0A516DF209EA364003A6436 /* CharacterFavoriteCollectionViewDataSource.swift in Sources */,
 				F00F59E4209F609400C7EFDB /* MarvelCharDetailViewController.swift in Sources */,
 				F0B1CC46209E7EA200E1A5FA /* MarvelSearchCharViewController.swift in Sources */,
 				F0DE0A03209D346E0006CDC2 /* AppDelegate.swift in Sources */,
+				659C5B1420A0E98800746A64 /* SwiftMD5.swift in Sources */,
 				F0A516E1209F4981003A6436 /* CharactersCollectionDataSourceInterface.swift in Sources */,
 				F00F59E8209F683900C7EFDB /* MarvelRouter.swift in Sources */,
 				F0765EDB209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift in Sources */,

@@ -12,6 +12,7 @@
 		F00F59E6209F610F00C7EFDB /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E5209F610F00C7EFDB /* CharacterDetailView.swift */; };
 		F00F59E8209F683900C7EFDB /* MarvelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E7209F683900C7EFDB /* MarvelRouter.swift */; };
 		F00F59EA209F745D00C7EFDB /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59E9209F745D00C7EFDB /* Story.swift */; };
+		F00F59EC209FC22800C7EFDB /* StoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59EB209FC22800C7EFDB /* StoriesView.swift */; };
 		F0765EA7209D41A400AA10F1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0765EA5209D41A400AA10F1 /* CharacterTableViewCell.swift */; };
 		F0765EA8209D41A400AA10F1 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0765EA6209D41A400AA10F1 /* CharacterTableViewCell.xib */; };
 		F0765EB3209D444100AA10F1 /* circular-black-italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0765EB1209D443800AA10F1 /* circular-black-italic.otf */; };
@@ -66,6 +67,7 @@
 		F00F59E5209F610F00C7EFDB /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		F00F59E7209F683900C7EFDB /* MarvelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRouter.swift; sourceTree = "<group>"; };
 		F00F59E9209F745D00C7EFDB /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		F00F59EB209FC22800C7EFDB /* StoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesView.swift; sourceTree = "<group>"; };
 		F0765EA5209D41A400AA10F1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		F0765EA6209D41A400AA10F1 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		F0765EAB209D443800AA10F1 /* circular-medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "circular-medium.otf"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				F0765ED9209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift */,
 				F0765EDA209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.xib */,
 				F00F59E5209F610F00C7EFDB /* CharacterDetailView.swift */,
+				F00F59EB209FC22800C7EFDB /* StoriesView.swift */,
 			);
 			path = xibs;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				F0765EDB209E378700AA10F1 /* MarvelCharFavoriteCollectionViewCell.swift in Sources */,
 				F0765EC4209D4F0D00AA10F1 /* MarvelService.swift in Sources */,
 				F0765ECD209DD6B600AA10F1 /* Thumbnail.swift in Sources */,
+				F00F59EC209FC22800C7EFDB /* StoriesView.swift in Sources */,
 				F0765ED0209DDBF500AA10F1 /* UIImageView+Alamofire.swift in Sources */,
 				F0A516DD209E9E20003A6436 /* CharacterCollectionViewDataSource.swift in Sources */,
 				F0765EA7209D41A400AA10F1 /* CharacterTableViewCell.swift in Sources */,

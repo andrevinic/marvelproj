@@ -30,3 +30,4 @@ extension Story: Mappable{
         self.thumbnail <- map["thumbnail"]
     }
 }
+

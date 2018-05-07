@@ -15,6 +15,7 @@ struct Character{
     var description: String = ""
     var thumbnail: Thumbnail?
     var comics: ComicsCharacter?
+    var stories: StoriesCharacter?
 }
 
 extension Character: Mappable{
@@ -29,8 +30,10 @@ extension Character: Mappable{
         self.description <- map["description"]
         self.thumbnail <- map["thumbnail"]
         self.comics <- map["comics"]
+        self.stories <- map["stories"]
     }
 }
+
 
 struct ComicsCharacter{
     var collectionURI: String?
@@ -46,5 +49,35 @@ extension ComicsCharacter: Mappable{
         self.available <- map["available"]
     }
     
+}
+
+struct StoriesCharacter{
+    var collectionURI: String?
+    var available: Int?
+}
+
+extension StoriesCharacter: Mappable{
+    
+    init?(map: Map) {
+        
+    }
+    mutating func mapping(map: Map) {
+        self.collectionURI <- map["collectionURI"]
+        self.available <- map["available"]
+    }
+}
+extension StoriesCharacter{
+
+    func securePath() -> String {
+        let url = self.collectionURI!
+        if (url.hasPrefix("http://")) {
+            let range = url.range(of: "http://")
+            var newPath = url
+            newPath.removeSubrange(range!)
+            return "https://" + newPath
+        } else {
+            return url
+        }
+    }
 }
 

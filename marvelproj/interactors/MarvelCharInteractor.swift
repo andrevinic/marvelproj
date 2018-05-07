@@ -66,6 +66,31 @@ class MarvelCharInteractor: NSObject {
                 completion(chars!, nil)
             }
         }
+        
+    }
+    
+    func fetchStories(storiesURL: String, completion: @escaping (_ stories: [Story], _ error: Error?) -> Void){
+        let dict: KeyDict = MarvelService.getKeys()
+        let ts = NSDate().timeIntervalSince1970.description
+        let parametros : Parameters = [
+            "apikey" : dict.publicKey,
+            "ts" : ts,
+            "hash" : (ts + dict.privateKey + dict.publicKey).md5() ,
+            "orderBy" : "id",
+            ]
+        
+        Alamofire.request(storiesURL, parameters: parametros).responseJSON{ response in
+            switch response.result{
+            case .failure(let error):
+                return
+            case .success(let data):
+                let jsonResult = JSON(response.result.value!)
+                let storiesJSON = self.removeWrappers(json: jsonResult)
+                let stories = Mapper<Story>().mapArray(JSONString: storiesJSON.rawString()!)
+                completion(stories!, nil)
+            }
+        }
+        
     }
     
     func removeWrappers(json: JSON) -> JSON{

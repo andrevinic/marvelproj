@@ -221,3 +221,4 @@ class SwiftMD5{
         return str
     }
 }
+

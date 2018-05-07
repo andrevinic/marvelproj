@@ -44,6 +44,8 @@ extension MarvelCharDetailViewController{
         self.setupSwipe()
         self.fetchStories()
         self.fetchComics()
+//        (self.view as! UIScrollView).isScrollEnabled = true
+//        (self.view as! UIScrollView).contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 //        self.resize
     }
     

@@ -44,8 +44,12 @@ extension MarvelCharDetailViewController{
         self.setupSwipe()
         self.fetchStories()
         self.fetchComics()
+//        self.resize
     }
     
+    override func viewDidLayoutSubviews() {
+//        self.resize
+    }
     func setupView(){
         self.characterDetailView.setupView(character: self.character!)
     }

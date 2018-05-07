@@ -13,26 +13,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ComicsCollectionViewCell" id="gTV-IL-0wX" customClass="ComicsCollectionViewCell" customModule="marvelproj" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="92" height="88"/>
+            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="92" height="88"/>
+                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czd-t3-v3y">
-                        <rect key="frame" x="0.0" y="0.0" width="92" height="88"/>
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C7L-hW-IbD">
-                                <rect key="frame" x="0.0" y="0.0" width="92" height="88"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="92" id="017-k9-BUJ"/>
+                            <constraint firstAttribute="width" constant="120" id="017-k9-BUJ"/>
+                            <constraint firstItem="C7L-hW-IbD" firstAttribute="leading" secondItem="czd-t3-v3y" secondAttribute="leading" id="8Cd-yV-pLE"/>
                             <constraint firstItem="C7L-hW-IbD" firstAttribute="leading" secondItem="czd-t3-v3y" secondAttribute="leading" id="8Nm-y5-V4e"/>
                             <constraint firstItem="C7L-hW-IbD" firstAttribute="top" secondItem="czd-t3-v3y" secondAttribute="top" id="9fd-T2-QZu"/>
-                            <constraint firstAttribute="height" constant="88" id="MzI-IW-f4R"/>
+                            <constraint firstAttribute="bottom" secondItem="C7L-hW-IbD" secondAttribute="bottom" id="Cdm-Oc-o6X"/>
+                            <constraint firstItem="C7L-hW-IbD" firstAttribute="top" secondItem="czd-t3-v3y" secondAttribute="top" id="DlN-C6-dsu"/>
+                            <constraint firstAttribute="height" constant="120" id="MzI-IW-f4R"/>
                             <constraint firstAttribute="trailing" secondItem="C7L-hW-IbD" secondAttribute="trailing" id="TLi-sF-DJm"/>
+                            <constraint firstAttribute="trailing" secondItem="C7L-hW-IbD" secondAttribute="trailing" id="aSs-ua-oeq"/>
                             <constraint firstAttribute="bottom" secondItem="C7L-hW-IbD" secondAttribute="bottom" id="bAf-Rj-pnj"/>
                         </constraints>
                     </view>

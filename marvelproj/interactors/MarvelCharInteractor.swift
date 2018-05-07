@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 import Alamofire
-import CryptoSwift
+//import CryptoSwift
 import ObjectMapper
 import SwiftyJSON
 
@@ -25,7 +25,7 @@ class MarvelCharInteractor: NSObject {
         let parametros : Parameters = [
             "apikey" : dict.publicKey,
             "ts" : ts,
-            "hash" : (ts + dict.privateKey + dict.publicKey).md5() ,
+            "hash" : (ts + dict.privateKey + dict.publicKey).md5 ,
             "orderBy" : "name",
             "limit" : limit,
             "offset" : offset,
@@ -51,7 +51,7 @@ class MarvelCharInteractor: NSObject {
         let parametros : Parameters = [
             "apikey" : dict.publicKey,
             "ts" : ts,
-            "hash" : (ts + dict.privateKey + dict.publicKey).md5() ,
+            "hash" : (ts + dict.privateKey + dict.publicKey).md5 ,
             "orderBy" : "name",
             "nameStartsWith" : nameStartsWith,
             ]
@@ -75,7 +75,7 @@ class MarvelCharInteractor: NSObject {
         let parametros : Parameters = [
             "apikey" : dict.publicKey,
             "ts" : ts,
-            "hash" : (ts + dict.privateKey + dict.publicKey).md5() ,
+            "hash" : (ts + dict.privateKey + dict.publicKey).md5 ,
             "orderBy" : "id",
             ]
         
@@ -98,7 +98,7 @@ class MarvelCharInteractor: NSObject {
         let parametros : Parameters = [
             "apikey" : dict.publicKey,
             "ts" : ts,
-            "hash" : (ts + dict.privateKey + dict.publicKey).md5() ,
+            "hash" : (ts + dict.privateKey + dict.publicKey).md5 ,
             "orderBy" : "title",
             ]
         

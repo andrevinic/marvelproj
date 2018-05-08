@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MarvelDetailCollectionViewCell" id="gTV-IL-0wX" customClass="MarvelDetailCollectionViewCell" customModule="marvelproj" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iri-Am-qgt">
+                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvel_screen" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-NN-Ih7">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RQf-NN-Ih7" firstAttribute="leading" secondItem="iri-Am-qgt" secondAttribute="leading" id="5dp-ky-WoX"/>
+                            <constraint firstAttribute="trailing" secondItem="RQf-NN-Ih7" secondAttribute="trailing" id="CyO-Sj-HVX"/>
+                            <constraint firstItem="RQf-NN-Ih7" firstAttribute="top" secondItem="iri-Am-qgt" secondAttribute="top" id="MSc-QB-sff"/>
+                            <constraint firstAttribute="bottom" secondItem="RQf-NN-Ih7" secondAttribute="bottom" id="g2b-62-GTr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="iri-Am-qgt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="R41-9h-NO6"/>
+                <constraint firstItem="iri-Am-qgt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cxd-YF-aMi"/>
+                <constraint firstAttribute="bottom" secondItem="iri-Am-qgt" secondAttribute="bottom" id="fYs-6h-Wuv"/>
+                <constraint firstAttribute="trailing" secondItem="iri-Am-qgt" secondAttribute="trailing" id="hNO-b6-VCE"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="260" height="148"/>
+            <connections>
+                <outlet property="collectionCellImage" destination="RQf-NN-Ih7" id="rvH-q8-1H1"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="13"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="marvel_screen" width="640" height="960"/>
+    </resources>
+</document>

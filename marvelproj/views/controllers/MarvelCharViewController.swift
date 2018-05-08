@@ -121,9 +121,10 @@ extension MarvelCharViewController{
 extension MarvelCharViewController: MarvelCharacterDelegate{
     
     func didSelectCharacter(index: IndexPath) {
-        let nextController = MarvelRouter.instantiateMarvelCharDetailViewController() 
+//        let nextController = MarvelRouter.instantiateMarvelCharDetailViewController()
+        let nextController = MarvelRouter.instantiateMarvelCharacterDetailViewController()
         self.navigationController?.pushViewController(nextController, animated: true)
-        nextController.character = characters.object(at: index.row) as? Character
+//        nextController.character = characters.object(at: index.row) as? Character
 
     }
     

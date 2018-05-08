@@ -60,7 +60,7 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(25)
+        return CGFloat(50)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -92,7 +92,7 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(120)
+        return CGFloat(250)
     }
     
     

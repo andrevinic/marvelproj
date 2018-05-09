@@ -7,29 +7,43 @@
 //
 
 import UIKit
-import ObjectMapper
+//import ObjectMapper
 
 struct Thumbnail{
-
+    
     var tExtension: String = ""
     var path: String = ""
 }
 
-extension Thumbnail: Mappable{
-    
-    init?(map: Map) {
-        
+//extension Thumbnail: Mappable{
+//    
+//    init?(map: Map) {
+//        
+//    }
+//    
+//    mutating func mapping(map: Map) {
+//        self.tExtension <- map["extension"]
+//        self.path <- map["path"]
+//    }
+//    
+//   
+//    
+//}
+
+extension Thumbnail{
+    init?(json: [String: Any]) {
+        guard let tExtension = json["extension"] as? String,
+            let path = json["path"] as? String
+            else{
+                return nil
+        }
+        self.tExtension = tExtension
+        self.path = path
     }
-    
-    mutating func mapping(map: Map) {
-        self.tExtension <- map["extension"]
-        self.path <- map["path"]
-    }
-    
-    func fullPath() -> String{
-        return self.securePath() + "." + self.tExtension
-    }
-    
+
+}
+
+extension Thumbnail{
     func securePath() -> String {
         if self.path.hasPrefix("http://") {
             let range = path.range(of: "http://")
@@ -40,4 +54,9 @@ extension Thumbnail: Mappable{
             return path
         }
     }
+    
+    func fullPath() -> String{
+        return self.securePath() + "." + self.tExtension
+    }
+    
 }

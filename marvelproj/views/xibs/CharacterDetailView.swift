@@ -20,7 +20,8 @@ class CharacterDetailView: UIView {
     func setupView(character: Character){
         let thumbnail = character.thumbnail
         self.characterName.text = character.name
-        self.characterImage.download(url: (thumbnail?.fullPath())!)
+        let url = URL(string: (thumbnail?.fullPath())!)
+        self.characterImage.downloadedFrom(url: url!)
 
     }
     

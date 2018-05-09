@@ -52,11 +52,13 @@ extension MarvelSearchCharViewController{
 extension MarvelSearchCharViewController{
     
     func fetchSearchCharacter(nameStartsWith: String){
-        MarvelCharInteractor().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { (characters, error) in
+        
+        MarvelHTTPManager().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { (characters, error) in
             self.searchedCharacters.removeAllObjects()
             self.searchedCharacters.addObjects(from: characters)
             self.setupCollectionView()
         }
+
     }
     
 }
@@ -99,7 +101,6 @@ extension MarvelSearchCharViewController: MarvelCharacterDelegate{
     }
     
     func fetchCharacters() {
-        self.collectionView.finishInfiniteScroll()
     }
     
     

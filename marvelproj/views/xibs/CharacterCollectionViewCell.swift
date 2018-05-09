@@ -23,7 +23,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         let thumbnail = char.thumbnail!
         
         let urlstr = thumbnail.fullPath()
-        self.imageCharacter.download(url: urlstr)
+//        self.imageCharacter.download(url: urlstr)
+        self.imageCharacter.downloadedFrom(url: URL(string: urlstr)!)
     }
 
 }

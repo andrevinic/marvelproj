@@ -6,13 +6,12 @@ target 'marvelproj' do
   use_frameworks!
 
   # Pods for marvelproj
-    pod 'Alamofire', '~> 4.6'
-    pod 'ObjectMapper'
-    pod 'SwiftyJSON'
-    pod 'AlamofireImage', '~> 3.3'
-    pod 'CryptoSwift',  '~>0.7.0'
-    pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
-    pod 'AnimatedCollectionViewLayout'
+    #pod 'Alamofire', '~> 4.6'
+    #pod 'ObjectMapper'
+    #pod 'SwiftyJSON'
+    #pod 'CryptoSwift',  '~>0.7.0'
+    #pod 'UIScrollView-InfiniteScroll', '~> 1.1.0'
+    #pod 'AnimatedCollectionViewLayout'
     #pod 'BlurryModalSegue'
 
     

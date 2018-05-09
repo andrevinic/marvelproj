@@ -22,7 +22,8 @@ class ComicsCollectionViewCell: UICollectionViewCell {
     func setupComicsCell(comics: Comics){
 //        self.comicsTitle.text = comics.title
         let thumbnail = comics.thumbnail!
-        self.comicsImage.download(url: thumbnail.fullPath())
+        let url = URL(string: thumbnail.fullPath())
+        self.comicsImage.downloadedFrom(url: url!)
     }
 
 }

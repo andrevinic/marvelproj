@@ -9,6 +9,7 @@
 import UIKit
 
 protocol CharactersCollectionDataSourceInterface: UICollectionViewDataSource {
+//    public var context: NSManagedObjectContext? {get}
 
     var array:NSMutableArray? {get}
     var nibName:String? {get}
@@ -22,14 +23,12 @@ protocol CharactersCollectionDataSourceInterface: UICollectionViewDataSource {
 
 extension CharactersCollectionDataSourceInterface{
     func setupCollectionView(){
-        self.collectionView?.dataSource = self
-        self.collectionView?.delegate = self.delegate
-        self.collectionView?.reloadData()
-//
-//        let layout = AnimatedCollectionViewLayout()
-//        layout.animator = LinearCardAttributesAnimator()
-//
-//        self.collectionView?.collectionViewLayout = layout
+        
+
+            self.collectionView?.dataSource = self
+            self.collectionView?.delegate = self.delegate
+            self.collectionView?.reloadData()
+    
     }
     
 }

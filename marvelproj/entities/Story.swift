@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ObjectMapper
+//import ObjectMapper
 
 struct Story{
 
@@ -17,17 +17,18 @@ struct Story{
     var thumbnail: Thumbnail?
 }
 
-extension Story: Mappable{
-    
-    init?(map: Map) {
-        
-    }
-    
-    mutating func mapping(map: Map) {
-        self.id <- map["id"]
-        self.title <- map["title"]
-        self.description <- map["description"]
-        self.thumbnail <- map["thumbnail"]
-    }
-}
+//extension Story: Mappable{
+//    
+//    init?(map: Map) {
+//        
+//    }
+//    
+//    mutating func mapping(map: Map) {
+//        self.id <- map["id"]
+//        self.title <- map["title"]
+//        self.description <- map["description"]
+//        self.thumbnail <- map["thumbnail"]
+//    }
+//}
+
 

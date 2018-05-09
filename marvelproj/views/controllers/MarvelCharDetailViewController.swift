@@ -123,19 +123,22 @@ extension MarvelCharDetailViewController{
     func fetchStories(){
         let character = self.character!
         let stories = character.stories!
-        MarvelCharInteractor().fetchStories(storiesURL: stories.securePath()) { (stories, error) in
-            self.stories = stories
-            self.setupStoriesView()
-        }
+//        MarvelCharInteractor().fetchStories(storiesURL: stories.securePath()) { (stories, error) in
+//            self.stories = stories
+//            self.setupStoriesView()
+//        }
     }
     
     func fetchComics(){
         let character = self.character!
-        let comics = character.comics!
-        MarvelCharInteractor().fetchComics(comicsURL: comics.securePath()) { (comics, error) in
+        MarvelHTTPManager().fetchComics(characterID: character.id) { (comics, error) in
             self.comics = comics
             self.setupCollectionView()
         }
+//        MarvelCharInteractor().fetchComics(comicsURL: comics.securePath()) { (comics, error) in
+//            self.comics = comics
+//            self.setupCollectionView()
+//        }
         
     }
 }

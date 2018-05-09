@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AnimatedCollectionViewLayout
 
 class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
     
@@ -59,10 +58,8 @@ class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if(indexPath.row == (self.characters?.count)! - 1){
-            collectionView.addInfiniteScroll(handler: { (collectionView) in
-                self.delegate?.fetchCharacters()
-     
-            })
+            self.delegate?.fetchCharacters()
+
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){

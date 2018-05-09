@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AnimatedCollectionViewLayout
 
 class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
     var offset: Int?
@@ -25,10 +24,6 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
         super.init()
         collectionView.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
         self.setupCollectionView()
-        let layout = AnimatedCollectionViewLayout()
-        layout.animator = ZoomInOutAttributesAnimator()
-        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
-        self.collectionView?.collectionViewLayout = layout
         
         self.collectionView?.collectionViewLayout.invalidateLayout()
     }

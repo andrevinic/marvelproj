@@ -7,23 +7,23 @@
 //
 
 import Foundation
-import ObjectMapper
+//import ObjectMapper
 
 struct StoriesCharacter{
     var collectionURI: String?
     var available: Int?
 }
 
-extension StoriesCharacter: Mappable{
-    
-    init?(map: Map) {
-        
-    }
-    mutating func mapping(map: Map) {
-        self.collectionURI <- map["collectionURI"]
-        self.available <- map["available"]
-    }
-}
+//extension StoriesCharacter: Mappable{
+//
+//    init?(map: Map) {
+//
+//    }
+//    mutating func mapping(map: Map) {
+//        self.collectionURI <- map["collectionURI"]
+//        self.available <- map["available"]
+//    }
+//}
 extension StoriesCharacter{
     
     func securePath() -> String {

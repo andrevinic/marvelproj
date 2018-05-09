@@ -56,7 +56,7 @@ extension MarvelCharViewController{
         self.tableView.register(UINib(nibName:"CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: "CharacterTableViewCell")
         self.tableView.reloadData()
         self.showDataWithList = true
-        self.tableView.finishInfiniteScroll()
+//        self.tableView.finishInfiniteScroll()
     }
     
     func setupCollectionView(){
@@ -67,7 +67,7 @@ extension MarvelCharViewController{
 
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!)
 
-        self.collectionView.finishInfiniteScroll()
+//        self.collectionView.finishInfiniteScroll()
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: "CharacterCollectionViewCell")
     }
     
@@ -98,9 +98,8 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if(indexPath.row == (self.characters.count) - 1){
-            self.tableView.addInfiniteScroll(handler: { (tableView) in
-                self.fetchCharacters()
-            })
+            self.fetchCharacters()
+   
         }
     }
 }
@@ -129,9 +128,9 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
     }
     
     func fetchCharacters(){
-        MarvelCharInteractor().fetchCharacteres(limit: limit, offset: offset) { (characters, error) in
+        
+        MarvelHTTPManager().fetchCharacters(offset: self.offset) { (characters, error) in
             self.characters.addObjects(from: characters)
-            self.tableView.reloadData()
             self.setupFavoriteCollectionView()
             
             self.activityIndicator.stopAnimating()
@@ -143,6 +142,7 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
                 self.setupCollectionView()
             }
         }
+
     }
 }
 

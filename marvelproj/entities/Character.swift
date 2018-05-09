@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ObjectMapper
+//import ObjectMapper
 
 struct Character{
     var id: Int = 0
@@ -18,18 +18,37 @@ struct Character{
     var stories: StoriesCharacter?
 }
 
-extension Character: Mappable{
-   
-    init?(map: Map) {
+//extension Character: Mappable{
+//
+//    init?(map: Map) {
+//
+//    }
+//
+//    mutating func mapping(map: Map) {
+//        self.id <- map["id"]
+//        self.name <- map["name"]
+//        self.description <- map["description"]
+//        self.thumbnail <- map["thumbnail"]
+//        self.comics <- map["comics"]
+//        self.stories <- map["stories"]
+//    }
+//}
+
+extension Character{
+    init?(json: [String: Any]) {
+        guard let name = json["name"] as? String,
+            let id = json["id"] as? Int,
+            let description = json["description"] as? String,
+            let thumbnail = json["thumbnail"] as? [String:Any],
+            let comics = json["comics"] as? [String: Any]
+        else{
+            return nil
+        }
         
-    }
-    
-    mutating func mapping(map: Map) {
-        self.id <- map["id"]
-        self.name <- map["name"]
-        self.description <- map["description"]
-        self.thumbnail <- map["thumbnail"]
-        self.comics <- map["comics"]
-        self.stories <- map["stories"]
+        self.name = name
+        self.id = id
+        self.description = description
+        self.thumbnail = Thumbnail(json:thumbnail)
+        self.comics = ComicsCharacter(json: comics)
     }
 }

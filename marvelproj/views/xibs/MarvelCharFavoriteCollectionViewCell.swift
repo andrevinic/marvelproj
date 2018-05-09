@@ -25,7 +25,8 @@ class MarvelCharFavoriteCollectionViewCell: UICollectionViewCell {
     
     func setupCell(char: Character){
         let thumbnail = char.thumbnail!
-        self.favoriteImageCharacter.download(url: thumbnail.fullPath())
+        let url = URL(string: thumbnail.fullPath())
+        self.favoriteImageCharacter.downloadedFrom(url: url!)
         self.favoriteImageCharacter.setCircularImageView()
         self.favoriteImageCharacter.backgroundColor = UIColor.black
     }

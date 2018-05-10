@@ -24,11 +24,19 @@ extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
             configureComicsCell(cell: cell, indexPath: indexPath)
         }else if(collectionView.tag == 2){
             configureSeriesCell(cell: cell, indexPath: indexPath)
+        }else if(collectionView.tag == 3){
+            configureEventsCell(cell: cell, indexPath: indexPath)
         }
 
         return cell
     }
 
+    private func configureEventsCell(cell: MarvelDetailCollectionViewCell, indexPath: IndexPath){
+        if(self.events == nil || self.events?.count == 0 || indexPath.row >= (events?.count)!){
+            return
+        }
+        configureCellEvent(cell: cell, forItemAt: indexPath)
+    }
     private func configureComicsCell(cell: MarvelDetailCollectionViewCell, indexPath: IndexPath){
         if(self.comics == nil || self.comics?.count == 0 || indexPath.row >= (comics?.count)!){
             return
@@ -80,6 +88,14 @@ extension MarvelCharacterDetailViewController{
             let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(url: url)
             cell.detailName.text = comic.title!
+        }
+    }
+    func configureCellEvent(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let event = (events?[indexPath.row] as? Events){
+            let img_url = (event.thumbnail?.fullPath())!
+            let url = URL(string: img_url)!
+            cell.collectionCellImage.downloadedFrom(url: url)
+            cell.detailName.text = event.title!
         }
     }
     func configureCellSerie(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {

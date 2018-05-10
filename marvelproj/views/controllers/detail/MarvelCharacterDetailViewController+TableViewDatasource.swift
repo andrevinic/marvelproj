@@ -13,7 +13,7 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
     //MARK: UITableViewDataSource
     // MARK: - Vai aumentar aqui cada celula
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,6 +36,11 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         else if(indexPath.section == 2 && self.series != nil){
             let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath) as! MarvelDetailTableViewCell
             //            configureCellSeries(cell: cell, forRowAt: indexPath, comics: self.comics!)
+            return cell
+        }
+        
+        else if(indexPath.section == 3 && self.events != nil){
+            let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath) as! MarvelDetailTableViewCell
             return cell
         }
         
@@ -107,6 +112,11 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         }
         
         if(indexPath.section == 2 && self.series != nil){
+            guard let tableViewCell = cell as? MarvelDetailTableViewCell else {return}
+            tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forSection: indexPath.section)
+        }
+        
+        if(indexPath.section == 3 && self.events != nil){
             guard let tableViewCell = cell as? MarvelDetailTableViewCell else {return}
             tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forSection: indexPath.section)
         }

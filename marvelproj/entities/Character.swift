@@ -13,25 +13,25 @@ struct Character{
     var name: String = ""
     var description: String = ""
     var thumbnail: Thumbnail?
-    var comics: ComicsCharacter?
-    var stories: StoriesCharacter?
+
 }
 
 extension Character{
     init?(json: [String: Any]) {
-        guard let name = json["name"] as? String,
-            let id = json["id"] as? Int,
-            let description = json["description"] as? String,
-            let thumbnail = json["thumbnail"] as? [String:Any],
-            let comics = json["comics"] as? [String: Any]
-        else{
-            return nil
+        
+        if let id = json["id"] as? Int{
+            self.id = id
+        }
+        if let name = json["name"] as? String{
+            self.name = name
+        }
+        if let description = json["description"] as? String{
+            self.description = description
+        }
+        if let thumbnail = json["thumbnail"] as? [String:Any]{
+            self.thumbnail = Thumbnail(json: thumbnail)
         }
         
-        self.name = name
-        self.id = id
-        self.description = description
-        self.thumbnail = Thumbnail(json:thumbnail)
-        self.comics = ComicsCharacter(json: comics)
     }
 }
+

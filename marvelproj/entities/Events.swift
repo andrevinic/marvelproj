@@ -1,21 +1,21 @@
 //
-//  Series.swift
+//  Events.swift
 //  marvelproj
 //
 //  Created by Andre Nogueira on 10/05/18.
 //  Copyright © 2018 Andre Nogueira. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-struct Series {
+struct Events {
     var id: Int?
     var title: String?
     var description: String?
     var thumbnail: Thumbnail?
 }
 
-extension Series{
+extension Events{
     
     init?(json: [String: Any]) {
         

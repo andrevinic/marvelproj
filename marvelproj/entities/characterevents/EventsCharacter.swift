@@ -1,20 +1,19 @@
 //
-//  ComicsCharacter.swift
+//  EventsCharacter.swift
 //  marvelproj
 //
-//  Created by Andre Nogueira on 07/05/18.
+//  Created by Andre Nogueira on 10/05/18.
 //  Copyright © 2018 Andre Nogueira. All rights reserved.
 //
 
 import Foundation
-//import ObjectMapper
 
-struct ComicsCharacter{
+struct EventsCharacter{
     var collectionURI: String?
     var available: Int?
 }
 
-extension ComicsCharacter{
+extension EventsCharacter{
     init?(json: [String: Any]) {
         guard let collectionURI = json["collectionURI"] as? String,
             let available = json["available"] as? Int

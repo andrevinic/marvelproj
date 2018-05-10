@@ -19,18 +19,20 @@ struct Comics{
 extension Comics{
     
     init?(json: [String: Any]) {
-        guard let id = json["id"] as? Int,
-            let title = json["title"] as? String,
-            let description = json["description"] as? String,
-            let thumbnail = json["thumbnail"] as? [String:Any]
-            else{
-                return nil
+        
+        if let id = json["id"] as? Int{
+            self.id = id
+        }
+        if let title = json["title"] as? String{
+            self.title = title
+        }
+        if let description = json["description"] as? String{
+            self.description = description
+        }
+        if let thumbnail = json["thumbnail"] as? [String:Any]{
+            self.thumbnail = Thumbnail(json: thumbnail)
         }
         
-        self.id = id
-        self.description = description
-        self.title = title
-        self.thumbnail = Thumbnail(json: thumbnail)
     }
 }
 

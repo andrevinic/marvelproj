@@ -1,8 +1,8 @@
 //
-//  MarvelHTTPManager+Comics.swift
+//  MarvelHTTPManager+Events.swift
 //  marvelproj
 //
-//  Created by Andre Nogueira on 09/05/18.
+//  Created by Andre Nogueira on 10/05/18.
 //  Copyright © 2018 Andre Nogueira. All rights reserved.
 //
 
@@ -10,12 +10,12 @@ import Foundation
 
 extension MarvelHTTPManager{
     
-    func fetchComics(characterID: Int, completion: @escaping (_ comics: [Comics], _ error: Error?) -> Void){
+    func fetchEvents(characterID: Int, completion: @escaping (_ events: [Events], _ error: Error?) -> Void){
         let dict: KeyDict = MarvelService.getKeys()
         let ts = NSDate().timeIntervalSince1970.description
         let hash = (ts + dict.privateKey + dict.publicKey).md5
         let queryBuilder = QueryBuilder.shared
-        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, characterID: characterID, detailExtension: "comics")
+        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, characterID: characterID, detailExtension: "events")
         let session = URLSession.shared
         
         guard let requestUrl = URL(string:url) else { return }
@@ -28,8 +28,8 @@ extension MarvelHTTPManager{
                 
                 if let jsonWithObjectRoot = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]{
                     
-                    let comics = self.parseToComics(jsonWithObjectRoot: jsonWithObjectRoot)
-                    completion(comics, error)
+                    let events = self.parseToEvents(jsonWithObjectRoot: jsonWithObjectRoot)
+                    completion(events, error)
                 }
                 
             }

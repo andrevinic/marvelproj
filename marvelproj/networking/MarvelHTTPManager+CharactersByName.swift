@@ -14,8 +14,9 @@ extension MarvelHTTPManager{
         let dict: KeyDict = MarvelService.getKeys()
         let ts = NSDate().timeIntervalSince1970.description
         let hash = (ts + dict.privateKey + dict.publicKey).md5
-        
-        let url = self.queryBuilder(ts: ts, apikey: dict.publicKey, hash: hash, nameStartsWith:nameStartsWith, path: self.character_ext)
+        let queryBuilder = QueryBuilder.shared
+
+        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, nameStartsWith:nameStartsWith, path: queryBuilder.character_ext)
         let session = URLSession.shared
         
         guard let requestUrl = URL(string:url) else { return }

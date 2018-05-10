@@ -10,59 +10,6 @@ import UIKit
 
 class MarvelHTTPManager: NSObject {
     
-    var queryItems: [URLQueryItem]?
-    let base_URL = "gateway.marvel.com"
-    
-    let character_ext = "/v1/public/characters"
-   
-    func queryBuilder(ts: String, apikey: String, hash: String, characterID: Int)->String{
-        var url = URLComponents()
-        url.scheme = "https"
-        url.host = self.base_URL
-        url.path = character_ext + "/\(characterID)/comics"
-        
-        url.queryItems = [
-            URLQueryItem(name:"ts", value:ts),
-            URLQueryItem(name: "apikey", value: apikey),
-            URLQueryItem(name: "hash", value: hash),
-        ]
-        
-        return url.string!
-    }
-    
-    func queryBuilder(ts: String, apikey: String, hash: String, nameStartsWith: String, path: String)->String{
-        var url = URLComponents()
-        url.scheme = "https"
-        url.host = self.base_URL
-        url.path = path
-        
-        url.queryItems = [
-            URLQueryItem(name:"ts", value:ts),
-            URLQueryItem(name: "apikey", value: apikey),
-            URLQueryItem(name: "hash", value: hash),
-            URLQueryItem(name: "nameStartsWith", value:nameStartsWith)
-        ]
-        
-        return url.string!
-    }
-    
-    func queryBuilder(ts: String, apikey: String, hash: String, offset: String, path: String)->String{
-        var url = URLComponents()
-        url.scheme = "https"
-        url.host = self.base_URL
-        url.path = path
-        
-        url.queryItems = [
-            URLQueryItem(name:"ts", value:ts),
-            URLQueryItem(name: "apikey", value: apikey),
-            URLQueryItem(name: "hash", value: hash),
-            URLQueryItem(name: "limit", value: "20"),
-            URLQueryItem(name: "offset", value:offset)
-        ]
-        
-        return url.string!
-    }
-    
     func parseToComics(jsonWithObjectRoot: [String: Any])->[Comics]{
         let results = self.removeWrappers(jsonWithObjectRoot: jsonWithObjectRoot)
         var comics = [Comics]()
@@ -94,16 +41,4 @@ class MarvelHTTPManager: NSObject {
         
     }
 }
-
-protocol QueryBuilder{
-    //    func queryBuilder(ts: String, apikey: String, hash: String, offset: String, path: String)->String
-    func queryBuilderCharacter(ts: String, apikey: String, hash: String, offset: String, path: String)->String
-    func queryBuilderSearchCharacter(ts: String, apikey: String, hash: String, startsNameWith: String, path: String)->String
-    func queryBuilderComics(ts: String, apikey: String, hash: String,path: String)
-}
-//class QueryBuilder: Query{
-//    func queryBuilder(ts: String, apikey: String, hash: String, offset: String, path: String)->String{
-//        return ""
-//    }
-//}
 

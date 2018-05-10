@@ -54,7 +54,10 @@ extension MarvelCharViewController{
         self.tableView.isHidden = false
         self.collectionView.isHidden = true
         self.tableView.register(UINib(nibName:"CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: "CharacterTableViewCell")
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+
+            self.tableView.reloadData()
+        }
         self.showDataWithList = true
 //        self.tableView.finishInfiniteScroll()
     }
@@ -69,12 +72,19 @@ extension MarvelCharViewController{
 
 //        self.collectionView.finishInfiniteScroll()
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: "CharacterCollectionViewCell")
+        DispatchQueue.main.async {
+
+            self.collectionView.reloadData()
+        }
     }
     
     func setupFavoriteCollectionView(){
         self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate()
         self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.characters, nibName: "MarvelCharFavoriteCollectionViewCell")
+        DispatchQueue.main.async {
 
+            self.favoriteCollectionView.reloadData()
+        }
     }
     
 }

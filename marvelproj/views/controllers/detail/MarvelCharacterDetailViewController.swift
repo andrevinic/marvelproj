@@ -24,7 +24,7 @@ extension MarvelCharacterDetailViewController{
 //       self.tableView.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
             self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
 //        self.tableView.register(MarvelDetailTableViewCell.self, forCellReuseIdentifier: MarvelDetailTableViewCell.className)
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
         // Do any additional setup after loading the view.
     }
 }

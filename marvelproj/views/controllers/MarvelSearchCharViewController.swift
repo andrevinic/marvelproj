@@ -45,6 +45,10 @@ extension MarvelSearchCharViewController{
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters)
         
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:"CharacterCollectionViewCell")
+        DispatchQueue.main.async {
+
+            self.collectionView.reloadData()
+        }
     }
     
 }

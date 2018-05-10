@@ -9,8 +9,8 @@
 import UIKit
 
 protocol CharactersCollectionDataSourceInterface: UICollectionViewDataSource {
-//    public var context: NSManagedObjectContext? {get}
-
+    //    public var context: NSManagedObjectContext? {get}
+    
     var array:NSMutableArray? {get}
     var nibName:String? {get}
     weak var collectionView: UICollectionView? {get}
@@ -24,11 +24,13 @@ protocol CharactersCollectionDataSourceInterface: UICollectionViewDataSource {
 extension CharactersCollectionDataSourceInterface{
     func setupCollectionView(){
         
-
-            self.collectionView?.dataSource = self
-            self.collectionView?.delegate = self.delegate
+        
+        self.collectionView?.dataSource = self
+        self.collectionView?.delegate = self.delegate
+        DispatchQueue.main.async {
             self.collectionView?.reloadData()
-    
+        }
     }
     
 }
+

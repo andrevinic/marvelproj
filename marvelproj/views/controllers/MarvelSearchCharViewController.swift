@@ -40,15 +40,15 @@ extension MarvelSearchCharViewController{
     }
     func setupCollectionView(){
         
-        self.collectionView.isHidden = false
-        self.initialSearchScreen.isHidden = true
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters)
         
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:"CharacterCollectionViewCell")
-        DispatchQueue.main.async {
-
+       
+            self.collectionView.isHidden = false
+            self.initialSearchScreen.isHidden = true
+            self.collectionView.reloadInputViews()
             self.collectionView.reloadData()
-        }
+        
     }
     
 }
@@ -60,7 +60,10 @@ extension MarvelSearchCharViewController{
         MarvelHTTPManager().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { (characters, error) in
             self.searchedCharacters.removeAllObjects()
             self.searchedCharacters.addObjects(from: characters)
-            self.setupCollectionView()
+           
+            DispatchQueue.main.async {
+                self.setupCollectionView()
+            }
         }
 
     }

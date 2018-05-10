@@ -21,6 +21,17 @@ class MarvelHTTPManager: NSObject {
         return comics
     }
     
+    func parseToSeries(jsonWithObjectRoot: [String: Any])->[Series]{
+        let results = self.removeWrappers(jsonWithObjectRoot: jsonWithObjectRoot)
+        var series = [Series]()
+        for item in results{
+            if let serie = Series(json: item){
+                series.append(serie)
+            }
+        }
+        return series
+    }
+    
     func parseToCharacters(jsonWithObjectRoot: [String: Any])->[Character]{
         let results = self.removeWrappers(jsonWithObjectRoot: jsonWithObjectRoot)
         var characters = [Character]()

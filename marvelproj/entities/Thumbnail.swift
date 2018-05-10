@@ -7,28 +7,12 @@
 //
 
 import UIKit
-//import ObjectMapper
 
 struct Thumbnail{
     
     var tExtension: String = ""
     var path: String = ""
 }
-
-//extension Thumbnail: Mappable{
-//    
-//    init?(map: Map) {
-//        
-//    }
-//    
-//    mutating func mapping(map: Map) {
-//        self.tExtension <- map["extension"]
-//        self.path <- map["path"]
-//    }
-//    
-//   
-//    
-//}
 
 extension Thumbnail{
     init?(json: [String: Any]) {

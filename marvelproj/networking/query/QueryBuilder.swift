@@ -37,11 +37,11 @@ extension QueryBuilder{
 }
 
 extension QueryBuilder{
-    func query(ts: String, apikey: String, hash: String, characterID: Int)->String{
+    func query(ts: String, apikey: String, hash: String, characterID: Int, detailExtension:String)->String{
         var url = URLComponents()
         url.scheme = "https"
         url.host = self.base_URL
-        url.path = character_ext + "/\(characterID)/comics"
+        url.path = character_ext + "/\(characterID)/\(detailExtension)"
         
         url.queryItems = [
             URLQueryItem(name:"ts", value:ts),

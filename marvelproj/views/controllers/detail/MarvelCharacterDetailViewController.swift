@@ -14,6 +14,7 @@ class MarvelCharacterDetailViewController: UIViewController {
     
     var character: Character?
     var comics: [Comics]?
+    var series: [Series]?
 }
 
 extension MarvelCharacterDetailViewController{
@@ -27,11 +28,14 @@ extension MarvelCharacterDetailViewController{
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.className)
     
         self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
-        MarvelHTTPManager().fetchComics(characterID: character!.id) { (comics, error) in
+            MarvelHTTPManager().fetchComics(characterID: character!.id) { (comics, error) in
             self.comics = comics
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
+        MarvelHTTPManager().fetchSeries(characterID: character!.id) { (series, error) in
+            self.series = series
         }
 //        self.tableView.reloadData()
         // Do any additional setup after loading the view.
@@ -62,6 +66,12 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
             return cell
         }
         
+        else if(indexPath.section == 2 && self.series != nil){
+            let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath) as! MarvelDetailTableViewCell
+            configureCellSeries(cell: cell, forRowAt: indexPath, comics: self.comics!)
+            return cell
+        }
+        
         return UITableViewCell()
     }
     
@@ -73,6 +83,9 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         cell.characterDescription.text = self.character?.description
     }
     
+    func configureCellSeries(cell: MarvelDetailTableViewCell, forRowAt indexPath: IndexPath, comics:[Comics]) {
+        cell.series = series!
+    }
     func configureCellComics(cell: MarvelDetailTableViewCell, forRowAt indexPath: IndexPath, comics:[Comics]) {
         cell.comics = comics
     }

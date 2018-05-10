@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import ObjectMapper
 
 struct Character{
     var id: Int = 0
@@ -17,22 +16,6 @@ struct Character{
     var comics: ComicsCharacter?
     var stories: StoriesCharacter?
 }
-
-//extension Character: Mappable{
-//
-//    init?(map: Map) {
-//
-//    }
-//
-//    mutating func mapping(map: Map) {
-//        self.id <- map["id"]
-//        self.name <- map["name"]
-//        self.description <- map["description"]
-//        self.thumbnail <- map["thumbnail"]
-//        self.comics <- map["comics"]
-//        self.stories <- map["stories"]
-//    }
-//}
 
 extension Character{
     init?(json: [String: Any]) {

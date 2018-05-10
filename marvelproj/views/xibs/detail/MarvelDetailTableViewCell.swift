@@ -19,6 +19,7 @@ class MarvelDetailTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var comics: [Comics] = []
+    var series: [Series] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,22 +1,21 @@
 //
-//  Comics.swift
+//  Series.swift
 //  marvelproj
 //
-//  Created by Andre Nogueira on 06/05/18.
+//  Created by Andre Nogueira on 10/05/18.
 //  Copyright © 2018 Andre Nogueira. All rights reserved.
 //
 
 import UIKit
 
-struct Comics{
-    
+struct Series {
     var id: Int?
     var title: String?
     var description: String?
     var thumbnail: Thumbnail?
 }
 
-extension Comics{
+extension Series{
     
     init?(json: [String: Any]) {
         guard let id = json["id"] as? Int,
@@ -33,4 +32,3 @@ extension Comics{
         self.thumbnail = Thumbnail(json: thumbnail)
     }
 }
-

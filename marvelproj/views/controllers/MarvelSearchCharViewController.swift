@@ -99,7 +99,7 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
 extension MarvelSearchCharViewController: MarvelCharacterDelegate{
     
     func didSelectCharacter(index: IndexPath) {
-        let nextController = MarvelRouter.instantiateMarvelCharDetailViewController()
+        let nextController = MarvelRouter.instantiateMarvelCharacterDetailViewController()
         self.navigationController?.pushViewController(nextController, animated: true)
         nextController.character = searchedCharacters.object(at: index.row) as? Character
     }

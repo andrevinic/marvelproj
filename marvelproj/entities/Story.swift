@@ -17,18 +17,22 @@ struct Story{
     var thumbnail: Thumbnail?
 }
 
-//extension Story: Mappable{
-//    
-//    init?(map: Map) {
-//        
-//    }
-//    
-//    mutating func mapping(map: Map) {
-//        self.id <- map["id"]
-//        self.title <- map["title"]
-//        self.description <- map["description"]
-//        self.thumbnail <- map["thumbnail"]
-//    }
-//}
-
+extension Story{
+    init?(json: [String: Any]) {
+        
+        if let id = json["id"] as? Int{
+            self.id = id
+        }
+        if let title = json["title"] as? String{
+            self.title = title
+        }
+        if let description = json["description"] as? String{
+            self.description = description
+        }
+        
+        if let thumbnail = json["thumbnail"] as? [String:Any]{
+            self.thumbnail = Thumbnail(json: thumbnail)
+        }
+    }
+}
 

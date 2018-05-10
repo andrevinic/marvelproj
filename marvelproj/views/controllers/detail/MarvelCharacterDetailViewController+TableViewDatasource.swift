@@ -12,11 +12,15 @@ import UIKit
 extension MarvelCharacterDetailViewController:UITableViewDataSource{
     //MARK: UITableViewDataSource
     // MARK: - Vai aumentar aqui cada celula
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if(section == 4 && self.stories != nil){
+            return (self.stories?.count)!
+        }
         return 1
     }
     
@@ -43,8 +47,21 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath) as! MarvelDetailTableViewCell
             return cell
         }
+        else if(indexPath.section == 4 && self.stories != nil){
+            let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailStoriesTableViewCell.className, for: indexPath) as!
+            MarvelDetailStoriesTableViewCell
+            configureStoryCell(cell: cell, indexPath: indexPath)
+            return cell
+        }
         
         return UITableViewCell()
+    }
+    
+    func configureStoryCell(cell: MarvelDetailStoriesTableViewCell, indexPath: IndexPath){
+        if let story = self.stories?[indexPath.row]{
+            cell.storyDescription.text = story.description
+            cell.storyTitle.text = story.title
+        }
     }
     
     func configureHeaderCell(cell: MarvelDetailTableViewHeaderCellTableViewCell){
@@ -64,6 +81,15 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         
     }
     
+
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if(indexPath.section == 4){
+//            return CGFloat(20)
+//        }
+//
+//        return CGFloat(170)
+//    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(section == 0){
             return 0
@@ -80,6 +106,8 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
             return "Series"
         case 3:
             return "Events"
+        case 4:
+            return "Stories"
         default:
             return ""
         }
@@ -99,10 +127,17 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         
         return headerView
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat{
+        if(indexPath.section == 4){
+            return CGFloat(120)
+        }
+        
         return CGFloat(250)
     }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return CGFloat(250)
+//    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -120,6 +155,7 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
             guard let tableViewCell = cell as? MarvelDetailTableViewCell else {return}
             tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forSection: indexPath.section)
         }
+        
         
     }
 }

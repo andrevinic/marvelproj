@@ -11,6 +11,9 @@
 		6506BED620A4D46A004EF51B /* MarvelCharacterDetailViewController+TableViewDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506BED520A4D46A004EF51B /* MarvelCharacterDetailViewController+TableViewDatasource.swift */; };
 		6506BED820A4D67E004EF51B /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506BED720A4D67E004EF51B /* Events.swift */; };
 		6506BEDC20A4DB02004EF51B /* MarvelHTTPManager+Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506BEDB20A4DB02004EF51B /* MarvelHTTPManager+Events.swift */; };
+		6506BEDF20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506BEDD20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.swift */; };
+		6506BEE020A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6506BEDE20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.xib */; };
+		6506BEE220A4F1AB004EF51B /* MarvelHTTPManager+Stories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506BEE120A4F1AB004EF51B /* MarvelHTTPManager+Stories.swift */; };
 		65843CA020A3479A00C8EE7A /* MarvelHTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65843C9F20A3479A00C8EE7A /* MarvelHTTPManager.swift */; };
 		65843CA320A3500C00C8EE7A /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 65843CA220A3500C00C8EE7A /* NSString+MD5.m */; };
 		65843CA620A3565D00C8EE7A /* SwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65843CA420A3565D00C8EE7A /* SwiftMD5.swift */; };
@@ -86,6 +89,9 @@
 		6506BED520A4D46A004EF51B /* MarvelCharacterDetailViewController+TableViewDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarvelCharacterDetailViewController+TableViewDatasource.swift"; sourceTree = "<group>"; };
 		6506BED720A4D67E004EF51B /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		6506BEDB20A4DB02004EF51B /* MarvelHTTPManager+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarvelHTTPManager+Events.swift"; sourceTree = "<group>"; };
+		6506BEDD20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetailStoriesTableViewCell.swift; sourceTree = "<group>"; };
+		6506BEDE20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarvelDetailStoriesTableViewCell.xib; sourceTree = "<group>"; };
+		6506BEE120A4F1AB004EF51B /* MarvelHTTPManager+Stories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarvelHTTPManager+Stories.swift"; sourceTree = "<group>"; };
 		65843C9F20A3479A00C8EE7A /* MarvelHTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelHTTPManager.swift; sourceTree = "<group>"; };
 		65843CA120A3500C00C8EE7A /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
 		65843CA220A3500C00C8EE7A /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 				6585A69120A3C3F800F09789 /* MarvelHTTPManager+CharactersByName.swift */,
 				F04529E220A4521000FB4D58 /* MarvelHTTPManager+Series.swift */,
 				6506BEDB20A4DB02004EF51B /* MarvelHTTPManager+Events.swift */,
+				6506BEE120A4F1AB004EF51B /* MarvelHTTPManager+Stories.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -217,6 +224,8 @@
 				658B558420A1FFE400865189 /* MarvelDetailCollectionViewCell.xib */,
 				6585A69920A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.swift */,
 				6585A69A20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.xib */,
+				6506BEDD20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.swift */,
+				6506BEDE20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.xib */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -516,6 +525,7 @@
 				F0765EB7209D444C00AA10F1 /* circular-book-italic.otf in Resources */,
 				F0765EC2209D4ED600AA10F1 /* strings.plist in Resources */,
 				F00FD6A4209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib in Resources */,
+				6506BEE020A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.xib in Resources */,
 				F0765EB9209D445100AA10F1 /* circular-medium-italic.otf in Resources */,
 				658B558620A1FFE400865189 /* MarvelDetailCollectionViewCell.xib in Resources */,
 				F0765EB3209D444100AA10F1 /* circular-black-italic.otf in Resources */,
@@ -581,6 +591,7 @@
 				658B558B20A2065E00865189 /* NSObject+ClassName.swift in Sources */,
 				F00F59EA209F745D00C7EFDB /* Story.swift in Sources */,
 				F00F59E6209F610F00C7EFDB /* CharacterDetailView.swift in Sources */,
+				6506BEE220A4F1AB004EF51B /* MarvelHTTPManager+Stories.swift in Sources */,
 				658B558920A200CD00865189 /* MarvelCharacterDetailViewController.swift in Sources */,
 				F0A516DF209EA364003A6436 /* CharacterFavoriteCollectionViewDataSource.swift in Sources */,
 				F00F59E4209F609400C7EFDB /* MarvelCharDetailViewController.swift in Sources */,
@@ -606,6 +617,7 @@
 				F04529E320A4521000FB4D58 /* MarvelHTTPManager+Series.swift in Sources */,
 				F0765ED0209DDBF500AA10F1 /* UIImageView+Alamofire.swift in Sources */,
 				F0A516DD209E9E20003A6436 /* CharacterCollectionViewDataSource.swift in Sources */,
+				6506BEDF20A4E7C3004EF51B /* MarvelDetailStoriesTableViewCell.swift in Sources */,
 				F0765EA7209D41A400AA10F1 /* CharacterTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

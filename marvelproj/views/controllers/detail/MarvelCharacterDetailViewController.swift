@@ -16,6 +16,7 @@ class MarvelCharacterDetailViewController: UIViewController {
     var comics: [Comics]?
     var series: [Series]?
     var events: [Events]?
+    var stories: [Story]?
 }
 
 extension MarvelCharacterDetailViewController{
@@ -24,13 +25,14 @@ extension MarvelCharacterDetailViewController{
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.navigationController?.navigationBar.isHidden = false
+
         self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.className)
         
         self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
-        
+        self.tableView.register(UINib(nibName:MarvelDetailStoriesTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailStoriesTableViewCell.className)
         MarvelHTTPManager().fetchComics(characterID: character!.id) { (comics, error) in
             self.comics = comics
             DispatchQueue.main.async {
@@ -46,6 +48,16 @@ extension MarvelCharacterDetailViewController{
         
         MarvelHTTPManager().fetchEvents(characterID: character!.id) { (events, error) in
             self.events = events
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+        MarvelHTTPManager().fetchStories(characterID: character!.id) { (stories, error) in
+            self.stories = stories
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 }

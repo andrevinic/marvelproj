@@ -41,22 +41,47 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYO-7Z-o82">
+                        <rect key="frame" x="26" y="114.5" width="254" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="Asb-OU-dvt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="12"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="bUX-b3-djc">
+                        <rect key="frame" x="133" y="228" width="39" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="39" id="yZq-Xh-CgP"/>
+                        </constraints>
+                    </pageControl>
                 </subviews>
                 <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="DS5-lH-5L0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="2lf-IB-qhU"/>
+                    <constraint firstItem="bUX-b3-djc" firstAttribute="top" secondItem="7Rw-X8-aB7" secondAttribute="bottom" constant="61" id="3zB-0R-Eoy"/>
+                    <constraint firstItem="OYO-7Z-o82" firstAttribute="top" relation="lessThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="103.5" id="5IR-43-iGf"/>
+                    <constraint firstItem="DS5-lH-5L0" firstAttribute="top" relation="lessThanOrEqual" secondItem="OYO-7Z-o82" secondAttribute="bottom" constant="55.5" id="EIH-5G-x0Q"/>
                     <constraint firstItem="7Rw-X8-aB7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Etm-1Q-voC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="DS5-lH-5L0" secondAttribute="trailing" constant="10" id="MFB-5O-ulK"/>
                     <constraint firstItem="7Rw-X8-aB7" firstAttribute="centerX" secondItem="DS5-lH-5L0" secondAttribute="centerX" id="NP5-0U-FBy"/>
+                    <constraint firstItem="bUX-b3-djc" firstAttribute="centerX" secondItem="DS5-lH-5L0" secondAttribute="centerX" id="TGe-3x-uH0"/>
                     <constraint firstItem="DS5-lH-5L0" firstAttribute="top" secondItem="7Rw-X8-aB7" secondAttribute="bottom" constant="41" id="Z2c-2d-hon"/>
+                    <constraint firstItem="OYO-7Z-o82" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="hSt-3b-cUY"/>
                     <constraint firstAttribute="bottomMargin" secondItem="DS5-lH-5L0" secondAttribute="bottom" constant="22" id="ih7-tX-OEM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="OYO-7Z-o82" secondAttribute="trailing" constant="10" id="nri-jw-yFJ"/>
                     <constraint firstItem="DS5-lH-5L0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="oBH-t0-cAj"/>
+                    <constraint firstItem="OYO-7Z-o82" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="rLG-qO-erS"/>
+                    <constraint firstItem="OYO-7Z-o82" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uhH-fC-8xJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="characterDescription" destination="OYO-7Z-o82" id="UCO-la-mft"/>
                 <outlet property="characterImage" destination="7Rw-X8-aB7" id="jge-h2-8QX"/>
                 <outlet property="characterName" destination="DS5-lH-5L0" id="kLG-Bj-L7d"/>
+                <outlet property="pageControl" destination="bUX-b3-djc" id="voe-So-YAn"/>
             </connections>
             <point key="canvasLocation" x="-170" y="-40"/>
         </tableViewCell>

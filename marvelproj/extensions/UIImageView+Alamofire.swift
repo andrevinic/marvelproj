@@ -32,7 +32,7 @@ extension UIImageView{
     func setCircularImageView() {
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
-        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderColor = UIColor.marvel.cgColor
         self.layer.cornerRadius = self.frame.height/2
         self.clipsToBounds = true
         //        self.layer.cornerRadius = CGFloat(roundf(Float(self.frame.size.height / 2.0)))

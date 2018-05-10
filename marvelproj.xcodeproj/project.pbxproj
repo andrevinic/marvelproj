@@ -34,6 +34,7 @@
 		F00F59F0209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00F59EF209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift */; };
 		F00FD6A3209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FD6A1209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift */; };
 		F00FD6A4209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F00FD6A2209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib */; };
+		F04529E120A448B500FB4D58 /* UIColor+Marvel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04529E020A448B500FB4D58 /* UIColor+Marvel.swift */; };
 		F0765EA7209D41A400AA10F1 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0765EA5209D41A400AA10F1 /* CharacterTableViewCell.swift */; };
 		F0765EA8209D41A400AA10F1 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0765EA6209D41A400AA10F1 /* CharacterTableViewCell.xib */; };
 		F0765EB3209D444100AA10F1 /* circular-black-italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = F0765EB1209D443800AA10F1 /* circular-black-italic.otf */; };
@@ -105,6 +106,7 @@
 		F00F59EF209FE9C800C7EFDB /* ComicsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		F00FD6A1209FEC4F0018ECF0 /* ComicsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCollectionViewCell.swift; sourceTree = "<group>"; };
 		F00FD6A2209FEC4F0018ECF0 /* ComicsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicsCollectionViewCell.xib; sourceTree = "<group>"; };
+		F04529E020A448B500FB4D58 /* UIColor+Marvel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Marvel.swift"; sourceTree = "<group>"; };
 		F0765EA5209D41A400AA10F1 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		F0765EA6209D41A400AA10F1 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		F0765EAB209D443800AA10F1 /* circular-medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "circular-medium.otf"; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				65843CA420A3565D00C8EE7A /* SwiftMD5.swift */,
 				F0765ECF209DDBF500AA10F1 /* UIImageView+Alamofire.swift */,
 				658B558A20A2065E00865189 /* NSObject+ClassName.swift */,
+				F04529E020A448B500FB4D58 /* UIColor+Marvel.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				F0B1CC46209E7EA200E1A5FA /* MarvelSearchCharViewController.swift in Sources */,
 				6585A69020A3C3C900F09789 /* MarvelHTTPManager+Comics.swift in Sources */,
 				6585A69B20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.swift in Sources */,
+				F04529E120A448B500FB4D58 /* UIColor+Marvel.swift in Sources */,
 				F0DE0A03209D346E0006CDC2 /* AppDelegate.swift in Sources */,
 				F0A516E1209F4981003A6436 /* CharactersCollectionDataSourceInterface.swift in Sources */,
 				65843CA320A3500C00C8EE7A /* NSString+MD5.m in Sources */,

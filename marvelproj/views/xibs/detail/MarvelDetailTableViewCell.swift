@@ -16,7 +16,7 @@ import UIKit
 ////////////////////////////////////////////////////////////////
 
 class MarvelDetailTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     var comics: [Comics] = []
     
@@ -24,18 +24,18 @@ class MarvelDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
-         collectionView.register(UINib(nibName:MarvelDetailCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: MarvelDetailCollectionViewCell.className)
-
+        collectionView.register(UINib(nibName:MarvelDetailCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: MarvelDetailCollectionViewCell.className)
+        
         collectionView.backgroundColor = UIColor.clear
         DispatchQueue.main.async {
-
+            
             self.collectionView.reloadData()
         }
     }
 }
 
 extension MarvelDetailTableViewCell{
-
+    
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -57,8 +57,8 @@ extension MarvelDetailTableViewCell:UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-   
-       return CGSize(width: 200, height: 200)
+        
+        return CGSize(width: 200, height: 200)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -84,22 +84,23 @@ extension MarvelDetailTableViewCell:UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarvelDetailCollectionViewCell.className, for: indexPath) as! MarvelDetailCollectionViewCell
-        configureCell(cell: cell, forItemAt: indexPath)
-        
+        if(self.comics.count > 0){
+            configureCell(cell: cell, forItemAt: indexPath)
+        }
         // TODO:- Required Method
         return cell
     }
     
     func configureCell(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
-//        let image = UIImage(named: "marvel_screen")
-//       cell.collectionCellImage = UIImageView(image: image)
+        //        let image = UIImage(named: "marvel_screen")
+        //       cell.collectionCellImage = UIImageView(image: image)
         
-        let comic = self.comics[indexPath.row] 
+        let comic = self.comics[indexPath.row]
         let img_url = (comic.thumbnail?.fullPath())!
         let url = URL(string: img_url)!
         cell.collectionCellImage.downloadedFrom(url: url)
         cell.detailName.text = comic.title!
     }
-
+    
 }
 

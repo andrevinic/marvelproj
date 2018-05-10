@@ -70,6 +70,7 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         let path = self.character?.thumbnail?.fullPath()
         let url = URL(string: path!)
         cell.characterImage.downloadedFrom(url: url!)
+        cell.characterDescription.text = self.character?.description
     }
     
     func configureCellComics(cell: MarvelDetailTableViewCell, forRowAt indexPath: IndexPath, comics:[Comics]) {
@@ -106,8 +107,8 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.black
+        let headerView = UIView.init(frame: tableView.frame)
+        headerView.backgroundColor = UIColor.marvel
         
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 20, width:
             tableView.frame.size.width, height: tableView.frame.size.height))

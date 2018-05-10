@@ -42,7 +42,7 @@ extension MarvelSearchCharViewController{
         
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters)
         
-        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:"CharacterCollectionViewCell")
+        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className)
        
             self.collectionView.isHidden = false
             self.initialSearchScreen.isHidden = true
@@ -84,11 +84,14 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
+        self.initialSearchScreen.isHidden = false
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchText = searchBar.text!
         searchBar.resignFirstResponder()
+        
+        if(self.searchText.count == 0){return}
         
         self.fetchSearchCharacter(nameStartsWith: self.searchText)
         searchActive = false;

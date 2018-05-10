@@ -13,8 +13,7 @@ extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-// MARK: - Configurar em variavel..
-        return 3
+        return LIMIT_OF_COLLECTION_VIEW_CELLS_PER_CELL
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -65,19 +64,26 @@ extension MarvelCharacterDetailViewController:UICollectionViewDelegate{
 extension MarvelCharacterDetailViewController:UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: 200, height: 200)
+        return CGSize(width: SIZE_FOR_COLLECTION_VIEW_LAYOUT_WIDTH, height: SIZE_FOR_COLLECTION_VIEW_LAYOUT_HEIGHT)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    
+    ////////////////////////////////////////////////////////////////
+    //MARK:-
+    //MARK:This should center the collectionview
+    //MARK:- reference: https://stackoverflow.com/questions/34267662/how-to-center-horizontally-uicollectionview-cells
+    ////////////////////////////////////////////////////////////////
 
-        let totalCellWidth = 100 * 3
-        let totalSpacingWidth = 10 * (3 - 1)
-
-        let leftInset = (collectionView.bounds.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        let rightInset = leftInset
-
-        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//
+//        let totalCellWidth = CENTER_CONSTANT_CELL_WIDTH_VALUE
+//        let totalSpacingWidth = CELL_SPACING_BETWEEN_COLLECTION_VIEW_CELL
+//
+//        let leftInset = (collectionView.bounds.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+//        let rightInset = leftInset
+//
+//        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
+//    }
 }
 
 extension MarvelCharacterDetailViewController{

@@ -1,9 +1,9 @@
 //
-//  SwiftMD5.swift
+//  Swift+MD5.swift
 //  marvelproj
 //
-//  Created by Andre Nogueira on 07/05/18.
-//  Copyright © 2018 Andre Nogueira. All rights reserved.
+// SwiftMD5 is released under the BSD license.
+// https://github.com/mpurland/SwiftMD5/blob/master/SwiftMD5/SwiftMD5.swift
 //
 
 import Foundation

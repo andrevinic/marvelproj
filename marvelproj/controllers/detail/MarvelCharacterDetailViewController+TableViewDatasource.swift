@@ -14,12 +14,12 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
     // MARK: - Vai aumentar aqui cada celula
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return NUMBER_OF_TABLEVIEW_SECTIONS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 4 && self.stories != nil){
-            return (self.stories?.count)!
+            return LIMIT_OF_TABLE_VIEW_CELLS_STORIES
         }
         return 1
     }
@@ -33,13 +33,11 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         else if(indexPath.section == 1 && self.comics != nil){
             
             let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath) as! MarvelDetailTableViewCell
-            //            configureCellComics(cell: cell, forRowAt: indexPath, comics: self.comics!)
             return cell
         }
             
         else if(indexPath.section == 2 && self.series != nil){
             let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath) as! MarvelDetailTableViewCell
-            //            configureCellSeries(cell: cell, forRowAt: indexPath, comics: self.comics!)
             return cell
         }
         
@@ -81,20 +79,11 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         
     }
     
-
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if(indexPath.section == 4){
-//            return CGFloat(20)
-//        }
-//
-//        return CGFloat(170)
-//    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if(section == 0){
             return 0
         }
-        return CGFloat(50)
+        return CGFloat(HEIGHT_FOR_HEADER_IN_SECTION)
     }
     
     //    func tableviewtitle
@@ -119,7 +108,7 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         
         let headerLabel = UILabel(frame: CGRect(x: 0, y: 20, width:
             tableView.frame.size.width, height: tableView.frame.size.height))
-        headerLabel.font = UIFont(name: "CircularSTD-Black", size: 20)
+        headerLabel.font = UIFont(name: FONT_CIRCULAR_FOR_SECTION, size: CGFloat(SIZE_FOR_HEADER_VIEW_SECTION))
         headerLabel.textColor = UIColor.white
         headerLabel.text = self.tableView(self.tableView, titleForHeaderInSection: section)
         headerLabel.sizeToFit()
@@ -127,18 +116,16 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         
         return headerView
     }
+    
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat{
         if(indexPath.section == 4){
-            return CGFloat(120)
+            return CGFloat(HEIGHT_FOR_TABLE_VIEW_DETAIL_CELL)
         }
         
-        return CGFloat(250)
+        return CGFloat(HEIGHT_FOR_COLLECTION_VIEW_DETAIL_CELL)
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CGFloat(250)
-//    }
-    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if(indexPath.section == 1 && self.comics != nil){

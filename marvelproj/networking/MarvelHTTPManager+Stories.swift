@@ -15,7 +15,7 @@ extension MarvelHTTPManager{
         let ts = NSDate().timeIntervalSince1970.description
         let hash = (ts + dict.privateKey + dict.publicKey).md5
         let queryBuilder = QueryBuilder.shared
-        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, characterID: characterID, detailExtension: "stories")
+        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, characterID: characterID, detailExtension: "stories", limit: LIMIT_OF_FETCH_COLLECTION_VIEW_STORIES)
         let session = URLSession.shared
         
         guard let requestUrl = URL(string:url) else { return }

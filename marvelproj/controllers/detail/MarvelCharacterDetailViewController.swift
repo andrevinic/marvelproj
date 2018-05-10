@@ -25,7 +25,6 @@ extension MarvelCharacterDetailViewController{
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.navigationController?.navigationBar.isHidden = false
 
         self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)

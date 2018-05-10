@@ -17,7 +17,7 @@ extension MarvelHTTPManager{
         let hash = (ts + dict.privateKey + dict.publicKey).md5
         let offset = "\(offset)"
         let queryBuilder = QueryBuilder.shared
-        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, offset:offset, path: queryBuilder.character_ext)
+        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, offset:offset, path: CHARACTER_EXT)
         let session = URLSession.shared
         
         guard let requestUrl = URL(string:url) else { return }

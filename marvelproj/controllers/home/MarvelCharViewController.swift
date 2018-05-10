@@ -10,7 +10,6 @@ import UIKit
 protocol MarvelCharacterDelegate: UICollectionViewDelegate{
     func fetchCharacters()
     func didSelectCharacter(index: IndexPath)
-    
 }
 
 class MarvelCharViewController: UIViewController {
@@ -28,7 +27,6 @@ class MarvelCharViewController: UIViewController {
     
     var characters: NSMutableArray!
     var offset : Int = 0
-    var limit: Int = 5
     var showDataWithList = true
 }
 
@@ -71,7 +69,7 @@ extension MarvelCharViewController{
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!)
 
 //        self.collectionView.finishInfiniteScroll()
-        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: "CharacterCollectionViewCell")
+        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: CharacterCollectionViewCell.className)
         DispatchQueue.main.async {
 
             self.collectionView.reloadData()
@@ -80,7 +78,7 @@ extension MarvelCharViewController{
     
     func setupFavoriteCollectionView(){
         self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate()
-        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.characters, nibName: "MarvelCharFavoriteCollectionViewCell")
+        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.characters, nibName: MarvelCharFavoriteCollectionViewCell.className)
         DispatchQueue.main.async {
 
             self.favoriteCollectionView.reloadData()
@@ -144,7 +142,7 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
             self.setupFavoriteCollectionView()
             
             self.activityIndicator.stopAnimating()
-            self.offset += self.limit
+            self.offset += LIMIT_FETCH
             //            self.tableView.finishInfiniteScroll()
             if(self.showDataWithList){
                 self.setupTableView()

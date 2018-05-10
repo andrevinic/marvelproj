@@ -122,7 +122,7 @@ extension MarvelCharDetailViewController{
 extension MarvelCharDetailViewController{
     func fetchStories(){
         let character = self.character!
-        let stories = character.stories!
+//        let stories = character.stories!
 //        MarvelCharInteractor().fetchStories(storiesURL: stories.securePath()) { (stories, error) in
 //            self.stories = stories
 //            self.setupStoriesView()

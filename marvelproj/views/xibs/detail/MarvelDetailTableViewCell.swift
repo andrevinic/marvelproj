@@ -8,10 +8,17 @@
 
 import UIKit
 
+
+////////////////////////////////////////////////////////////////
+//MARK:- index 1
+//MARK:Table view cell with collection
+//MARK:-
+////////////////////////////////////////////////////////////////
+
 class MarvelDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var characters: [Character]?
+    var comics: [Comics] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +27,10 @@ class MarvelDetailTableViewCell: UITableViewCell {
          collectionView.register(UINib(nibName:MarvelDetailCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: MarvelDetailCollectionViewCell.className)
 
         collectionView.backgroundColor = UIColor.clear
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+
+            self.collectionView.reloadData()
+        }
     }
 }
 
@@ -75,6 +85,7 @@ extension MarvelDetailTableViewCell:UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarvelDetailCollectionViewCell.className, for: indexPath) as! MarvelDetailCollectionViewCell
         configureCell(cell: cell, forItemAt: indexPath)
+        
         // TODO:- Required Method
         return cell
     }
@@ -82,6 +93,12 @@ extension MarvelDetailTableViewCell:UICollectionViewDataSource, UICollectionView
     func configureCell(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
 //        let image = UIImage(named: "marvel_screen")
 //       cell.collectionCellImage = UIImageView(image: image)
+        
+        let comic = self.comics[indexPath.row] 
+        let img_url = (comic.thumbnail?.fullPath())!
+        let url = URL(string: img_url)!
+        cell.collectionCellImage.downloadedFrom(url: url)
+        cell.detailName.text = comic.title!
     }
 
 }

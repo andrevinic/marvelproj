@@ -15,6 +15,8 @@
 		6585A69020A3C3C900F09789 /* MarvelHTTPManager+Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585A68F20A3C3C900F09789 /* MarvelHTTPManager+Comics.swift */; };
 		6585A69220A3C3F800F09789 /* MarvelHTTPManager+CharactersByName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585A69120A3C3F800F09789 /* MarvelHTTPManager+CharactersByName.swift */; };
 		6585A69820A3C6FF00F09789 /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585A69720A3C6FF00F09789 /* QueryBuilder.swift */; };
+		6585A69B20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585A69920A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.swift */; };
+		6585A69C20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6585A69A20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.xib */; };
 		658B558120A1FF7C00865189 /* MarvelDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B557F20A1FF7C00865189 /* MarvelDetailTableViewCell.swift */; };
 		658B558220A1FF7C00865189 /* MarvelDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658B558020A1FF7C00865189 /* MarvelDetailTableViewCell.xib */; };
 		658B558520A1FFE400865189 /* MarvelDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B558320A1FFE400865189 /* MarvelDetailCollectionViewCell.swift */; };
@@ -84,6 +86,8 @@
 		6585A68F20A3C3C900F09789 /* MarvelHTTPManager+Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarvelHTTPManager+Comics.swift"; sourceTree = "<group>"; };
 		6585A69120A3C3F800F09789 /* MarvelHTTPManager+CharactersByName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarvelHTTPManager+CharactersByName.swift"; sourceTree = "<group>"; };
 		6585A69720A3C6FF00F09789 /* QueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
+		6585A69920A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetailTableViewHeaderCellTableViewCell.swift; sourceTree = "<group>"; };
+		6585A69A20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarvelDetailTableViewHeaderCellTableViewCell.xib; sourceTree = "<group>"; };
 		658B557F20A1FF7C00865189 /* MarvelDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetailTableViewCell.swift; sourceTree = "<group>"; };
 		658B558020A1FF7C00865189 /* MarvelDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarvelDetailTableViewCell.xib; sourceTree = "<group>"; };
 		658B558320A1FFE400865189 /* MarvelDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				658B558020A1FF7C00865189 /* MarvelDetailTableViewCell.xib */,
 				658B558320A1FFE400865189 /* MarvelDetailCollectionViewCell.swift */,
 				658B558420A1FFE400865189 /* MarvelDetailCollectionViewCell.xib */,
+				6585A69920A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.swift */,
+				6585A69A20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.xib */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -534,6 +540,7 @@
 				F0DE0A0A209D346E0006CDC2 /* Assets.xcassets in Resources */,
 				F0DE0A08209D346E0006CDC2 /* Main.storyboard in Resources */,
 				F0765EA8209D41A400AA10F1 /* CharacterTableViewCell.xib in Resources */,
+				6585A69C20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +593,7 @@
 				F00F59E4209F609400C7EFDB /* MarvelCharDetailViewController.swift in Sources */,
 				F0B1CC46209E7EA200E1A5FA /* MarvelSearchCharViewController.swift in Sources */,
 				6585A69020A3C3C900F09789 /* MarvelHTTPManager+Comics.swift in Sources */,
+				6585A69B20A3CE5F00F09789 /* MarvelDetailTableViewHeaderCellTableViewCell.swift in Sources */,
 				F0DE0A03209D346E0006CDC2 /* AppDelegate.swift in Sources */,
 				F0A516E1209F4981003A6436 /* CharactersCollectionDataSourceInterface.swift in Sources */,
 				65843CA320A3500C00C8EE7A /* NSString+MD5.m in Sources */,

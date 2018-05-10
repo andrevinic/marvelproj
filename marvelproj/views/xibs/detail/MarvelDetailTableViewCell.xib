@@ -30,6 +30,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
+                <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="yXx-wC-zHj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="25R-1k-jPX"/>
                     <constraint firstAttribute="trailing" secondItem="yXx-wC-zHj" secondAttribute="trailing" id="ElU-vZ-ElH"/>
@@ -37,6 +38,7 @@
                     <constraint firstItem="yXx-wC-zHj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bul-wk-RLF"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="yXx-wC-zHj" id="jrb-Fq-6w6"/>

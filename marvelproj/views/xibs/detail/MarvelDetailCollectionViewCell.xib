@@ -9,45 +9,67 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="circular-bold.otf">
+            <string>CircularStd-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MarvelDetailCollectionViewCell" id="gTV-IL-0wX" customClass="MarvelDetailCollectionViewCell" customModule="marvelproj" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="180" height="148"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                <rect key="frame" x="0.0" y="0.0" width="180" height="148"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iri-Am-qgt">
-                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="148"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marvel_screen" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-NN-Ih7">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="marvel_screen" translatesAutoresizingMaskIntoConstraints="NO" id="RQf-NN-Ih7">
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="119"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="119" id="FXF-XO-YjU"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrc-bn-dgq">
+                                <rect key="frame" x="10" y="126" width="160" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="W1w-yz-ApE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="RQf-NN-Ih7" firstAttribute="leading" secondItem="iri-Am-qgt" secondAttribute="leading" id="5dp-ky-WoX"/>
-                            <constraint firstAttribute="trailing" secondItem="RQf-NN-Ih7" secondAttribute="trailing" id="CyO-Sj-HVX"/>
-                            <constraint firstItem="RQf-NN-Ih7" firstAttribute="top" secondItem="iri-Am-qgt" secondAttribute="top" id="MSc-QB-sff"/>
-                            <constraint firstAttribute="bottom" secondItem="RQf-NN-Ih7" secondAttribute="bottom" id="g2b-62-GTr"/>
+                            <constraint firstItem="RQf-NN-Ih7" firstAttribute="leading" secondItem="iri-Am-qgt" secondAttribute="leading" id="828-kZ-7Po"/>
+                            <constraint firstItem="RQf-NN-Ih7" firstAttribute="top" secondItem="iri-Am-qgt" secondAttribute="top" id="BrC-ZR-WHo"/>
+                            <constraint firstItem="Yrc-bn-dgq" firstAttribute="top" secondItem="RQf-NN-Ih7" secondAttribute="bottom" constant="7" id="Qpd-ct-sxC"/>
+                            <constraint firstItem="Yrc-bn-dgq" firstAttribute="leading" secondItem="iri-Am-qgt" secondAttribute="leading" constant="10" id="WAJ-Fh-FCH"/>
+                            <constraint firstAttribute="trailing" secondItem="Yrc-bn-dgq" secondAttribute="trailing" constant="10" id="d5v-A0-f5e"/>
+                            <constraint firstAttribute="bottom" secondItem="Yrc-bn-dgq" secondAttribute="bottom" id="qXf-Sg-bdd"/>
+                            <constraint firstAttribute="trailing" secondItem="RQf-NN-Ih7" secondAttribute="trailing" id="qvL-M5-ze3"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="iri-Am-qgt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="R41-9h-NO6"/>
-                <constraint firstItem="iri-Am-qgt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cxd-YF-aMi"/>
-                <constraint firstAttribute="bottom" secondItem="iri-Am-qgt" secondAttribute="bottom" id="fYs-6h-Wuv"/>
-                <constraint firstAttribute="trailing" secondItem="iri-Am-qgt" secondAttribute="trailing" id="hNO-b6-VCE"/>
+                <constraint firstAttribute="trailing" secondItem="iri-Am-qgt" secondAttribute="trailing" id="3Un-yf-mwG"/>
+                <constraint firstItem="iri-Am-qgt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Jgh-9M-1IH"/>
+                <constraint firstItem="iri-Am-qgt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cgV-yq-Pi4"/>
+                <constraint firstAttribute="bottom" secondItem="iri-Am-qgt" secondAttribute="bottom" id="nfx-zv-i8F"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="260" height="148"/>
+            <size key="customSize" width="360" height="216"/>
             <connections>
                 <outlet property="collectionCellImage" destination="RQf-NN-Ih7" id="rvH-q8-1H1"/>
+                <outlet property="detailName" destination="Yrc-bn-dgq" id="Abc-mF-v96"/>
             </connections>
-            <point key="canvasLocation" x="139" y="13"/>
+            <point key="canvasLocation" x="10" y="44"/>
         </collectionViewCell>
     </objects>
     <resources>

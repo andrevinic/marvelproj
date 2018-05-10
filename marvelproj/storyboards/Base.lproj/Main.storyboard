@@ -412,56 +412,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vVh-hf-fbK">
-                                <rect key="frame" x="0.0" y="256" width="375" height="744"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="936"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gs8-1C-F9K" customClass="MarvelCharacterDetailViewHeader" customModule="marvelproj" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="195"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jza-ED-d98">
-                                        <rect key="frame" x="120" y="42" width="135" height="88"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqR-mc-uyj">
-                                        <rect key="frame" x="167" y="155" width="42" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="5xx-12-Wiz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.098039215686274508" green="0.039215686274509803" blue="0.027450980392156862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="Jza-ED-d98" firstAttribute="leading" secondItem="gs8-1C-F9K" secondAttribute="leading" constant="120" id="KzU-lZ-n3Z"/>
-                                    <constraint firstItem="Jza-ED-d98" firstAttribute="top" secondItem="gs8-1C-F9K" secondAttribute="top" constant="42" id="RrT-f0-M2o"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jza-ED-d98" secondAttribute="trailing" constant="120" id="bUZ-sI-aOO"/>
-                                    <constraint firstAttribute="bottom" secondItem="MqR-mc-uyj" secondAttribute="bottom" constant="19" id="djQ-tg-wxf"/>
-                                    <constraint firstItem="MqR-mc-uyj" firstAttribute="top" secondItem="Jza-ED-d98" secondAttribute="bottom" constant="25" id="gS7-DE-1qo"/>
-                                    <constraint firstItem="MqR-mc-uyj" firstAttribute="centerX" secondItem="Jza-ED-d98" secondAttribute="centerX" id="kHs-n0-HzZ"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="marvelCharacterImage" destination="Jza-ED-d98" id="fsP-pt-rMb"/>
-                                    <outlet property="marvelCharacterName" destination="MqR-mc-uyj" id="zfz-Q7-AE2"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vVh-hf-fbK" firstAttribute="top" secondItem="T1j-YE-DlQ" secondAttribute="top" constant="192" id="ECD-xP-ycC"/>
+                            <constraint firstItem="vVh-hf-fbK" firstAttribute="top" secondItem="T1j-YE-DlQ" secondAttribute="top" id="ECD-xP-ycC"/>
                             <constraint firstItem="vVh-hf-fbK" firstAttribute="bottom" secondItem="T1j-YE-DlQ" secondAttribute="bottom" id="Ff4-Cb-lJ8"/>
                             <constraint firstItem="vVh-hf-fbK" firstAttribute="trailing" secondItem="T1j-YE-DlQ" secondAttribute="trailing" id="Hf0-fe-taa"/>
                             <constraint firstItem="vVh-hf-fbK" firstAttribute="leading" secondItem="T1j-YE-DlQ" secondAttribute="leading" id="NUk-pp-Py3"/>
                             <constraint firstItem="vVh-hf-fbK" firstAttribute="centerX" secondItem="Bdc-7q-iNi" secondAttribute="centerX" id="dIk-QH-UL5"/>
                             <constraint firstItem="vVh-hf-fbK" firstAttribute="trailing" secondItem="T1j-YE-DlQ" secondAttribute="trailing" id="gAI-kh-rPh"/>
                             <constraint firstItem="vVh-hf-fbK" firstAttribute="bottom" secondItem="T1j-YE-DlQ" secondAttribute="bottom" id="ids-q9-OK6"/>
-                            <constraint firstItem="vVh-hf-fbK" firstAttribute="top" secondItem="gs8-1C-F9K" secondAttribute="bottom" constant="-3" id="mjB-gT-Xn9"/>
-                            <constraint firstItem="gs8-1C-F9K" firstAttribute="leading" secondItem="T1j-YE-DlQ" secondAttribute="leading" id="pVi-FK-SMc"/>
-                            <constraint firstItem="gs8-1C-F9K" firstAttribute="trailing" secondItem="T1j-YE-DlQ" secondAttribute="trailing" id="w0i-YD-tOc"/>
-                            <constraint firstItem="gs8-1C-F9K" firstAttribute="top" secondItem="T1j-YE-DlQ" secondAttribute="top" id="wwY-cq-Rf0"/>
                             <constraint firstItem="vVh-hf-fbK" firstAttribute="leading" secondItem="T1j-YE-DlQ" secondAttribute="leading" id="yAn-XV-2RC"/>
-                            <constraint firstItem="gs8-1C-F9K" firstAttribute="centerX" secondItem="vVh-hf-fbK" secondAttribute="centerX" id="ylh-yc-sOk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T1j-YE-DlQ"/>
                     </view>
@@ -507,7 +472,7 @@
                                 <rect key="frame" x="0.0" y="91" width="375" height="527"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Feel free to find your marvel character! :)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vq-lI-xT4">
-                                        <rect key="frame" x="32.5" y="293" width="309" height="22"/>
+                                        <rect key="frame" x="33.5" y="293" width="309" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="9" id="DlJ-lB-4c9"/>
                                         </constraints>

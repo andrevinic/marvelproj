@@ -12,14 +12,16 @@ class MarvelDetailCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var collectionCellImage: UIImageView!
     
+    @IBOutlet weak var detailName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    override func draw(_ rect: CGRect) { //Your code should go here.
-        super.draw(rect)
-        self.layer.cornerRadius = self.frame.size.width / 2
-    }
+//    override func draw(_ rect: CGRect) { //Your code should go here.
+//        super.draw(rect)
+//        self.layer.cornerRadius = self.frame.size.width / 2
+//    }
 }
 
 

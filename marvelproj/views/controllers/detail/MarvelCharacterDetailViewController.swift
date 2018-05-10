@@ -12,7 +12,8 @@ class MarvelCharacterDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var shownIndexes : [IndexPath] = []
+    var character: Character?
+    var comics: [Comics]?
 }
 
 extension MarvelCharacterDetailViewController{
@@ -21,9 +22,17 @@ extension MarvelCharacterDetailViewController{
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-//       self.tableView.register(<#T##nib: UINib?##UINib?#>, forCellReuseIdentifier: <#T##String#>)
-            self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
-//        self.tableView.register(MarvelDetailTableViewCell.self, forCellReuseIdentifier: MarvelDetailTableViewCell.className)
+        
+        self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.className)
+    
+        self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
+        MarvelHTTPManager().fetchComics(characterID: character!.id) { (comics, error) in
+            self.comics = comics
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
 //        self.tableView.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -41,13 +50,30 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath)
-        configureCell(cell: cell, forRowAt: indexPath)
-        return cell
+        if(indexPath.section == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className, for:indexPath) as! MarvelDetailTableViewHeaderCellTableViewCell
+            configureHeaderCell(cell: cell)
+            return cell
+        }
+        else if(indexPath.section == 1 && self.comics != nil){
+    
+        let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewCell.className, for: indexPath) as! MarvelDetailTableViewCell
+            configureCellComics(cell: cell, forRowAt: indexPath, comics: self.comics!)
+            return cell
+        }
+        
+        return UITableViewCell()
     }
     
-    func configureCell(cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-      
+    func configureHeaderCell(cell: MarvelDetailTableViewHeaderCellTableViewCell){
+        cell.characterName.text = self.character?.name
+        let path = self.character?.thumbnail?.fullPath()
+        let url = URL(string: path!)
+        cell.characterImage.downloadedFrom(url: url!)
+    }
+    
+    func configureCellComics(cell: MarvelDetailTableViewCell, forRowAt indexPath: IndexPath, comics:[Comics]) {
+        cell.comics = comics
     }
 }
 
@@ -58,18 +84,21 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         
     }
     
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if(section == 0){
+            return 0
+        }
         return CGFloat(50)
     }
     
+//    func tableviewtitle
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section{
-        case 0:
-            return "Comics"
         case 1:
-            return "Series"
+            return "Comics"
         case 2:
+            return "Series"
+        case 3:
             return "Events"
         default:
             return ""
@@ -80,8 +109,8 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
         let headerView = UIView()
         headerView.backgroundColor = UIColor.black
         
-        let headerLabel = UILabel(frame: CGRect(x: tableView.bounds.size.width / 3, y: 0, width:
-            tableView.bounds.size.width, height: tableView.bounds.size.height))
+        let headerLabel = UILabel(frame: CGRect(x: 0, y: 20, width:
+            tableView.frame.size.width, height: tableView.frame.size.height))
         headerLabel.font = UIFont(name: "CircularSTD-Black", size: 20)
         headerLabel.textColor = UIColor.white
         headerLabel.text = self.tableView(self.tableView, titleForHeaderInSection: section)
@@ -94,7 +123,6 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(250)
     }
-    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        if (shownIndexes.contains(indexPath) == false) {

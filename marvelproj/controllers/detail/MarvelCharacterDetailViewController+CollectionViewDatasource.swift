@@ -12,8 +12,19 @@ import UIKit
 extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return LIMIT_OF_COLLECTION_VIEW_CELLS_PER_CELL
+        switch(collectionView.tag){
+        case 1:
+            return self.comics.count
+        case 2:
+            return self.series.count
+        case 3:
+            return self.events.count
+        case 4:
+            return self.stories.count
+        default:
+            return 0
+        }
+//        return LIMIT_OF_COLLECTION_VIEW_CELLS_PER_CELL
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -31,20 +42,20 @@ extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
     }
 
     private func configureEventsCell(cell: MarvelDetailCollectionViewCell, indexPath: IndexPath){
-        if(self.events == nil || self.events?.count == 0 || indexPath.row >= (events?.count)!){
+        if(self.events.count == 0){
             return
         }
         configureCellEvent(cell: cell, forItemAt: indexPath)
     }
     private func configureComicsCell(cell: MarvelDetailCollectionViewCell, indexPath: IndexPath){
-        if(self.comics == nil || self.comics?.count == 0 || indexPath.row >= (comics?.count)!){
+        if(self.comics.count == 0){
             return
         }
         configureCellComic(cell: cell, forItemAt: indexPath)
     }
     
     private func configureSeriesCell(cell: MarvelDetailCollectionViewCell, indexPath: IndexPath){
-        if(self.series == nil || self.series?.count == 0 || indexPath.row >= (series?.count)!){
+        if(self.series.count == 0){
             return
         }
         configureCellSerie(cell: cell, forItemAt: indexPath)
@@ -89,29 +100,30 @@ extension MarvelCharacterDetailViewController:UICollectionViewDelegateFlowLayout
 extension MarvelCharacterDetailViewController{
     func configureCellComic(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
 
-        if let comic = (self.comics?[indexPath.row]) as? Comics{
-            let img_url = (comic.thumbnail?.fullPath())!
+        let comic = self.comics[indexPath.row] as Comics
+        let img_url = (comic.thumbnail?.fullPath())!
             let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(url: url)
             cell.detailName.text = comic.title!
-        }
+        
     }
     func configureCellEvent(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let event = (events?[indexPath.row] as? Events){
+        
+        let event = events[indexPath.row] as Events
             let img_url = (event.thumbnail?.fullPath())!
             let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(url: url)
             cell.detailName.text = event.title!
-        }
+        
     }
     func configureCellSerie(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
 
-        if let serie = (series?[indexPath.row]) as? Series{
+         let serie = series[indexPath.row] as Series
             let img_url = (serie.thumbnail?.fullPath())!
             let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(url: url)
             cell.detailName.text = serie.title!
-        }
+        
     }
 }
 

@@ -28,6 +28,8 @@ extension Story{
         }
         if let description = json["description"] as? String{
             self.description = description
+        }else{
+            self.description = "No description"
         }
         
         if let thumbnail = json["thumbnail"] as? [String:Any]{

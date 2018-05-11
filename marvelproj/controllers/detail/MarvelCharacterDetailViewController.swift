@@ -13,10 +13,10 @@ class MarvelCharacterDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var character: Character?
-    var comics: [Comics]?
-    var series: [Series]?
-    var events: [Events]?
-    var stories: [Story]?
+    var comics: [Comics] = []
+    var series: [Series] = []
+    var events: [Events] = []
+    var stories: [Story] = []
 }
 
 extension MarvelCharacterDetailViewController{
@@ -29,7 +29,10 @@ extension MarvelCharacterDetailViewController{
 
         self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.className)
-        
+        self.tableView.register(UINib(nibName: MarvelComicsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelComicsNotFoundTableViewCell.className)
+          self.tableView.register(UINib(nibName: MarvelSeriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelSeriesNotFoundTableViewCell.className)
+        self.tableView.register(UINib(nibName: MarvelEventsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelEventsNotFoundTableViewCell.className)
+         self.tableView.register(UINib(nibName: MarvelStoriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelStoriesNotFoundTableViewCell.className)
         self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
         self.tableView.register(UINib(nibName:MarvelDetailStoriesTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailStoriesTableViewCell.className)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(performSegueToReturnBack))
@@ -39,16 +42,6 @@ extension MarvelCharacterDetailViewController{
     }
 }
 
-
-class MarvelCharacterDetailViewHeader:UIView{
-    
-    @IBOutlet weak var marvelCharacterImage: UIImageView!
-    @IBOutlet weak var marvelCharacterName: UILabel!
-    
-    func setupHeader(character: Character){
-        self.marvelCharacterName.text = character.name
-    }
-}
 extension MarvelCharacterDetailViewController{
     func performSegueToReturnBack(){
         if let nav = self.navigationController{

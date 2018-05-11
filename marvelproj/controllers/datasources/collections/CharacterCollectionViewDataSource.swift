@@ -44,6 +44,7 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
         return (self.array?.count)!
     }
     
+    
 }
 
 class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
@@ -67,9 +68,17 @@ class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let collectionViewSize = collectionView.frame.size.width
-            return CGSize(width: collectionViewSize, height: collectionViewSize)
+        let padding: CGFloat =  10
+        let collectionViewSize = collectionView.frame.size.width - padding
+        
+        let numberOfCells = CGFloat(2)
+        let width = collectionViewSize / numberOfCells
+        return CGSize(width: width, height: width)
+        
+//        return CGSize(width: collectionViewSize / 2, height: collectionViewSize / 2)
     }
+    
+//    collectionview
 }
 
 

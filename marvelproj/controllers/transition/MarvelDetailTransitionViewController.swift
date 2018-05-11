@@ -13,31 +13,17 @@ class MarvelDetailTransitionViewController: UIViewController {
     @IBOutlet weak var loadingImageView: UIImageView!
     
     var character: Character?
-    var comics: [Comics]?
-    var series: [Series]?
-    var events: [Events]?
-    var stories: [Story]?
+    var comics: [Comics] = []
+    var series: [Series] = []
+    var events: [Events] = []
+    var stories: [Story] = []
 }
 
 extension MarvelDetailTransitionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var array: [UIImage] = []
-        array.append(#imageLiteral(resourceName: "frame-0"))
-        array.append(#imageLiteral(resourceName: "frame-1"))
-        array.append(#imageLiteral(resourceName: "frame-2"))
-        array.append(#imageLiteral(resourceName: "frame-3"))
-        array.append(#imageLiteral(resourceName: "frame-4"))
-        array.append(#imageLiteral(resourceName: "frame-5"))
-        array.append(#imageLiteral(resourceName: "frame-6"))
-        array.append(#imageLiteral(resourceName: "frame-7"))
-        array.append(#imageLiteral(resourceName: "frame-8"))
-        array.append(#imageLiteral(resourceName: "frame-9"))
-        array.append(#imageLiteral(resourceName: "frame-44"))
-        self.loadingImageView.animationImages = array
-        self.loadingImageView.animationDuration = 1.0
-        self.loadingImageView.animationRepeatCount = 0
+        buildAnimation()
 
         let group = DispatchGroup()
         
@@ -88,6 +74,29 @@ extension MarvelDetailTransitionViewController{
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func buildAnimation(){
+        var array: [UIImage] = []
+        array.append(#imageLiteral(resourceName: "frame-1"))
+        array.append(#imageLiteral(resourceName: "frame-2"))
+        array.append(#imageLiteral(resourceName: "frame-3"))
+        array.append(#imageLiteral(resourceName: "frame-4"))
+        array.append(#imageLiteral(resourceName: "frame-5"))
+        array.append(#imageLiteral(resourceName: "frame-6"))
+        array.append(#imageLiteral(resourceName: "frame-7"))
+        array.append(#imageLiteral(resourceName: "frame-8"))
+        array.append(#imageLiteral(resourceName: "frame-9"))
+        array.append(#imageLiteral(resourceName: "frame-44"))
+        
+//        for index in 0...59{
+//            array.append(#imageLiteral(resourceName: "5")index)
+//        }
+        
+        self.loadingImageView.contentMode = .scaleToFill
+        self.loadingImageView.animationImages = array
+        self.loadingImageView.animationDuration = 1.0
+        self.loadingImageView.animationRepeatCount = 0
     }
     
 }

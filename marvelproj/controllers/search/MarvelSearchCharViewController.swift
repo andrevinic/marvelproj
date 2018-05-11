@@ -16,6 +16,8 @@ class MarvelSearchCharViewController: UIViewController, UICollectionViewDelegate
     
     @IBOutlet weak var initialSearchScreen: UIView!
     
+    @IBOutlet weak var NoFoundSearch: UIView!
+    
     var collectionViewDatasource: CharacterCollectionViewDataSource?
     var characterCollectionViewDelegate: CharacterCollectionViewDelegate?
     
@@ -29,7 +31,7 @@ class MarvelSearchCharViewController: UIViewController, UICollectionViewDelegate
 extension MarvelSearchCharViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.NoFoundSearch.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
         self.collectionView.isHidden = true
         self.initialSearchScreen.isHidden = false
@@ -44,6 +46,7 @@ extension MarvelSearchCharViewController{
     }
     func setupCollectionView(){
         self.loadingActivity.stopAnimating()
+        self.NoFoundSearch.isHidden = true
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters)
         
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className)
@@ -62,11 +65,21 @@ extension MarvelSearchCharViewController{
     func fetchSearchCharacter(nameStartsWith: String){
         self.loadingActivity.startAnimating()
         MarvelHTTPManager().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { (characters, error) in
+            if(characters.count == 0){
+                
+                self.NoFoundSearch.isHidden = false
+                self.loadingActivity.stopAnimating()
+                self.initialSearchScreen.isHidden = true
+                
+                
+            }else{
             self.searchedCharacters.removeAllObjects()
             self.searchedCharacters.addObjects(from: characters)
            
             DispatchQueue.main.async {
                 self.setupCollectionView()
+                }
+                
             }
         }
 
@@ -89,6 +102,7 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false;
         self.initialSearchScreen.isHidden = false
+        self.view.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -96,7 +110,7 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         
         if(self.searchText.count == 0){return}
-        
+        if(self.searchText.trimmingCharacters(in: .whitespacesAndNewlines).count == 0){return}
         self.fetchSearchCharacter(nameStartsWith: self.searchText)
         searchActive = false;
     }

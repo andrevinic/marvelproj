@@ -57,7 +57,7 @@ extension MarvelCharViewController{
             self.tableView.reloadData()
         }
         self.showDataWithList = true
-
+        
     }
     
     func setupCollectionView(){
@@ -88,6 +88,7 @@ extension MarvelCharViewController{
 
 extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }
@@ -98,7 +99,9 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = self.tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath) as! CharacterTableViewCell
         let character = self.characters.object(at: indexPath.row) as! Character
         cell.setupCell(char: character)
-        
+        let selectionColor = UIView(frame: cell.frame)
+        selectionColor.backgroundColor = UIColor.black
+        cell.selectedBackgroundView = selectionColor
         return cell
     }
     
@@ -108,6 +111,10 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
             self.fetchCharacters()
    
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.didSelectCharacter(index: indexPath)
     }
 }
 
@@ -127,10 +134,6 @@ extension MarvelCharViewController{
 extension MarvelCharViewController: MarvelCharacterDelegate{
     
     func didSelectCharacter(index: IndexPath) {
-//        let nextController = MarvelRouter.instantiateMarvelCharDetailViewController()
-//        let nextController = MarvelRouter.instantiateMarvelCharacterDetailViewController()
-//        self.navigationController?.pushViewController(nextController, animated: true)
-//        nextController.character = characters.object(at: index.row) as? Character
 
         let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
         nextController.character = characters.object(at: index.row) as? Character

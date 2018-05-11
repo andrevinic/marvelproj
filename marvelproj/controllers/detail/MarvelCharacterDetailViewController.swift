@@ -32,32 +32,10 @@ extension MarvelCharacterDetailViewController{
         
         self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
         self.tableView.register(UINib(nibName:MarvelDetailStoriesTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailStoriesTableViewCell.className)
-        MarvelHTTPManager().fetchComics(characterID: character!.id) { (comics, error) in
-            self.comics = comics
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        MarvelHTTPManager().fetchSeries(characterID: character!.id) { (series, error) in
-            self.series = series
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        
-        MarvelHTTPManager().fetchEvents(characterID: character!.id) { (events, error) in
-            self.events = events
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        
-        MarvelHTTPManager().fetchStories(characterID: character!.id) { (stories, error) in
-            self.stories = stories
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(performSegueToReturnBack))
+
+        self.tableView.reloadData()
+
     }
 }
 
@@ -69,6 +47,15 @@ class MarvelCharacterDetailViewHeader:UIView{
     
     func setupHeader(character: Character){
         self.marvelCharacterName.text = character.name
+    }
+}
+extension MarvelCharacterDetailViewController{
+    func performSegueToReturnBack(){
+        if let nav = self.navigationController{
+            nav.popToRootViewController(animated: true)
+        }else{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

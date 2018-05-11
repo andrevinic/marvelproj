@@ -10,18 +10,20 @@ import UIKit
 
 class MarvelRouter: NSObject {
 
-    class func instantiateMarvelCharDetailViewController() -> MarvelCharDetailViewController{
-        let storyboardName = "Main"
-        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: MarvelCharDetailViewController.className)
-        return controller as! MarvelCharDetailViewController
-    }
-    
+
     class func instantiateMarvelCharacterDetailViewController()->MarvelCharacterDetailViewController{
         let storyboardName = "Main"
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: MarvelCharacterDetailViewController.className)
         
         return controller as! MarvelCharacterDetailViewController
+    }
+    
+    class func instantiateMarvelDetailTransitionViewController()->MarvelDetailTransitionViewController{
+        let storyboardName = "Main"
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: MarvelDetailTransitionViewController.className)
+        
+        return controller as! MarvelDetailTransitionViewController
     }
 }

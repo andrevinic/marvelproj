@@ -51,14 +51,13 @@ extension MarvelCharViewController{
         self.tableView.dataSource = self
         self.tableView.isHidden = false
         self.collectionView.isHidden = true
-        self.tableView.register(UINib(nibName:"CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: "CharacterTableViewCell")
+        self.tableView.register(UINib(nibName:CharacterTableViewCell.className, bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.className)
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
         }
         self.showDataWithList = true
 
-//        self.tableView.finishInfiniteScroll()
     }
     
     func setupCollectionView(){
@@ -69,7 +68,6 @@ extension MarvelCharViewController{
 
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!)
 
-//        self.collectionView.finishInfiniteScroll()
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: CharacterCollectionViewCell.className)
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
@@ -97,7 +95,7 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
         if(characters.count == 0){
             return UITableViewCell()
         }
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "CharacterTableViewCell", for: indexPath) as! CharacterTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath) as! CharacterTableViewCell
         let character = self.characters.object(at: indexPath.row) as! Character
         cell.setupCell(char: character)
         
@@ -144,7 +142,6 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
             self.setupFavoriteCollectionView()
             
             self.offset += LIMIT_FETCH
-            //            self.tableView.finishInfiniteScroll()
             if(self.showDataWithList){
                 self.setupTableView()
             }else{

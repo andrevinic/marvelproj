@@ -13,7 +13,7 @@ class MarvelRouter: NSObject {
     class func instantiateMarvelCharDetailViewController() -> MarvelCharDetailViewController{
         let storyboardName = "Main"
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "MarvelCharDetailViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: MarvelCharDetailViewController.className)
         return controller as! MarvelCharDetailViewController
     }
     

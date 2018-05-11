@@ -53,10 +53,11 @@ extension MarvelCharViewController{
         self.collectionView.isHidden = true
         self.tableView.register(UINib(nibName:"CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: "CharacterTableViewCell")
         DispatchQueue.main.async {
-
+            self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
         }
         self.showDataWithList = true
+
 //        self.tableView.finishInfiniteScroll()
     }
     
@@ -71,7 +72,7 @@ extension MarvelCharViewController{
 //        self.collectionView.finishInfiniteScroll()
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: CharacterCollectionViewCell.className)
         DispatchQueue.main.async {
-
+            self.activityIndicator.stopAnimating()
             self.collectionView.reloadData()
         }
     }
@@ -136,12 +137,12 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
     }
     
     func fetchCharacters(){
-        
+        self.activityIndicator.startAnimating()
+
         MarvelHTTPManager().fetchCharacters(offset: self.offset) { (characters, error) in
             self.characters.addObjects(from: characters)
             self.setupFavoriteCollectionView()
             
-            self.activityIndicator.stopAnimating()
             self.offset += LIMIT_FETCH
             //            self.tableView.finishInfiniteScroll()
             if(self.showDataWithList){

@@ -97,9 +97,6 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
         searchActive = false;
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-    }
 }
 
 extension MarvelSearchCharViewController: MarvelCharacterDelegate{

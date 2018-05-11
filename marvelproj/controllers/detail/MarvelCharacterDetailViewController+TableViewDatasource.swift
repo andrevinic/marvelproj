@@ -56,6 +56,7 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
     }
     
     func configureStoryCell(cell: MarvelDetailStoriesTableViewCell, indexPath: IndexPath){
+        if(self.stories?.count == 0){return}
         if let story = self.stories?[indexPath.row]{
             cell.storyDescription.text = story.description
             cell.storyTitle.text = story.title

@@ -10,8 +10,13 @@ import UIKit
 
 class QueryBuilder: NSObject {
     
-//    let base_URL = "gateway.marvel.com"
-//    let character_ext = "/v1/public/characters"
+    
+    ////////////////////////////////////////////////////////////////
+    //MARK:-
+    //MARK: Singleton for QueryBuilder
+    //MARK:- Builder pattern
+    ////////////////////////////////////////////////////////////////
+
     static let shared : QueryBuilder = QueryBuilder()
     
 }

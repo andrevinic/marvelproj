@@ -19,6 +19,8 @@ class MarvelSearchCharViewController: UIViewController, UICollectionViewDelegate
     var collectionViewDatasource: CharacterCollectionViewDataSource?
     var characterCollectionViewDelegate: CharacterCollectionViewDelegate?
     
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
+    
     var searchedCharacters: NSMutableArray!
     var searchActive : Bool = false
     var searchText: String = ""
@@ -27,11 +29,13 @@ class MarvelSearchCharViewController: UIViewController, UICollectionViewDelegate
 extension MarvelSearchCharViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.navigationBar.isHidden = true
         self.collectionView.isHidden = true
         self.initialSearchScreen.isHidden = false
         self.searchBar.delegate = self
         self.searchedCharacters = NSMutableArray()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +43,7 @@ extension MarvelSearchCharViewController{
 
     }
     func setupCollectionView(){
-        
+        self.loadingActivity.stopAnimating()
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters)
         
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className)
@@ -56,7 +60,7 @@ extension MarvelSearchCharViewController{
 extension MarvelSearchCharViewController{
     
     func fetchSearchCharacter(nameStartsWith: String){
-        
+        self.loadingActivity.startAnimating()
         MarvelHTTPManager().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { (characters, error) in
             self.searchedCharacters.removeAllObjects()
             self.searchedCharacters.addObjects(from: characters)

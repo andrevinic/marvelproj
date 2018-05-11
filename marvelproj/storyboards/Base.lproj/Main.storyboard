@@ -472,7 +472,7 @@
                                 <rect key="frame" x="0.0" y="91" width="375" height="527"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Feel free to find your marvel character! :)" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vq-lI-xT4">
-                                        <rect key="frame" x="32.5" y="293" width="309" height="22"/>
+                                        <rect key="frame" x="33.5" y="293" width="309" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="9" id="DlJ-lB-4c9"/>
                                         </constraints>
@@ -516,6 +516,9 @@
                                 <color key="barTintColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </searchBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aO1-lD-zv0">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -523,8 +526,10 @@
                             <constraint firstItem="h07-ku-krz" firstAttribute="top" secondItem="80I-CW-DRg" secondAttribute="top" constant="35" id="Bx2-nb-ufZ"/>
                             <constraint firstItem="Qet-cx-IH2" firstAttribute="trailing" secondItem="8iQ-n9-usq" secondAttribute="trailing" id="Fby-pt-ABB"/>
                             <constraint firstAttribute="trailing" secondItem="kiV-AA-2fZ" secondAttribute="trailing" id="GpY-pE-7X5"/>
+                            <constraint firstItem="aO1-lD-zv0" firstAttribute="centerY" secondItem="80I-CW-DRg" secondAttribute="centerY" id="MMy-Rn-WNw"/>
                             <constraint firstItem="Qet-cx-IH2" firstAttribute="bottom" secondItem="8iQ-n9-usq" secondAttribute="bottom" id="Ofw-YL-l4e"/>
                             <constraint firstItem="kiV-AA-2fZ" firstAttribute="bottom" secondItem="8iQ-n9-usq" secondAttribute="bottom" id="WSS-7h-075"/>
+                            <constraint firstItem="aO1-lD-zv0" firstAttribute="centerX" secondItem="80I-CW-DRg" secondAttribute="centerX" id="ZHR-Fg-7ie"/>
                             <constraint firstItem="h07-ku-krz" firstAttribute="leading" secondItem="8iQ-n9-usq" secondAttribute="leading" id="i4y-Uf-KXW"/>
                             <constraint firstItem="kiV-AA-2fZ" firstAttribute="leading" secondItem="8iQ-n9-usq" secondAttribute="leading" id="k7r-4N-yrr"/>
                             <constraint firstItem="Qet-cx-IH2" firstAttribute="leading" secondItem="8iQ-n9-usq" secondAttribute="leading" id="oZB-L8-kxF"/>
@@ -538,6 +543,7 @@
                     <connections>
                         <outlet property="collectionView" destination="Qet-cx-IH2" id="M1y-SD-KfZ"/>
                         <outlet property="initialSearchScreen" destination="kiV-AA-2fZ" id="OBz-a0-RB7"/>
+                        <outlet property="loadingActivity" destination="aO1-lD-zv0" id="8KA-uD-18h"/>
                         <outlet property="searchBar" destination="h07-ku-krz" id="7JL-Wg-ONq"/>
                         <outlet property="searchDisplayController" destination="UCp-py-xTs" id="6JC-Cj-xXT"/>
                     </connections>

@@ -95,8 +95,8 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
     func configureHeaderCell(cell: MarvelDetailTableViewHeaderCellTableViewCell){
         cell.characterName.text = self.character?.name
         let path = self.character?.thumbnail?.fullPath()
-        let url = URL(string: path!)
-        cell.characterImage.downloadedFrom(url: url!)
+       
+        cell.characterImage.downloadedFrom(link: path!)
         cell.characterImage.setCircularImageView()
         cell.characterDescription.text = self.character?.description
     }

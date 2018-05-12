@@ -12,6 +12,7 @@ class MarvelDetailCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var collectionCellImage: UIImageView!
     
+    var urlString = ""
 //    @IBOutlet weak var detailName: UILabel!
     
     override func awakeFromNib() {

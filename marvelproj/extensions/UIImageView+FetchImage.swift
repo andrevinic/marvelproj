@@ -8,17 +8,24 @@
 
 import UIKit
 class ImageCache{
+    
+    // MARK: - CACHE Images
     let imageCache = NSCache<NSString, UIImage>()
+
+    // MARK: - Singleton
     static let shared : ImageCache = ImageCache()
 
-    func image(url: URL, completion: @escaping (UIImage?) -> Void ){
+    func image(url: String)->UIImage?{
         
-        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
-            completion(cachedImage)
+        guard let cachedImage = imageCache.object(forKey: url as NSString) else{
+            return nil
         }
-    }
-    init() {
         
+        return cachedImage
+    }
+    
+    func cacheImage(image: UIImage, forKey: NSString){
+        self.imageCache.setObject(image, forKey: forKey)
     }
 }
 
@@ -26,7 +33,8 @@ extension UIImageView {
     
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleToFill) {
         contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
@@ -34,20 +42,26 @@ extension UIImageView {
                 let image = UIImage(data: data)
                 else { return }
             DispatchQueue.main.async() {
-                self.image = image
+                self?.image = image
+                ImageCache.shared.cacheImage(image: image, forKey: url.absoluteString as NSString)
             }
             }.resume()
     }
+    
     func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleToFill) {
         guard let url = URL(string: link) else { return }
-        downloadedFrom(url: url, contentMode: mode)
+        
+        if let image = ImageCache.shared.image(url: link){ self.image = image } else{
+            self.image = nil
+            downloadedFrom(url: url, contentMode: mode)
+        }
     }
     
     func setImage(from url: URL, placeholder: UIImage? = nil) {
         image = placeholder               // use placeholder (or if `nil`, remove any old image, before initiating asynchronous retrieval
-        ImageCache.shared.image(url: url) { (image) in
-            self.image = image
-        }
+//        ImageCache.shared.image(url: url) { (image) in
+//            self.image = image
+//        }
 //        ImageCache.shared.image(url: url) { [weak self] result in
 //            switch result {
 //            case .success(let image):

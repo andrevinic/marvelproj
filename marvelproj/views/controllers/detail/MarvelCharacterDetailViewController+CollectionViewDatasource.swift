@@ -30,6 +30,7 @@ extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarvelDetailCollectionViewCell.className, for: indexPath) as! MarvelDetailCollectionViewCell
+        
         if(collectionView.tag == 1){
             configureComicsCell(cell: cell, indexPath: indexPath)
         }else if(collectionView.tag == 2){
@@ -102,8 +103,8 @@ extension MarvelCharacterDetailViewController{
 
         let comic = self.comics[indexPath.row] as Comics
         let img_url = (comic.thumbnail?.fullPath())!
-            let url = URL(string: img_url)!
-            cell.collectionCellImage.downloadedFrom(url: url)
+        
+        cell.collectionCellImage.downloadedFrom(link: img_url)
 //            cell.detailName.text = comic.title!
         
     }
@@ -111,8 +112,7 @@ extension MarvelCharacterDetailViewController{
         
         let event = events[indexPath.row] as Events
             let img_url = (event.thumbnail?.fullPath())!
-            let url = URL(string: img_url)!
-            cell.collectionCellImage.downloadedFrom(url: url)
+            cell.collectionCellImage.downloadedFrom(link: img_url)
 //            cell.detailName.text = event.title!
         
     }
@@ -121,7 +121,7 @@ extension MarvelCharacterDetailViewController{
          let serie = series[indexPath.row] as Series
             let img_url = (serie.thumbnail?.fullPath())!
             let url = URL(string: img_url)!
-            cell.collectionCellImage.downloadedFrom(url: url)
+            cell.collectionCellImage.downloadedFrom(link: img_url)
 //            cell.detailName.text = serie.title!
         
     }

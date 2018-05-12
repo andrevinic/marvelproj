@@ -551,6 +551,7 @@
 		F0765EA9209D422300AA10F1 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				6506BEE520A505AB004EF51B /* controllers */,
 				F0765EA4209D3FF800AA10F1 /* xibs */,
 			);
 			path = views;
@@ -667,7 +668,6 @@
 				6506BEEB20A5ED5C004EF51B /* frame */,
 				659C5B1220A0AEB200746A64 /* appdelegate */,
 				F0DE0A09209D346E0006CDC2 /* Assets.xcassets */,
-				6506BEE520A505AB004EF51B /* controllers */,
 				F0765EC7209D547D00AA10F1 /* entities */,
 				F0765ECE209DDBDC00AA10F1 /* extensions */,
 				F0765EAA209D443100AA10F1 /* fonts */,

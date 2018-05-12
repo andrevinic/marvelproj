@@ -104,7 +104,7 @@ extension MarvelCharacterDetailViewController{
         let img_url = (comic.thumbnail?.fullPath())!
             let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(url: url)
-            cell.detailName.text = comic.title!
+//            cell.detailName.text = comic.title!
         
     }
     func configureCellEvent(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -113,7 +113,7 @@ extension MarvelCharacterDetailViewController{
             let img_url = (event.thumbnail?.fullPath())!
             let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(url: url)
-            cell.detailName.text = event.title!
+//            cell.detailName.text = event.title!
         
     }
     func configureCellSerie(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -122,7 +122,7 @@ extension MarvelCharacterDetailViewController{
             let img_url = (serie.thumbnail?.fullPath())!
             let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(url: url)
-            cell.detailName.text = serie.title!
+//            cell.detailName.text = serie.title!
         
     }
 }

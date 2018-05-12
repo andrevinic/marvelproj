@@ -13,6 +13,7 @@ protocol CharactersCollectionDataSourceInterface: UICollectionViewDataSource {
     
     var array:NSMutableArray? {get}
     var nibName:String? {get}
+
     weak var collectionView: UICollectionView? {get}
     weak var delegate: UICollectionViewDelegate? {get}
     

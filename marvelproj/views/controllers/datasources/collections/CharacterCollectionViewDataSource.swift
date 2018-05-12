@@ -12,6 +12,7 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
     
     var array:NSMutableArray?
     var nibName:String?
+//    var numberOfCellsInRow: Int!
     
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
@@ -50,10 +51,12 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
 class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     weak var delegate: MarvelCharacterDelegate?
     weak var characters: NSMutableArray?
+    var numberOfCellsInRow: Int = 0
     
-    init(_ delegate: MarvelCharacterDelegate, characters: NSMutableArray) {
+    init(_ delegate: MarvelCharacterDelegate, characters: NSMutableArray, numberOfCellsInRow: Int) {
         self.delegate = delegate
         self.characters = characters
+        self.numberOfCellsInRow = numberOfCellsInRow
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -71,7 +74,7 @@ class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UIColl
         let padding: CGFloat =  10
         let collectionViewSize = collectionView.frame.size.width - padding
         
-        let numberOfCells = CGFloat(2)
+        let numberOfCells = CGFloat(self.numberOfCellsInRow)
         let width = collectionViewSize / numberOfCells
         return CGSize(width: width, height: width)
         

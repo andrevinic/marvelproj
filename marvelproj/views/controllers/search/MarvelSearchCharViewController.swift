@@ -47,7 +47,7 @@ extension MarvelSearchCharViewController{
     func setupCollectionView(){
         self.loadingActivity.stopAnimating()
         self.NoFoundSearch.isHidden = true
-        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters)
+        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters, numberOfCellsInRow: NUMBER_OF_CELLS_IN_COLLECTION_VIEW_IN_SEARCH_CHARACTERS)
         
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className)
        

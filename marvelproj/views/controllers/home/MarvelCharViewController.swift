@@ -66,7 +66,7 @@ extension MarvelCharViewController{
         self.tableView.isHidden = true
         self.showDataWithList = false
 
-        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!)
+        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!, numberOfCellsInRow: NUMBER_OF_CELLS_IN_COLLECTION_VIEW_IN_CHARACTERS)
 
         self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: CharacterCollectionViewCell.className)
         DispatchQueue.main.async {

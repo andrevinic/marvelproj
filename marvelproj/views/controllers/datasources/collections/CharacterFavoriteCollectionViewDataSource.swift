@@ -21,6 +21,7 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
         self.delegate = delegate
         self.array = array
         self.nibName = nibName
+        
         super.init()
         collectionView.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
         self.setupCollectionView()

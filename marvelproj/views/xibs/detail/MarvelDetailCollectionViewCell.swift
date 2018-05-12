@@ -12,10 +12,11 @@ class MarvelDetailCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var collectionCellImage: UIImageView!
     
-    @IBOutlet weak var detailName: UILabel!
+//    @IBOutlet weak var detailName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        self.detailName.backgroundColor = UIColor.clear
         // Initialization code
     }
 //    override func draw(_ rect: CGRect) { //Your code should go here.

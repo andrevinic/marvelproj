@@ -67,8 +67,9 @@ class MarvelHTTPManager: NSObject {
     
     func removeWrappers(jsonWithObjectRoot: [String:Any])->[[String:Any]]{
         if let datadictionary = try? jsonWithObjectRoot["data"] as! [String: Any]{
-            let results = datadictionary["results"] as? [[String: Any]]
-            return results!
+            if let results = datadictionary["results"] as? [[String: Any]]{
+                return results
+            }
         }
         return [jsonWithObjectRoot]
         

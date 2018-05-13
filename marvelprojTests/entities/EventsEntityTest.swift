@@ -1,5 +1,5 @@
 //
-//  ComicsEntityTest.swift
+//  eventsEntityTest.swift
 //  marvelprojTests
 //
 //  Created by Andre Nogueira on 13/05/18.
@@ -7,9 +7,10 @@
 //
 
 import XCTest
+
 @testable import marvelproj
 
-class ComicsEntityTest: XCTestCase {
+class EventsEntityTest: XCTestCase {
     var bundle: Bundle?
     var mockHelper: MockHelper?
     
@@ -21,16 +22,11 @@ class ComicsEntityTest: XCTestCase {
         }
         
         self.bundle = bundle
-        self.mockHelper = MockHelper(file: "comics", in: bundle)
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.mockHelper = MockHelper(file: "events", in: bundle)
+        
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testComics() {
+    func testevents() {
         
         guard let json = mockHelper?.json else{
             return XCTFail("JSON did not load")
@@ -44,23 +40,24 @@ class ComicsEntityTest: XCTestCase {
             return XCTFail("Couldnt remove wrappers from the dictionary")
         }
         
-        var comics:[marvelproj.Comics] = []
+        var events:[marvelproj.Events] = []
         
         for item in result{
-            guard let comic = marvelproj.Comics(json: item) else{
+            guard let serie = marvelproj.Events(json: item) else{
                 return XCTFail("Couldnt create model of \(item)")
             }
             
-            comics.append(comic)
+            events.append(serie)
         }
         
-        XCTAssertFalse(comics.isEmpty)
-        XCTAssertEqual(comics.count, 8)
+        XCTAssertFalse(events.isEmpty)
+        XCTAssertEqual(events.count, 1)
         
-        let comic = comics[0]
+        let serie = events[0]
         
-        XCTAssertEqual(comic.title, "X-Men: The Complete Age of Apocalypse Epic Book 2 (Trade Paperback)")
-        XCTAssertEqual(comic.id, 2539)
+        XCTAssertEqual(serie.title, "Age of Apocalypse")
+        XCTAssertEqual(serie.id, 227)
         
     }
 }
+

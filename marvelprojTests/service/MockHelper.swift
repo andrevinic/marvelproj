@@ -35,8 +35,9 @@ struct MockHelper{
 extension MockHelper{
     func removeWrappers(jsonWithObjectRoot: [String:Any])->[[String:Any]]{
         if let datadictionary = try? jsonWithObjectRoot["data"] as! [String: Any]{
-            let results = datadictionary["results"] as? [[String: Any]]
-            return results!
+            if let results = datadictionary["results"] as? [[String: Any]]{
+                return results
+            }
         }
         return [jsonWithObjectRoot]
         
@@ -47,7 +48,21 @@ extension MockHelper{
         
         if let data = json.data(using: .utf8) {
             do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                
+                return try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        return nil
+    }
+    
+    func convertStringToDictDict(json:String)->[[String:Any]]?{
+        
+        if let data = json.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
             } catch {
                 print(error.localizedDescription)
             }

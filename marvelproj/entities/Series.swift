@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Series {
+struct Series: Details{
     var id: Int?
     var title: String?
     var description: String?

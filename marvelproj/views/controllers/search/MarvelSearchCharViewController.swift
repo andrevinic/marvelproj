@@ -130,9 +130,9 @@ extension MarvelSearchCharViewController: MarvelCharacterDelegate{
         self.navigationController?.pushViewController(nextController, animated: true)
         
     }
-    
-    func fetchCharacters() {
-    }
+    func didSelectCharacterFavorite(index: IndexPath) {}
+
+    func fetchCharacters() {}
     
 }
 

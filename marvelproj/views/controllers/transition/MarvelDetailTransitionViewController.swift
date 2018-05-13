@@ -29,6 +29,13 @@ extension MarvelDetailTransitionViewController{
 
         let group = DispatchGroup()
         
+        
+        ////////////////////////////////////////////////////////////////
+        //MARK:-
+        //MARK: Threads to fetch the comics/series/stories/events
+        //MARK:- weak self to avoid retain cycle in closures
+        ////////////////////////////////////////////////////////////////
+
         group.enter()
         MarvelHTTPManager().fetchComics(characterID: character!.id) { [weak self](comics, error) in
             self?.comics = comics

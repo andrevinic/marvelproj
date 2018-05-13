@@ -54,10 +54,22 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
 
 
 class CharacterFavoriteCollectionViewDelegate:NSObject, UICollectionViewDelegateFlowLayout{
+    weak var characters: NSMutableArray?
+    weak var delegate: MarvelCharacterDelegate?
+    
+    init(_ characters: NSMutableArray, delegate: MarvelCharacterDelegate) {
+        self.characters = characters
+        self.delegate = delegate
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width/5 - 8,
                           height: collectionView.frame.size.width/5 - 8)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.didSelectCharacterFavorite(index: indexPath)
     }
 }
 

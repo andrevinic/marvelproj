@@ -10,7 +10,6 @@ import UIKit
 
 class MarvelRouter: NSObject {
 
-
     class func instantiateMarvelCharacterDetailViewController()->MarvelCharacterDetailViewController{
         let storyboardName = "Main"
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
@@ -26,4 +25,14 @@ class MarvelRouter: NSObject {
         
         return controller as! MarvelDetailTransitionViewController
     }
+    
+    class func instantiateMarvelCharacterDetailPopupViewController()->MarvelCharacterDetailPopupViewController{
+        let storyboardName = "Main"
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: MarvelCharacterDetailPopupViewController.className)
+        
+        return controller as! MarvelCharacterDetailPopupViewController
+    }
+    
+    
 }

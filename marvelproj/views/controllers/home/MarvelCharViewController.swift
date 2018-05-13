@@ -10,6 +10,7 @@ import UIKit
 protocol MarvelCharacterDelegate: UICollectionViewDelegate{
     func fetchCharacters()
     func didSelectCharacter(index: IndexPath)
+    func didSelectCharacterFavorite(index: IndexPath)
 }
 protocol MarvelFavorite{
     func addToFavorite(at indexPath: IndexPath, character: Character)
@@ -64,8 +65,7 @@ extension MarvelCharViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("Back to home!")
-        
+   
         self.fetchFavoriteRequestsFromCoreData()
         
         if(self.showDataWithList){
@@ -107,7 +107,7 @@ extension MarvelCharViewController{
     }
     
     func setupFavoriteCollectionView(){
-        self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate()
+        self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate(self.favoriteCharactersFetched, delegate: self)
         self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.favoriteCharactersFetched, nibName: MarvelCharFavoriteCollectionViewCell.className, favoriteChars: NSMutableArray())
 
             self.favoriteCollectionView.reloadData()

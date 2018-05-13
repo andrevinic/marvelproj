@@ -52,26 +52,11 @@ extension UIImageView {
         guard let url = URL(string: link) else { return }
         
         if let image = ImageCache.shared.image(url: link){ self.image = image } else{
-            self.image = nil
+            self.image = UIImage(named: "marvel_screen")
             downloadedFrom(url: url, contentMode: mode)
         }
     }
-    
-    func setImage(from url: URL, placeholder: UIImage? = nil) {
-        image = placeholder               // use placeholder (or if `nil`, remove any old image, before initiating asynchronous retrieval
-//        ImageCache.shared.image(url: url) { (image) in
-//            self.image = image
-//        }
-//        ImageCache.shared.image(url: url) { [weak self] result in
-//            switch result {
-//            case .success(let image):
-//                self?.image = image
-//
-//            case .failure:
-//                break
-//            }
-//        }
-    }
+
 }
 
 extension UIImageView{

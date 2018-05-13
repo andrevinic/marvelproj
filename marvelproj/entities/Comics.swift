@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Comics{
+struct Comics: Details{
     
     var id: Int?
     var title: String?

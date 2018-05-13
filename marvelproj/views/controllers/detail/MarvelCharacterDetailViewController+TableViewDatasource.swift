@@ -21,8 +21,8 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         
         ////////////////////////////////////////////////////////////////
         //MARK:-
-        //MARK:ajustar para quantidade nao zeros = soma count + comics count + series count..
-        //MARK:-
+        //MARK: returns stories.count if its stories
+        //MARK:- if not, returns just 1
         ////////////////////////////////////////////////////////////////
 
         if(section == 4 && self.stories.count > 0){
@@ -105,7 +105,9 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
        
         cell.characterImage.downloadedFrom(link: path!)
         cell.characterImage.setCircularImageView()
-        cell.characterDescription.text = self.character?.description
+        
+//        char.description.isEmpty ? "No description" : char.description
+        cell.characterDescription.text = (self.character?.description.isEmpty)! ? "No description" : character?.description
     }
     
 }

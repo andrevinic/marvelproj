@@ -10,6 +10,14 @@ import Foundation
 
 extension MarvelCharViewController: MarvelCharacterDelegate{
     
+    func didSelectCharacterFavorite(index: IndexPath){
+        
+        let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
+        let char = self.favoriteCharactersFetched.object(at: index.row) as? Character
+        nextController.character = char
+        nextController.isFavorite = true
+        self.navigationController?.pushViewController(nextController, animated: true)
+    }
     func didSelectCharacter(index: IndexPath) {
         
         let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()

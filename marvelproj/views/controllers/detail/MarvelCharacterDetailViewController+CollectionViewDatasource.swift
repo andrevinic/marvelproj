@@ -72,6 +72,42 @@ extension MarvelCharacterDetailViewController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
       
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let sectionDetail = indexPath.section
+        let details: Details? = self.getDetails(collectionView: collectionView, at: indexPath)
+        
+        
+//
+//        if(collectionView.tag == 1){
+//            let comic = self.comics[indexPath.row]
+//
+//
+//        }else if(collectionView.tag == 2){
+//
+//        }
+        
+        let popUpViewController = MarvelRouter.instantiateMarvelCharacterDetailPopupViewController()
+//        popUpViewController.thumbnail = comic.thumbnail?.fullPath()
+        popUpViewController.details = details
+//        popUpViewController.sourceView = self.view
+        self.navigationController?.pushViewController(popUpViewController, animated: false)
+        
+    }
+    
+    func getDetails(collectionView: UICollectionView, at indexPath: IndexPath)->Details{
+        switch(collectionView.tag){
+            case 1:
+                return self.comics[indexPath.row]
+            case 2:
+                return self.series[indexPath.row]
+            case 3:
+                return self.events[indexPath.row]
+            
+            default:
+                return self.comics[indexPath.row]
+        }
+    }
 }
 extension MarvelCharacterDetailViewController:UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -103,7 +139,6 @@ extension MarvelCharacterDetailViewController{
 
         let comic = self.comics[indexPath.row] as Comics
         let img_url = (comic.thumbnail?.fullPath())!
-        
         cell.collectionCellImage.downloadedFrom(link: img_url)
 //            cell.detailName.text = comic.title!
         

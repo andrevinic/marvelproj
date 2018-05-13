@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Events {
+struct Events: Details {
     var id: Int?
     var title: String?
     var description: String?

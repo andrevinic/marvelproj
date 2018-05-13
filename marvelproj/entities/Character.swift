@@ -7,6 +7,11 @@
 //
 
 import UIKit
+protocol Details{
+    var title: String? {get set}
+    var description: String? {get set}
+    var thumbnail: Thumbnail? {get set}
+}
 
 struct Character{
     var id: Int = 0

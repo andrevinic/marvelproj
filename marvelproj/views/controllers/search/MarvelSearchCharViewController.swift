@@ -26,11 +26,16 @@ class MarvelSearchCharViewController: UIViewController, UICollectionViewDelegate
     var searchedCharacters: NSMutableArray!
     var searchActive : Bool = false
     var searchText: String = ""
+    
+    var coreDataManager: CoreDataManager!
+    var favoriteCharactersIDs:[Int] = []
+    var favoriteCharactersFetched:NSMutableArray!
 }
 
 extension MarvelSearchCharViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.favoriteCharactersFetched = NSMutableArray()
         self.NoFoundSearch.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
         self.collectionView.isHidden = true
@@ -49,7 +54,7 @@ extension MarvelSearchCharViewController{
         self.NoFoundSearch.isHidden = true
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters, numberOfCellsInRow: NUMBER_OF_CELLS_IN_COLLECTION_VIEW_IN_SEARCH_CHARACTERS)
         
-        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className)
+        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className, favoriteChars: NSMutableArray())
        
             self.collectionView.isHidden = false
             self.initialSearchScreen.isHidden = true
@@ -129,6 +134,54 @@ extension MarvelSearchCharViewController: MarvelCharacterDelegate{
     func fetchCharacters() {
     }
     
+}
+
+extension MarvelSearchCharViewController: MarvelFavorite{
+    
+    func fetchFavoriteRequestsFromCoreData(){
+        let fetchRequests = coreDataManager.fetchRequest()
+        for record in fetchRequests{
+            if let record_id = record.value(forKey: "characterID") as? Int{
+                self.favoriteCharactersIDs.append(record_id)
+            }
+        }
+    }
+    
+    func fetchCharacterByIDs(){
+        let group = DispatchGroup()
+        
+        for charID in self.favoriteCharactersIDs{
+            group.enter()
+            MarvelHTTPManager().fetchCharacterByID(characterID: charID) { [weak self] (character, error) in
+                self?.favoriteCharactersFetched.add(character)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+//            self.setupFavoriteCollectionView()
+        }
+    }
+    
+    func addToFavorite(at indexPath: IndexPath, character: Character){
+        
+        coreDataManager.addFavorite(character: character)
+       
+        self.favoriteCharactersFetched.insert(character, at: 0)
+        self.favoriteCharactersIDs.append(character.id)
+//        self.setupFavoriteCollectionView()
+        
+    }
+    
+    func check(charID: Int)->Bool{
+        for item in self.favoriteCharactersIDs{
+            if item == charID{
+                return true
+            }
+            
+        }
+        return false
+    }
     
 }
 

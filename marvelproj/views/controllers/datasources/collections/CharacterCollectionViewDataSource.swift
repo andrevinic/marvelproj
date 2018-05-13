@@ -12,16 +12,16 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
     
     var array:NSMutableArray?
     var nibName:String?
-//    var numberOfCellsInRow: Int!
-    
+    var favoriteChars: NSMutableArray?
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
     
-    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String) {
+    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String, favoriteChars: NSMutableArray) {
         self.collectionView = collectionView
         self.delegate = delegate
         self.array = array
         self.nibName = nibName
+        self.favoriteChars = favoriteChars
         
         super.init()
         collectionView.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
@@ -36,6 +36,9 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.nibName!, for: indexPath) as! CharacterCollectionViewCell
         let character = self.array?.object(at: indexPath.row) as! Character
+        if(self.favoriteChars?.count == 0){
+            cell.favoriteButton.isHidden = true
+        }
         cell.setupCell(char: character)
         
         return cell
@@ -44,7 +47,6 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
         
         return (self.array?.count)!
     }
-    
     
 }
 

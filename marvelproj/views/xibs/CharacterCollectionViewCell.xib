@@ -37,15 +37,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDr-La-9P0">
+                                <rect key="frame" x="257" y="4" width="13" height="22"/>
+                                <state key="normal" image="favorite_unselected"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iDr-La-9P0" secondAttribute="trailing" constant="10" id="3Kc-7b-C8v"/>
                             <constraint firstAttribute="trailing" secondItem="fAH-Jf-8yH" secondAttribute="trailing" id="3rT-73-nlh"/>
                             <constraint firstItem="oDG-6L-JxL" firstAttribute="leading" secondItem="ONc-1N-DGT" secondAttribute="leading" id="66b-3v-FrR"/>
                             <constraint firstAttribute="bottom" secondItem="fAH-Jf-8yH" secondAttribute="bottom" constant="2" id="EwG-Q0-w5f"/>
                             <constraint firstAttribute="bottom" secondItem="oDG-6L-JxL" secondAttribute="bottom" id="KqE-4i-hxC"/>
                             <constraint firstItem="fAH-Jf-8yH" firstAttribute="leading" secondItem="ONc-1N-DGT" secondAttribute="leading" id="OVz-Zm-V8d"/>
                             <constraint firstItem="fAH-Jf-8yH" firstAttribute="centerX" secondItem="ONc-1N-DGT" secondAttribute="centerX" id="S7z-Rg-liI"/>
+                            <constraint firstItem="iDr-La-9P0" firstAttribute="top" secondItem="ONc-1N-DGT" secondAttribute="top" constant="4" id="TFh-ZA-K2u"/>
                             <constraint firstAttribute="trailing" secondItem="oDG-6L-JxL" secondAttribute="trailing" id="ZHZ-4e-J96"/>
                             <constraint firstItem="oDG-6L-JxL" firstAttribute="top" secondItem="ONc-1N-DGT" secondAttribute="top" id="vAB-Cm-Pra"/>
                         </constraints>
@@ -61,10 +67,14 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="280" height="135"/>
             <connections>
+                <outlet property="favoriteButton" destination="iDr-La-9P0" id="fIH-aC-Ksg"/>
                 <outlet property="imageCharacter" destination="oDG-6L-JxL" id="bdF-IM-7dF"/>
                 <outlet property="nameCharacter" destination="fAH-Jf-8yH" id="pn9-UL-oFC"/>
             </connections>
             <point key="canvasLocation" x="186" y="96.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="favorite_unselected" width="13" height="13"/>
+    </resources>
 </document>

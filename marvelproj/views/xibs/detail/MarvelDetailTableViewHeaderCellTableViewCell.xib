@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,6 +50,13 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nB8-Xg-SiL">
+                        <rect key="frame" x="259" y="21" width="13" height="22"/>
+                        <state key="normal" image="favorite_unselected"/>
+                        <connections>
+                            <action selector="didPressFavorite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="i8Z-6m-aGp"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
@@ -57,6 +64,7 @@
                     <constraint firstItem="bUX-b3-djc" firstAttribute="top" secondItem="DS5-lH-5L0" secondAttribute="bottom" constant="-2" id="2Yx-Pe-DzC"/>
                     <constraint firstItem="bUX-b3-djc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="143" id="7MP-bO-bA3"/>
                     <constraint firstItem="7Rw-X8-aB7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9JB-1l-tkB"/>
+                    <constraint firstItem="nB8-Xg-SiL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="EvR-bw-c3t"/>
                     <constraint firstAttribute="trailing" secondItem="bUX-b3-djc" secondAttribute="trailing" constant="140" id="FGd-2A-ZgG"/>
                     <constraint firstItem="DS5-lH-5L0" firstAttribute="top" secondItem="7Rw-X8-aB7" secondAttribute="bottom" constant="15" id="J3i-cc-bvE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="OYO-7Z-o82" secondAttribute="trailing" constant="10" id="J7N-DO-WvE"/>
@@ -67,6 +75,7 @@
                     <constraint firstItem="OYO-7Z-o82" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="103" id="gec-fq-Tol"/>
                     <constraint firstItem="7Rw-X8-aB7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="62" id="hXG-V6-T13"/>
                     <constraint firstItem="7Rw-X8-aB7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" priority="999" constant="78" id="s3x-hq-1Zv"/>
+                    <constraint firstItem="nB8-Xg-SiL" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-20" id="tfO-js-voM"/>
                     <constraint firstItem="DS5-lH-5L0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="wJ7-wN-4f1"/>
                     <constraint firstItem="OYO-7Z-o82" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="zQd-lH-BzZ"/>
                 </constraints>
@@ -77,12 +86,14 @@
                 <outlet property="characterDescription" destination="OYO-7Z-o82" id="UCO-la-mft"/>
                 <outlet property="characterImage" destination="7Rw-X8-aB7" id="jge-h2-8QX"/>
                 <outlet property="characterName" destination="DS5-lH-5L0" id="kLG-Bj-L7d"/>
+                <outlet property="favoriteButton" destination="nB8-Xg-SiL" id="IaQ-fB-mzY"/>
                 <outlet property="pageControl" destination="bUX-b3-djc" id="voe-So-YAn"/>
             </connections>
             <point key="canvasLocation" x="-170" y="-40"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="favorite_unselected" width="13" height="13"/>
         <image name="marvel_screen" width="640" height="960"/>
     </resources>
 </document>

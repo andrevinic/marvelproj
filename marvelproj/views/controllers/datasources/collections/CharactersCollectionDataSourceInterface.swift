@@ -9,15 +9,15 @@
 import UIKit
 
 protocol CharactersCollectionDataSourceInterface: UICollectionViewDataSource {
-    //    public var context: NSManagedObjectContext? {get}
-    
+
+    var favoriteChars: NSMutableArray? {get}
     var array:NSMutableArray? {get}
     var nibName:String? {get}
 
     weak var collectionView: UICollectionView? {get}
     weak var delegate: UICollectionViewDelegate? {get}
     
-    init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String)
+    init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String, favoriteChars: NSMutableArray)
     
     func setupCollectionView()
 }

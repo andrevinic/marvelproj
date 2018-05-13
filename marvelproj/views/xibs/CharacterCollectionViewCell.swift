@@ -13,6 +13,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageCharacter: UIImageView!
     
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

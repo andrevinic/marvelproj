@@ -17,6 +17,8 @@ class MarvelDetailTransitionViewController: UIViewController {
     var series: [Series] = []
     var events: [Events] = []
     var stories: [Story] = []
+    
+    var isFavorite: Bool?
 }
 
 extension MarvelDetailTransitionViewController{
@@ -62,6 +64,7 @@ extension MarvelDetailTransitionViewController{
             nextController.comics = self.comics
             nextController.series = self.series
             nextController.events = self.events
+            nextController.isFavorite = self.isFavorite
             self.loadingImageView.stopAnimating()
             self.navigationController?.pushViewController(nextController, animated: true)
             

@@ -12,13 +12,15 @@ class MarvelDetailTableViewHeaderCellTableViewCell: UITableViewCell {
 
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterImage: UIImageView!
-    
     @IBOutlet weak var characterDescription: UILabel!
-    
     @IBOutlet weak var pageControl: UIPageControl!
-   
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     let swipeGestureLeft = UISwipeGestureRecognizer()
     let swipeGestureRight = UISwipeGestureRecognizer()
+    
+    var addFavoritePressed: (() -> Void)? = nil
+    
     
 }
 
@@ -69,4 +71,12 @@ extension MarvelDetailTableViewHeaderCellTableViewCell{
             self.characterName.isHidden = false
         }
     }
+    
+    @IBAction func didPressFavorite(_ sender: Any) {
+        if let addFavoritePressed = self.addFavoritePressed{
+            addFavoritePressed()
+        }
+    }
+        
+    
 }

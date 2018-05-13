@@ -12,11 +12,12 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
     var offset: Int?
     var array:NSMutableArray?
     var nibName: String?
+    var favoriteChars: NSMutableArray?
     
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
     
-    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String) {
+    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String, favoriteChars: NSMutableArray) {
         self.collectionView = collectionView
         self.delegate = delegate
         self.array = array

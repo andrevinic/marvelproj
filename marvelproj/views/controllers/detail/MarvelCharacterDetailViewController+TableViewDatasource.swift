@@ -26,7 +26,7 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         ////////////////////////////////////////////////////////////////
 
         if(section == 4 && self.stories.count > 0){
-            return LIMIT_OF_TABLE_VIEW_CELLS_STORIES
+            return self.stories.count
         }
         return 1
     }
@@ -35,6 +35,13 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         if(indexPath.section == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className, for:indexPath) as! MarvelDetailTableViewHeaderCellTableViewCell
             configureHeaderCell(cell: cell)
+            cell.addFavoritePressed = {
+                self.addToFavorite(at: indexPath, character: self.character!)
+            }
+            if(self.isFavorite!){
+                let favoriteImage = UIImage(named: "favorite_selected")
+                cell.favoriteButton.setImage(favoriteImage, for: .normal)
+            }
             return cell
         }
         else if(indexPath.section == 1){

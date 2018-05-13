@@ -10,6 +10,13 @@ import UIKit
 
 extension NSObject{
     
+    
+    ////////////////////////////////////////////////////////////////
+    //MARK:-
+    //MARK: NSObject extension
+    //MARK:- should return class name to all project objects
+    ////////////////////////////////////////////////////////////////
+
     var className: String {
         return String(describing: type(of: self))
     }

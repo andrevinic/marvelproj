@@ -10,6 +10,7 @@ import UIKit
 
 class CharacterTableViewCell: UITableViewCell {
 
+    // MARK: - View Attributes
     @IBOutlet weak var descriptionCharacter: UILabel!
     @IBOutlet weak var nameCharacter: UILabel!
     @IBOutlet weak var imageCharacter: UIImageView!
@@ -17,10 +18,21 @@ class CharacterTableViewCell: UITableViewCell {
     
     var addFavoritePressed: (() -> Void)? = nil
     
+}
+
+extension CharacterTableViewCell{
+    
+    
+    ////////////////////////////////////////////////////////////////
+    //MARK:-
+    //MARK: CharacterTableViewCell methods
+    //MARK:-
+    ////////////////////////////////////////////////////////////////
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -32,15 +44,15 @@ class CharacterTableViewCell: UITableViewCell {
         let thumbnail = char.thumbnail!
         
         let urlstr = thumbnail.fullPath()
-//        self.imageCharacter.download(url: urlstr)
+        
         self.imageCharacter.downloadedFrom(link: urlstr)
-
     }
-  
-   
 }
 
 extension CharacterTableViewCell{
+    
+    // MARK: - IBActions
+    
     @IBAction func didPressFavorite(_ sender: Any) {
         if let addFavoritePressed = self.addFavoritePressed{
             addFavoritePressed()

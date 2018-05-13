@@ -17,6 +17,9 @@ class MarvelCharacterDetailViewController: UIViewController {
     var series: [Series] = []
     var events: [Events] = []
     var stories: [Story] = []
+    
+    var coreDataManager: CoreDataManager!
+    var isFavorite: Bool?
 }
 
 extension MarvelCharacterDetailViewController{
@@ -39,6 +42,8 @@ extension MarvelCharacterDetailViewController{
 
         self.tableView.reloadData()
 
+        self.coreDataManager = CoreDataManager(modelName: "Favorite")
+
     }
 }
 
@@ -51,4 +56,5 @@ extension MarvelCharacterDetailViewController{
         }
     }
 }
+
 

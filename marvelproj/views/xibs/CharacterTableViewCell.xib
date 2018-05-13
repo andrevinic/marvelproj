@@ -58,7 +58,7 @@
                             <constraint firstAttribute="width" constant="25" id="HJu-Wz-zkT"/>
                             <constraint firstAttribute="height" constant="24" id="lVl-0v-zud"/>
                         </constraints>
-                        <state key="normal" image="bookmark"/>
+                        <state key="normal" image="favorite_unselected"/>
                         <connections>
                             <action selector="didPressFavorite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VrC-Ce-fkk"/>
                         </connections>
@@ -92,6 +92,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bookmark" width="26" height="42"/>
+        <image name="favorite_unselected" width="13" height="13"/>
     </resources>
 </document>

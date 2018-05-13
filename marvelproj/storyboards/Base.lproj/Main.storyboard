@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F49-QP-aXu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F49-QP-aXu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -125,9 +125,12 @@
                     <connections>
                         <outlet property="activityIndicator" destination="log-Pb-u8z" id="kre-aC-EZz"/>
                         <outlet property="collectionView" destination="Vwj-IJ-wr0" id="VAl-Xf-FJO"/>
+                        <outlet property="collectionViewTopConstraint" destination="96i-ty-CzR" id="6WU-aI-BLn"/>
                         <outlet property="favoriteCollectionView" destination="yPp-ow-N6g" id="7xe-mM-tgN"/>
+                        <outlet property="favoriteCollectionViewHeight" destination="t0v-pI-taM" id="sQL-K5-XYv"/>
                         <outlet property="navigationItemMarvel" destination="QFT-1L-suI" id="KLi-mr-QxF"/>
                         <outlet property="tableView" destination="azy-ZG-7On" id="gpF-7g-V7g"/>
+                        <outlet property="tableViewTopConstraint" destination="mFw-Ub-oqI" id="eVR-r6-yTq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

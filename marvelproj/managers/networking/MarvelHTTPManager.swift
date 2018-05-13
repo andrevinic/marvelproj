@@ -52,7 +52,8 @@ class MarvelHTTPManager: NSObject {
         }
         return stories
     }
-    
+
+
     func parseToCharacters(jsonWithObjectRoot: [String: Any])->[Character]{
         let results = self.removeWrappers(jsonWithObjectRoot: jsonWithObjectRoot)
         var characters = [Character]()

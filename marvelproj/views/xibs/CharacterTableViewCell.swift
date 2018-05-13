@@ -13,6 +13,9 @@ class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionCharacter: UILabel!
     @IBOutlet weak var nameCharacter: UILabel!
     @IBOutlet weak var imageCharacter: UIImageView!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    var addFavoritePressed: (() -> Void)? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,6 +36,15 @@ class CharacterTableViewCell: UITableViewCell {
         self.imageCharacter.downloadedFrom(link: urlstr)
 
     }
-    
-    
+  
+   
+}
+
+extension CharacterTableViewCell{
+    @IBAction func didPressFavorite(_ sender: Any) {
+        if let addFavoritePressed = self.addFavoritePressed{
+            addFavoritePressed()
+        }
+    }
+   
 }

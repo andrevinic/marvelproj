@@ -28,14 +28,28 @@ class MarvelCharViewController: UIViewController {
     var characters: NSMutableArray!
     var offset : Int = 0
     var showDataWithList = true
+    
+    var coreDataManager: CoreDataManager!
+    var favoriteCharactersIDs:[Int] = []
+    var favoriteCharactersFetched:NSMutableArray!
+    
+    @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var collectionViewTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var favoriteCollectionViewHeight: NSLayoutConstraint!
 }
 
 extension MarvelCharViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
+        self.coreDataManager = CoreDataManager(modelName: "Favorite")
+        self.fetchFavoriteRequestsFromCoreData()
+        self.fetchCharacterByIDs()
         self.characters = NSMutableArray()
+        self.favoriteCharactersFetched = NSMutableArray()
         self.tableView.isHidden = true
         self.collectionView.isHidden = true
         self.activityIndicator.startAnimating()
@@ -77,11 +91,11 @@ extension MarvelCharViewController{
     
     func setupFavoriteCollectionView(){
         self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate()
-        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.characters, nibName: MarvelCharFavoriteCollectionViewCell.className)
-        DispatchQueue.main.async {
+        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.favoriteCharactersFetched, nibName: MarvelCharFavoriteCollectionViewCell.className)
+//        DispatchQueue.main.async {
 
             self.favoriteCollectionView.reloadData()
-        }
+//        }
     }
     
 }
@@ -102,6 +116,11 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
         let selectionColor = UIView(frame: cell.frame)
         selectionColor.backgroundColor = UIColor.black
         cell.selectedBackgroundView = selectionColor
+        
+        cell.addFavoritePressed = {
+            self.addToFavorite(at: indexPath, character: character)
+        }
+        
         return cell
     }
     
@@ -145,7 +164,7 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
 
         MarvelHTTPManager().fetchCharacters(offset: self.offset) { (characters, error) in
             self.characters.addObjects(from: characters)
-            self.setupFavoriteCollectionView()
+//            self.setupFavoriteCollectionView()
             
             self.offset += LIMIT_FETCH
             if(self.showDataWithList){
@@ -155,6 +174,55 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
             }
         }
 
+    }
+    
+    func addToFavorite(at indexPath: IndexPath, character: Character){
+        
+        coreDataManager.addFavorite(character: character)
+        if(self.favoriteCharactersIDs.count == 0){
+            self.favoriteCollectionView.isHidden = false
+            self.tableViewTopConstraint.constant = CGFloat(0)
+            self.collectionViewTopConstraint.constant = CGFloat(0)
+        }
+        self.favoriteCharactersFetched.insert(character, at: 0)
+        self.setupFavoriteCollectionView()
+       
+        
+//       debugPrint(fetchRequests[0].value(forKey: "characterID"))
+//        debugPrint(fetchRequests[1].value(forKey: "characterID"))
+//        debugPrint(fetchRequests[2].value(forKey: "characterID"))
+        
+    }
+    
+    func fetchCharacterByIDs(){
+        let group = DispatchGroup()
+        
+//        var favoriteCharacters:[Character] = []
+        if(self.favoriteCharactersIDs.count == 0){
+            self.favoriteCollectionView.isHidden = true
+            self.tableViewTopConstraint.constant = -self.favoriteCollectionViewHeight.constant
+            self.collectionViewTopConstraint.constant = -self.favoriteCollectionViewHeight.constant
+        }
+        for charID in self.favoriteCharactersIDs{
+            group.enter()
+            MarvelHTTPManager().fetchCharacterByID(characterID: charID) { [weak self] (character, error) in
+                self?.favoriteCharactersFetched.add(character)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.setupFavoriteCollectionView()
+        }
+    }
+    func fetchFavoriteRequestsFromCoreData(){
+        let fetchRequests = coreDataManager.fetchRequest()
+        for record in fetchRequests{
+            if let record_id = record.value(forKey: "characterID") as? Int{
+                self.favoriteCharactersIDs.append(record_id)
+                
+            }
+        }
     }
 }
 

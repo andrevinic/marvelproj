@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.tintColor = UIColor.white
+        
+//        let coreDataManager = CoreDataManager(modelName: "Favorite")
+////        print(coreDataManager.managedObjectContext)
+//        
+//        let managedObjectContext = coreDataManager.managedObjectContext
+//        let entityDescription = NSEntityDescription.entity(forEntityName: "Character", in: managedObjectContext)
+//        
+//        if let entityDescription = entityDescription{
+//            print(entityDescription.name ?? "No name")
+//            print(entityDescription.properties)
+//            
+//            let character = NSManagedObject(entity: entityDescription, insertInto: managedObjectContext)
+//            print(character)
+//            character.setValue(2, forKey: "characterID")
+//            
+//            do{
+//                try managedObjectContext.save()
+//            }catch{
+//                
+//            }
+//            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Character")
+//
+//            do{
+//                let records = try managedObjectContext.fetch(fetchRequest) as! [NSManagedObject]
+//                for record in records{
+//                    print(record.value(forKey: "characterID") ?? "no id")
+//                }
+//            }catch{
+//                print(error)
+//            }
+//        }
         return true
     }
 

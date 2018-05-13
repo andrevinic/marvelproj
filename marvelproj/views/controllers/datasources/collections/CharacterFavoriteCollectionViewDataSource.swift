@@ -27,6 +27,7 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
         self.setupCollectionView()
         
         self.collectionView?.collectionViewLayout.invalidateLayout()
+        self.collectionView?.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

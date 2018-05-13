@@ -20,7 +20,23 @@ class QueryBuilder: NSObject {
     static let shared : QueryBuilder = QueryBuilder()
     
 }
-
+extension QueryBuilder{
+    func query(ts: String, apikey: String, hash: String, characterID: Int)->String{
+        var url = URLComponents()
+        url.scheme = "https"
+        url.host = BASE_URL
+        url.path = CHARACTER_EXT + "/\(characterID)"
+        
+        url.queryItems = [
+            URLQueryItem(name:"ts", value:ts),
+            URLQueryItem(name: "apikey", value: apikey),
+            URLQueryItem(name: "hash", value: hash),
+            URLQueryItem(name: "characterId", value: "\(characterID)")
+        ]
+        
+        return url.string!
+    }
+}
 extension QueryBuilder{
     
     func query(ts: String, apikey: String, hash: String, offset: String, path: String)->String{

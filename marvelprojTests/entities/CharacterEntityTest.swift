@@ -27,11 +27,6 @@ class CharacterEntityTest: XCTestCase {
     
     func testCharacters() {
         
-        //
-        //        guard let view = bundle.loadNibNamed(CharacterTableViewCell.className, owner: nil, options: nil)?.first as? CharacterTableViewCell else{
-        //            return XCTFail("CharacterTableViewCell nib did not contain a UIView")
-        //        }
-        
         guard let json = mockHelper?.json else{
             return XCTFail("JSON did not load")
         }

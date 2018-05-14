@@ -10,7 +10,6 @@ iOS project has the following configuration:
   * marvelprojTests: Unit tests working with XCTest
   * marvelproj Production Target.
 
-
 * Project Configuration
   * Swift language.
  
@@ -26,8 +25,16 @@ iOS project has the following configuration:
     - private key(Default there is my private key)
   * `unit-tests`
     - Unit tests
+    * `MarvelConstants`
+    -This file has all the project constants to configurate height, width, limits to fetch and others.
+    * `Auto-Layout`
+    -The auto-layout is done in the storyboard/main and also on the xibs, inside views/xibs.
+    * `Images`
+    -Used NSCache to cache all images downloaded with URLSerssion
+    * `transition/threads`
+    -In the transition view controller, I used DispatchGroup to wait all the thread fetches
   * `patterns`
-  - Architecture: MVC: HTTManager to model, Views & Controllers
+  - Architecture: MVC. HTTManager to model, Views & Controllers
 
 * Networking
   * `HTTPManager` networking class.

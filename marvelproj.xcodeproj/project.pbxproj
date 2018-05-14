@@ -95,7 +95,6 @@
 		F0DE0A08209D346E0006CDC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0DE0A06209D346E0006CDC2 /* Main.storyboard */; };
 		F0DE0A0A209D346E0006CDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0DE0A09209D346E0006CDC2 /* Assets.xcassets */; };
 		F0DE0A0D209D346E0006CDC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0DE0A0B209D346E0006CDC2 /* LaunchScreen.storyboard */; };
-		F0DE0A18209D346E0006CDC2 /* marvelprojTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DE0A17209D346E0006CDC2 /* marvelprojTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,7 +200,6 @@
 		F0DE0A0C209D346E0006CDC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0DE0A0E209D346E0006CDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0DE0A13209D346E0006CDC2 /* marvelprojTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = marvelprojTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0DE0A17209D346E0006CDC2 /* marvelprojTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = marvelprojTests.swift; sourceTree = "<group>"; };
 		F0DE0A19209D346E0006CDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -606,7 +604,6 @@
 				F09A1A1E20A88B6300101E55 /* views */,
 				F09A1A1D20A88B1800101E55 /* entities */,
 				F0D0EC1520A8887600484E3A /* extensions */,
-				F0DE0A17209D346E0006CDC2 /* marvelprojTests.swift */,
 				F0DE0A19209D346E0006CDC2 /* Info.plist */,
 			);
 			path = marvelprojTests;
@@ -822,7 +819,6 @@
 				F0D0EC1720A8889100484E3A /* UIColor+Marvel+Test.swift in Sources */,
 				F03333EF20A8C92200488FDE /* EventsEntityTest.swift in Sources */,
 				F0C146D120A8B6BA009F57BD /* ComicsEntityTest.swift in Sources */,
-				F0DE0A18209D346E0006CDC2 /* marvelprojTests.swift in Sources */,
 				F09A1A2020A88B7D00101E55 /* CharacterEntityTest.swift in Sources */,
 				F0D0EC1420A882D100484E3A /* NSObjectClassNameTest.swift in Sources */,
 			);

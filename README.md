@@ -48,3 +48,5 @@ Clone the repository:
 ```shell
 git clone https://github.com/andrevinic/marvelproj.git
 ```
+
+![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.21.png)

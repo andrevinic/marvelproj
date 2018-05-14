@@ -24,11 +24,10 @@ extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
         default:
             return 0
         }
-//        return LIMIT_OF_COLLECTION_VIEW_CELLS_PER_CELL
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarvelDetailCollectionViewCell.className, for: indexPath) as! MarvelDetailCollectionViewCell
         
         if(collectionView.tag == 1){
@@ -74,23 +73,11 @@ extension MarvelCharacterDetailViewController:UICollectionViewDelegate{
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let sectionDetail = indexPath.section
         let details: Details? = self.getDetails(collectionView: collectionView, at: indexPath)
-        
-        
-//
-//        if(collectionView.tag == 1){
-//            let comic = self.comics[indexPath.row]
-//
-//
-//        }else if(collectionView.tag == 2){
-//
-//        }
+
         
         let popUpViewController = MarvelRouter.instantiateMarvelCharacterDetailPopupViewController()
-//        popUpViewController.thumbnail = comic.thumbnail?.fullPath()
         popUpViewController.details = details
-//        popUpViewController.sourceView = self.view
         self.navigationController?.pushViewController(popUpViewController, animated: false)
         
     }
@@ -114,24 +101,7 @@ extension MarvelCharacterDetailViewController:UICollectionViewDelegateFlowLayout
 
         return CGSize(width: SIZE_FOR_COLLECTION_VIEW_LAYOUT_WIDTH, height: SIZE_FOR_COLLECTION_VIEW_LAYOUT_HEIGHT)
     }
-    
-    
-    ////////////////////////////////////////////////////////////////
-    //MARK:-
-    //MARK:This should center the collectionview
-    //MARK:- reference: https://stackoverflow.com/questions/34267662/how-to-center-horizontally-uicollectionview-cells
-    ////////////////////////////////////////////////////////////////
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//        let totalCellWidth = CENTER_CONSTANT_CELL_WIDTH_VALUE
-//        let totalSpacingWidth = CELL_SPACING_BETWEEN_COLLECTION_VIEW_CELL
-//
-//        let leftInset = (collectionView.bounds.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-//        let rightInset = leftInset
-//
-//        return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
-//    }
 }
 
 extension MarvelCharacterDetailViewController{
@@ -140,7 +110,6 @@ extension MarvelCharacterDetailViewController{
         let comic = self.comics[indexPath.row] as Comics
         let img_url = (comic.thumbnail?.fullPath())!
         cell.collectionCellImage.downloadedFrom(link: img_url)
-//            cell.detailName.text = comic.title!
         
     }
     func configureCellEvent(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -148,16 +117,13 @@ extension MarvelCharacterDetailViewController{
         let event = events[indexPath.row] as Events
             let img_url = (event.thumbnail?.fullPath())!
             cell.collectionCellImage.downloadedFrom(link: img_url)
-//            cell.detailName.text = event.title!
         
     }
     func configureCellSerie(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
 
          let serie = series[indexPath.row] as Series
             let img_url = (serie.thumbnail?.fullPath())!
-            let url = URL(string: img_url)!
             cell.collectionCellImage.downloadedFrom(link: img_url)
-//            cell.detailName.text = serie.title!
         
     }
 }

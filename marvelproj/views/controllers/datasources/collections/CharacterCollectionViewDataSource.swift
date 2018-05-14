@@ -10,18 +10,17 @@ import UIKit
 
 class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
     
-    var array:NSMutableArray?
+    var array:[Character] = []
     var nibName:String?
-    var favoriteChars: NSMutableArray?
+    var favoriteChars: [Character] = []
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
     
-    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String, favoriteChars: NSMutableArray) {
+    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: [Character], nibName: String) {
         self.collectionView = collectionView
         self.delegate = delegate
         self.array = array
         self.nibName = nibName
-        self.favoriteChars = favoriteChars
         
         super.init()
         collectionView.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
@@ -30,13 +29,13 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if(array?.count == 0){
+        if(array.count == 0){
             return UICollectionViewCell()
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.nibName!, for: indexPath) as! CharacterCollectionViewCell
-        let character = self.array?.object(at: indexPath.row) as! Character
-        if(self.favoriteChars?.count == 0){
+        let character = self.array[indexPath.row]
+        if(self.favoriteChars.count == 0){
             cell.favoriteButton.isHidden = true
         }
         cell.setupCell(char: character)
@@ -45,17 +44,18 @@ class CharacterCollectionViewDataSource: NSObject, CharactersCollectionDataSourc
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return (self.array?.count)!
+        return self.array.count
     }
     
 }
 
 class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     weak var delegate: MarvelCharacterDelegate?
-    weak var characters: NSMutableArray?
+    
+    var characters: [Character] = []
     var numberOfCellsInRow: Int = 0
     
-    init(_ delegate: MarvelCharacterDelegate, characters: NSMutableArray, numberOfCellsInRow: Int) {
+    init(_ delegate: MarvelCharacterDelegate, characters: [Character], numberOfCellsInRow: Int) {
         self.delegate = delegate
         self.characters = characters
         self.numberOfCellsInRow = numberOfCellsInRow
@@ -63,7 +63,7 @@ class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if(indexPath.row == (self.characters?.count)! - 1){
+        if(indexPath.row == self.characters.count - 1){
             self.delegate?.fetchCharacters()
 
         }

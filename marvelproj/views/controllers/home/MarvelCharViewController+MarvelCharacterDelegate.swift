@@ -13,7 +13,7 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
     func didSelectCharacterFavorite(index: IndexPath){
         
         let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
-        let char = self.favoriteCharactersFetched.object(at: index.row) as? Character
+        let char = self.favoriteCharactersFetched[index.row]
         nextController.character = char
         nextController.isFavorite = true
         self.navigationController?.pushViewController(nextController, animated: true)
@@ -21,10 +21,11 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
     func didSelectCharacter(index: IndexPath) {
         
         let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
-        let char = characters.object(at: index.row) as? Character
+        let char = characters[index.row]
         nextController.character = char
         
-        if(self.check(charID: (char?.id)!)){
+        
+        if(self.favoriteCharactersIDs.contains(char.id)){
             nextController.isFavorite = true
         }else{
             nextController.isFavorite = false
@@ -36,7 +37,7 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
         self.activityIndicator.startAnimating()
         
         MarvelHTTPManager().fetchCharacters(offset: self.offset) { (characters, error) in
-            self.characters.addObjects(from: characters)
+            self.characters += characters
             
             self.offset += LIMIT_FETCH
             if(self.showDataWithList){

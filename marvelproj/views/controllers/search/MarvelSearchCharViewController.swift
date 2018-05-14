@@ -23,25 +23,23 @@ class MarvelSearchCharViewController: UIViewController, UICollectionViewDelegate
     
     @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     
-    var searchedCharacters: NSMutableArray!
+    var searchedCharacters: [Character] = []
     var searchActive : Bool = false
     var searchText: String = ""
     
     var coreDataManager: CoreDataManager!
     var favoriteCharactersIDs:[Int] = []
-    var favoriteCharactersFetched:NSMutableArray!
+    var favoriteCharactersFetched:[Character] = []
 }
 
 extension MarvelSearchCharViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.favoriteCharactersFetched = NSMutableArray()
         self.NoFoundSearch.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
         self.collectionView.isHidden = true
         self.initialSearchScreen.isHidden = false
         self.searchBar.delegate = self
-        self.searchedCharacters = NSMutableArray()
         
     }
     
@@ -54,7 +52,7 @@ extension MarvelSearchCharViewController{
         self.NoFoundSearch.isHidden = true
         self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.searchedCharacters, numberOfCellsInRow: NUMBER_OF_CELLS_IN_COLLECTION_VIEW_IN_SEARCH_CHARACTERS)
         
-        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className, favoriteChars: NSMutableArray())
+        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: self.characterCollectionViewDelegate!, array: self.searchedCharacters, nibName:CharacterCollectionViewCell.className)
        
             self.collectionView.isHidden = false
             self.initialSearchScreen.isHidden = true
@@ -78,8 +76,9 @@ extension MarvelSearchCharViewController{
                 
                 
             }else{
-            self.searchedCharacters.removeAllObjects()
-            self.searchedCharacters.addObjects(from: characters)
+            
+            self.searchedCharacters = []
+            self.searchedCharacters+=characters
            
             DispatchQueue.main.async {
                 self.setupCollectionView()
@@ -126,7 +125,7 @@ extension MarvelSearchCharViewController: MarvelCharacterDelegate{
     
     func didSelectCharacter(index: IndexPath) {
         let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
-        nextController.character = searchedCharacters.object(at: index.row) as? Character
+        nextController.character = searchedCharacters[index.row]
         self.navigationController?.pushViewController(nextController, animated: true)
         
     }
@@ -153,7 +152,7 @@ extension MarvelSearchCharViewController: MarvelFavorite{
         for charID in self.favoriteCharactersIDs{
             group.enter()
             MarvelHTTPManager().fetchCharacterByID(characterID: charID) { [weak self] (character, error) in
-                self?.favoriteCharactersFetched.add(character)
+                self?.favoriteCharactersFetched.append(character)
                 group.leave()
             }
         }

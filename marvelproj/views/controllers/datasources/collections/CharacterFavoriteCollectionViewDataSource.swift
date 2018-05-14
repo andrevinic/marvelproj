@@ -10,14 +10,13 @@ import UIKit
 
 class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionDataSourceInterface {
     var offset: Int?
-    var array:NSMutableArray?
+    var array:[Character] = []
     var nibName: String?
-    var favoriteChars: NSMutableArray?
     
     weak var collectionView: UICollectionView?
     weak var delegate: UICollectionViewDelegate?
     
-    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: NSMutableArray, nibName: String, favoriteChars: NSMutableArray) {
+    required init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: [Character], nibName: String) {
         self.collectionView = collectionView
         self.delegate = delegate
         self.array = array
@@ -33,12 +32,12 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if((self.array?.count) == 0){
+        if(self.array.count == 0){
             return UICollectionViewCell()
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: nibName!, for: indexPath) as! MarvelCharFavoriteCollectionViewCell
-        let character = self.array?.object(at: indexPath.row) as! Character
+        let character = self.array[indexPath.row]
         cell.setupCell(char: character)
         cell.favoriteImageCharacter.backgroundColor = .lightGray
         
@@ -47,18 +46,17 @@ class CharacterFavoriteCollectionViewDataSource: NSObject, CharactersCollectionD
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return (self.array?.count)!
+        return self.array.count
     }
     
 }
 
 
 class CharacterFavoriteCollectionViewDelegate:NSObject, UICollectionViewDelegateFlowLayout{
-    weak var characters: NSMutableArray?
+
     weak var delegate: MarvelCharacterDelegate?
     
-    init(_ characters: NSMutableArray, delegate: MarvelCharacterDelegate) {
-        self.characters = characters
+    init(delegate: MarvelCharacterDelegate) {
         self.delegate = delegate
     }
     

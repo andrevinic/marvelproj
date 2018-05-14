@@ -19,7 +19,7 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         let cell = self.tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath) as! CharacterTableViewCell
-        let character = self.characters.object(at: indexPath.row) as! Character
+        let character = self.characters[indexPath.row]
         cell.setupCell(char: character)
         let selectionColor = UIView(frame: cell.frame)
         selectionColor.backgroundColor = UIColor.black
@@ -29,7 +29,7 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
             self.addToFavorite(at: indexPath, character: character)
         }
         let charID = character.id
-        if check(charID: charID){
+        if self.favoriteCharactersIDs.contains(charID){
             let imageFavoriteSelected = UIImage(named: "favorite_selected")
             cell.favoriteButton.setImage(imageFavoriteSelected, for: .normal)
         }else{

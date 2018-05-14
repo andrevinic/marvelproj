@@ -26,7 +26,7 @@ extension MarvelCharacterDetailViewController: MarvelFavorite{
     }
     
     func check(charID: Int) -> Bool {
-        if(self.isFavorite!){
+        if(self.isFavorite){
             return true
         }
         

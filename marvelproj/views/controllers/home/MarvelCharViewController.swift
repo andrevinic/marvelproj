@@ -16,7 +16,6 @@ protocol MarvelFavorite{
     func addToFavorite(at indexPath: IndexPath, character: Character)
     func fetchFavoriteRequestsFromCoreData()
     func fetchCharacterByIDs()
-    func check(charID: Int)->Bool
 }
 
 class MarvelCharViewController: UIViewController {
@@ -32,13 +31,13 @@ class MarvelCharViewController: UIViewController {
     var favoriteCollectionViewDelegate: CharacterFavoriteCollectionViewDelegate?
     var characterCollectionViewDelegate: CharacterCollectionViewDelegate?
     
-    var characters: NSMutableArray!
+    var characters: [Character] = []
     var offset : Int = 0
     var showDataWithList = true
     
     var coreDataManager: CoreDataManager!
     var favoriteCharactersIDs:[Int] = []
-    var favoriteCharactersFetched:NSMutableArray!
+    var favoriteCharactersFetched:[Character] = []
     
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
     
@@ -53,20 +52,21 @@ extension MarvelCharViewController{
         super.viewDidLoad()
         
         self.coreDataManager = CoreDataManager(modelName: "Favorite")
-        self.fetchFavoriteRequestsFromCoreData()
-        self.fetchCharacterByIDs()
-        self.characters = NSMutableArray()
-        self.favoriteCharactersFetched = NSMutableArray()
+        self.characters = []
+        self.favoriteCharactersFetched = []
         self.tableView.isHidden = true
         self.collectionView.isHidden = true
         self.activityIndicator.startAnimating()
+        
+        self.hideFavoriteBar()
         self.fetchCharacters()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
    
         self.fetchFavoriteRequestsFromCoreData()
+        self.fetchCharacterByIDs()
         
         if(self.showDataWithList){
             self.setupTableView()
@@ -97,9 +97,9 @@ extension MarvelCharViewController{
         self.tableView.isHidden = true
         self.showDataWithList = false
 
-        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters!, numberOfCellsInRow: NUMBER_OF_CELLS_IN_COLLECTION_VIEW_IN_CHARACTERS)
+        self.characterCollectionViewDelegate = CharacterCollectionViewDelegate(self, characters: self.characters, numberOfCellsInRow: NUMBER_OF_CELLS_IN_COLLECTION_VIEW_IN_CHARACTERS)
 
-        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: CharacterCollectionViewCell.className, favoriteChars: NSMutableArray())
+        self.collectionViewDatasource = CharacterCollectionViewDataSource(collectionView: self.collectionView, delegate: characterCollectionViewDelegate!, array: self.characters, nibName: CharacterCollectionViewCell.className)
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.collectionView.reloadData()
@@ -107,11 +107,15 @@ extension MarvelCharViewController{
     }
     
     func setupFavoriteCollectionView(){
-        self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate(self.favoriteCharactersFetched, delegate: self)
-        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.favoriteCharactersFetched, nibName: MarvelCharFavoriteCollectionViewCell.className, favoriteChars: NSMutableArray())
-
-            self.favoriteCollectionView.reloadData()
+        self.favoriteCollectionViewDelegate = CharacterFavoriteCollectionViewDelegate(delegate: self)
+        self.favoriteCollectionViewDatasource = CharacterFavoriteCollectionViewDataSource(collectionView: self.favoriteCollectionView, delegate: self.favoriteCollectionViewDelegate!, array: self.favoriteCharactersFetched, nibName: MarvelCharFavoriteCollectionViewCell.className)
+        if(self.favoriteCharactersFetched.count > 0){
+            self.unhideFavoriteBar()
+        }
+        self.favoriteCollectionView.reloadData()
+        
     }
+    
     
 }
 

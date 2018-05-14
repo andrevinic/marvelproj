@@ -38,7 +38,7 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
             cell.addFavoritePressed = {
                 self.addToFavorite(at: indexPath, character: self.character!)
             }
-            if(self.isFavorite!){
+            if(self.isFavorite){
                 let favoriteImage = UIImage(named: "favorite_selected")
                 cell.favoriteButton.setImage(favoriteImage, for: .normal)
             }
@@ -92,9 +92,9 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
     }
     
     func configureStoryCell(cell: MarvelDetailStoriesTableViewCell, indexPath: IndexPath){
-//        if(self.stories?.count == 0 || indexPath.row >= (self.stories?.count)!){return}
+
         let story = self.stories[indexPath.row]
-            cell.storyDescription.text = story.description
+        cell.storyDescription.text = (story.description?.isEmpty)! ? "No description" : story.description
             cell.storyTitle.text = story.title
         
     }
@@ -106,7 +106,6 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         cell.characterImage.downloadedFrom(link: path!)
         cell.characterImage.setCircularImageView()
         
-//        char.description.isEmpty ? "No description" : char.description
         cell.characterDescription.text = (self.character?.description.isEmpty)! ? "No description" : character?.description
     }
     

@@ -18,7 +18,7 @@ class MarvelDetailTransitionViewController: UIViewController {
     var events: [Events] = []
     var stories: [Story] = []
     
-    var isFavorite: Bool?
+    var isFavorite: Bool = false
 }
 
 extension MarvelDetailTransitionViewController{

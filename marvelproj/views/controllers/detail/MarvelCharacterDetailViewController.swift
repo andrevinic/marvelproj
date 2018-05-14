@@ -19,35 +19,42 @@ class MarvelCharacterDetailViewController: UIViewController {
     var stories: [Story] = []
     
     var coreDataManager: CoreDataManager!
-    var isFavorite: Bool?
+    var isFavorite = false
 }
 
 extension MarvelCharacterDetailViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+       
         self.navigationController?.navigationBar.isHidden = false
-
-        self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.className)
-        self.tableView.register(UINib(nibName: MarvelComicsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelComicsNotFoundTableViewCell.className)
-          self.tableView.register(UINib(nibName: MarvelSeriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelSeriesNotFoundTableViewCell.className)
-        self.tableView.register(UINib(nibName: MarvelEventsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelEventsNotFoundTableViewCell.className)
-         self.tableView.register(UINib(nibName: MarvelStoriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelStoriesNotFoundTableViewCell.className)
-        self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
-        self.tableView.register(UINib(nibName:MarvelDetailStoriesTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailStoriesTableViewCell.className)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(performSegueToReturnBack))
-
-        self.tableView.reloadData()
+        
+        self.setupTableView()
 
         self.coreDataManager = CoreDataManager(modelName: "Favorite")
-
+        
+        
     }
 }
 
 extension MarvelCharacterDetailViewController{
+    
+    func setupTableView(){
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.className)
+        self.tableView.register(UINib(nibName: MarvelComicsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelComicsNotFoundTableViewCell.className)
+        self.tableView.register(UINib(nibName: MarvelSeriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelSeriesNotFoundTableViewCell.className)
+        self.tableView.register(UINib(nibName: MarvelEventsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelEventsNotFoundTableViewCell.className)
+        self.tableView.register(UINib(nibName: MarvelStoriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelStoriesNotFoundTableViewCell.className)
+        self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
+        self.tableView.register(UINib(nibName:MarvelDetailStoriesTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailStoriesTableViewCell.className)
+        
+         self.tableView.reloadData()
+    }
     func performSegueToReturnBack(){
         if let nav = self.navigationController{
             nav.popToRootViewController(animated: true)

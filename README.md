@@ -42,6 +42,7 @@ iOS project has the following configuration:
 
 
 ##### Usage - XCode 9.0 -> 9.3
+You can open the marvelproj.xcodeproj file and run it and run as 'test' to check the tests
 
 Clone the repository:
 

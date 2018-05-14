@@ -67,22 +67,31 @@ extension MarvelSearchCharViewController{
     
     func fetchSearchCharacter(nameStartsWith: String){
         self.loadingActivity.startAnimating()
-        MarvelHTTPManager().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { (characters, error) in
+        let group = DispatchGroup()
+        group.enter()
+        MarvelHTTPManager().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { [weak self] (characters, error) in
+            
             if(characters.count == 0){
                 
-                self.NoFoundSearch.isHidden = false
-                self.loadingActivity.stopAnimating()
-                self.initialSearchScreen.isHidden = true
+                self?.NoFoundSearch.isHidden = false
+                self?.initialSearchScreen.isHidden = true
                 
                 
             }else{
-            
-            self.searchedCharacters = []
-            self.searchedCharacters+=characters
-           
-            self.setupCollectionView()
+                
+                self?.searchedCharacters = []
+                self?.searchedCharacters+=characters
                 
             }
+            
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            
+            self.setupCollectionView()
+            self.loadingActivity.stopAnimating()
+            
         }
 
     }

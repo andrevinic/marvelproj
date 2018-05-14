@@ -50,16 +50,6 @@ Clone the repository:
 git clone https://github.com/andrevinic/marvelproj.git
 ```
 
-![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.21.png)
+![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.21.png) ![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.30.22.png) ![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.30.png)
 
-![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.30.22.png)
-
-![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.30.png)
-
-![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.38.png)
-
-![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.46.png)
-
-![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.29.53.png)
-
-![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.30.02.png)
+![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.38.png) ![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.28.46.png) ![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.29.53.png) ![alt text](https://github.com/andrevinic/marvelproj/blob/master/marvel_images/Screen%20Shot%202018-05-13%20at%2023.30.02.png)

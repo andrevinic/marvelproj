@@ -21,8 +21,8 @@ iOS project has the following configuration:
     
   * `strings.plist` in the folder `marvelproj/utils` containing:
     - characters url to fetch all characters limited in 20`
-    - public key (Default there is my public key)
-    - private key(Default there is my private key)
+    - public key (get on marvel api ```https://developer.marvel.com/documentation/```)
+    - private key(get on marvel api ```https://developer.marvel.com/documentation/```)
   * `unit-tests`
     - Unit tests
     * `MarvelConstants`

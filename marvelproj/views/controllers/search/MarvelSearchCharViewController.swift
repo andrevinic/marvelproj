@@ -80,9 +80,7 @@ extension MarvelSearchCharViewController{
             self.searchedCharacters = []
             self.searchedCharacters+=characters
            
-            DispatchQueue.main.async {
-                self.setupCollectionView()
-                }
+            self.setupCollectionView()
                 
             }
         }
@@ -115,7 +113,10 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
         
         if(self.searchText.count == 0){return}
         if(self.searchText.trimmingCharacters(in: .whitespacesAndNewlines).count == 0){return}
-        self.fetchSearchCharacter(nameStartsWith: self.searchText)
+        
+        DispatchQueue.main.async {
+            self.fetchSearchCharacter(nameStartsWith: self.searchText)
+        }
         searchActive = false;
     }
     
@@ -132,55 +133,6 @@ extension MarvelSearchCharViewController: MarvelCharacterDelegate{
     func didSelectCharacterFavorite(index: IndexPath) {}
 
     func fetchCharacters() {}
-    
-}
-
-extension MarvelSearchCharViewController: MarvelFavorite{
-    
-    func fetchFavoriteRequestsFromCoreData(){
-        let fetchRequests = coreDataManager.fetchRequest()
-        for record in fetchRequests{
-            if let record_id = record.value(forKey: "characterID") as? Int{
-                self.favoriteCharactersIDs.append(record_id)
-            }
-        }
-    }
-    
-    func fetchCharacterByIDs(){
-        let group = DispatchGroup()
-        
-        for charID in self.favoriteCharactersIDs{
-            group.enter()
-            MarvelHTTPManager().fetchCharacterByID(characterID: charID) { [weak self] (character, error) in
-                self?.favoriteCharactersFetched.append(character)
-                group.leave()
-            }
-        }
-        
-        group.notify(queue: .main) {
-//            self.setupFavoriteCollectionView()
-        }
-    }
-    
-    func addToFavorite(at indexPath: IndexPath, character: Character){
-        
-        coreDataManager.addFavorite(character: character)
-       
-        self.favoriteCharactersFetched.insert(character, at: 0)
-        self.favoriteCharactersIDs.append(character.id)
-//        self.setupFavoriteCollectionView()
-        
-    }
-    
-    func check(charID: Int)->Bool{
-        for item in self.favoriteCharactersIDs{
-            if item == charID{
-                return true
-            }
-            
-        }
-        return false
-    }
     
 }
 

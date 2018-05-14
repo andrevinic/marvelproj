@@ -21,8 +21,6 @@ class MarvelCharacterDetailPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor.clear
-        self.modalPresentationStyle = .popover
-        self.view.backgroundColor = UIColor.clear
 
         self.titleDetail.text = details?.title ?? "No title"
         self.descriptionDetail.text = details?.description ?? "No description"

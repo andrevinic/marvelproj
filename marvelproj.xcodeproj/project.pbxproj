@@ -492,7 +492,6 @@
 		F0A516DB209E9DB2003A6436 /* datasources */ = {
 			isa = PBXGroup;
 			children = (
-				F0A516E3209F4A02003A6436 /* tables */,
 				F0A516E2209F49FB003A6436 /* collections */,
 			);
 			path = datasources;
@@ -506,13 +505,6 @@
 				F0A516E0209F4981003A6436 /* CharactersCollectionDataSourceInterface.swift */,
 			);
 			path = collections;
-			sourceTree = "<group>";
-		};
-		F0A516E3209F4A02003A6436 /* tables */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = tables;
 			sourceTree = "<group>";
 		};
 		F0D0EBFB20A73E0800484E3A /* favorite */ = {

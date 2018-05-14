@@ -80,10 +80,7 @@ class CharacterCollectionViewDelegate:NSObject, UICollectionViewDelegate, UIColl
         let width = collectionViewSize / numberOfCells
         return CGSize(width: width, height: width)
         
-//        return CGSize(width: collectionViewSize / 2, height: collectionViewSize / 2)
     }
-    
-//    collectionview
 }
 
 

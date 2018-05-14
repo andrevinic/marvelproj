@@ -116,9 +116,7 @@ extension MarvelCharViewController{
         
     }
     
-    
 }
-
 
 
 extension MarvelCharViewController{

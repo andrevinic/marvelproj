@@ -95,7 +95,7 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
 
         let story = self.stories[indexPath.row]
         cell.storyDescription.text = (story.description?.isEmpty)! ? "No description" : story.description
-            cell.storyTitle.text = story.title
+        cell.storyTitle.text = story.title
         
     }
     

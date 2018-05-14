@@ -99,10 +99,6 @@ extension MarvelDetailTransitionViewController{
         array.append(#imageLiteral(resourceName: "frame-9"))
         array.append(#imageLiteral(resourceName: "frame-44"))
         
-//        for index in 0...59{
-//            array.append(#imageLiteral(resourceName: "5")index)
-//        }
-        
         self.loadingImageView.contentMode = .scaleToFill
         self.loadingImageView.animationImages = array
         self.loadingImageView.animationDuration = 1.0

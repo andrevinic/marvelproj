@@ -27,7 +27,7 @@ extension MarvelHTTPManager{
             (data, response, error) in
             if error == nil {
                 //JSONSerialization
-                
+    
                 if let jsonWithObjectRoot = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]{
                     
                     let characters = self.parseToCharacters(jsonWithObjectRoot: jsonWithObjectRoot)

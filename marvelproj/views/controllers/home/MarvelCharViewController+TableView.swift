@@ -21,21 +21,14 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = self.tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.className, for: indexPath) as! CharacterTableViewCell
         let character = self.characters[indexPath.row]
         cell.setupCell(char: character)
-        let selectionColor = UIView(frame: cell.frame)
-        selectionColor.backgroundColor = UIColor.black
-        cell.selectedBackgroundView = selectionColor
         
         cell.addFavoritePressed = {
             self.addToFavorite(at: indexPath, character: character)
         }
-        let charID = character.id
-        if self.favoriteCharactersIDs.contains(charID){
-            let imageFavoriteSelected = UIImage(named: "favorite_selected")
-            cell.favoriteButton.setImage(imageFavoriteSelected, for: .normal)
-        }else{
-            let imageFavoriteNotSelected = UIImage(named: "favorite_unselected")
-            cell.favoriteButton.setImage(imageFavoriteNotSelected, for: .normal)
-        }
+        
+       configureCellFavorite(character: character, cell: cell)
+
+        
         return cell
     }
     
@@ -51,5 +44,16 @@ extension MarvelCharViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.didSelectCharacter(index: indexPath)
+    }
+    
+    func configureCellFavorite(character: Character, cell: CharacterTableViewCell){
+        let charID = character.id
+        if self.favoriteCharactersIDs.contains(charID){
+            let imageFavoriteSelected = UIImage(named: "favorite_selected")
+            cell.favoriteButton.setImage(imageFavoriteSelected, for: .normal)
+        }else{
+            let imageFavoriteNotSelected = UIImage(named: "favorite_unselected")
+            cell.favoriteButton.setImage(imageFavoriteNotSelected, for: .normal)
+        }
     }
 }

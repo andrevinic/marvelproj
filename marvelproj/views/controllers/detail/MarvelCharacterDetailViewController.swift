@@ -55,7 +55,7 @@ extension MarvelCharacterDetailViewController{
         
          self.tableView.reloadData()
     }
-    func performSegueToReturnBack(){
+    @objc func performSegueToReturnBack(){
         if let nav = self.navigationController{
             nav.popToRootViewController(animated: true)
         }else{

@@ -13,8 +13,8 @@ protocol CharactersCollectionDataSourceInterface: UICollectionViewDataSource {
     var array:[Character] {get}
     var nibName:String? {get}
 
-    weak var collectionView: UICollectionView? {get}
-    weak var delegate: UICollectionViewDelegate? {get}
+    var collectionView: UICollectionView? {get}
+    var delegate: UICollectionViewDelegate? {get}
     
     init(collectionView: UICollectionView, delegate: UICollectionViewDelegate, array: [Character], nibName: String)
     

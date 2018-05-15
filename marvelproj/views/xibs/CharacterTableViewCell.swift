@@ -41,7 +41,7 @@ extension CharacterTableViewCell{
         self.nameCharacter.text = char.name
         self.descriptionCharacter.text = char.description.isEmpty ? "No description" : char.description
         
-        let thumbnail = char.thumbnail!
+//        let thumbnail = char.thumbnail!
         
         let urlstr = thumbnail.fullPath()
         self.imageCharacter.downloadedFrom(link: urlstr)

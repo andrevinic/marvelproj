@@ -252,10 +252,7 @@
                                 <rect key="frame" x="0.0" y="91" width="375" height="527"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We couldn't find this character, try another one :)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zy-hE-J7g">
-                                        <rect key="frame" x="10" y="256" width="355" height="15.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="355" id="nIM-iX-h1e"/>
-                                        </constraints>
+                                        <rect key="frame" x="51" y="256" width="273.5" height="15.5"/>
                                         <fontDescription key="fontDescription" name="CircularStd-Bold" family="Circular Std" pointSize="12"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -264,8 +261,6 @@
                                 <color key="backgroundColor" red="0.098039215686274508" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="3zy-hE-J7g" firstAttribute="centerX" secondItem="TSE-3F-tZ3" secondAttribute="centerX" id="I3k-El-SEf"/>
-                                    <constraint firstItem="3zy-hE-J7g" firstAttribute="leading" secondItem="TSE-3F-tZ3" secondAttribute="leading" constant="10" id="JXi-u5-eI8"/>
-                                    <constraint firstAttribute="trailing" secondItem="3zy-hE-J7g" secondAttribute="trailing" constant="10" id="h48-4x-D5j"/>
                                     <constraint firstItem="3zy-hE-J7g" firstAttribute="centerY" secondItem="TSE-3F-tZ3" secondAttribute="centerY" id="o4R-bI-65o"/>
                                 </constraints>
                             </view>
@@ -412,8 +407,10 @@
                                     <constraint firstAttribute="trailing" secondItem="fva-6f-lw9" secondAttribute="trailing" constant="15" id="4rf-oV-BlJ"/>
                                     <constraint firstItem="vjf-bc-03d" firstAttribute="centerX" secondItem="zNR-X8-qsH" secondAttribute="centerX" id="A9q-FW-liC"/>
                                     <constraint firstItem="wvu-np-1MM" firstAttribute="top" secondItem="fva-6f-lw9" secondAttribute="bottom" constant="19" id="DD2-dX-QCh"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wvu-np-1MM" secondAttribute="trailing" constant="20" symbolic="YES" id="JQH-Pz-ih3"/>
                                     <constraint firstItem="fva-6f-lw9" firstAttribute="top" secondItem="rAZ-rf-vuX" secondAttribute="bottom" constant="8" id="N8Z-1P-8of"/>
                                     <constraint firstItem="zNR-X8-qsH" firstAttribute="top" secondItem="wvu-np-1MM" secondAttribute="bottom" constant="8" id="S6Q-ko-sMK"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rAZ-rf-vuX" secondAttribute="trailing" constant="20" symbolic="YES" id="Z2U-Lh-g2V"/>
                                     <constraint firstItem="rAZ-rf-vuX" firstAttribute="top" secondItem="vjf-bc-03d" secondAttribute="bottom" constant="31" id="bvi-FS-ey4"/>
                                     <constraint firstItem="rAZ-rf-vuX" firstAttribute="leading" secondItem="ip7-4x-9Pk" secondAttribute="leading" constant="25" id="fjM-Wx-UPJ"/>
                                     <constraint firstItem="vjf-bc-03d" firstAttribute="leading" secondItem="ip7-4x-9Pk" secondAttribute="leading" constant="93" id="ghC-4c-RuR"/>

@@ -5,8 +5,8 @@
 	<key>characteres</key>
 	<string>https://gateway.marvel.com/v1/public/characters</string>
 	<key>privateKey</key>
-	<string></string>
+	<string>c843ee9ce8e00d6333ed4d7b4d1b47a1c605cc7e</string>
 	<key>publicKey</key>
-	<string></string>
+	<string>521c1837593e3b7c900b2c9b2b5cb5e1</string>
 </dict>
 </plist>

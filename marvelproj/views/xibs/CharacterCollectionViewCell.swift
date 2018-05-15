@@ -22,11 +22,11 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     func setupCell(char: Character){
         self.nameCharacter.text = char.name
     
-        let thumbnail = char.thumbnail!
+//        let thumbnail = char.thumbnail!
         
-        let urlstr = thumbnail.fullPath()
+//        let urlstr = thumbnail.fullPath()
 //        self.imageCharacter.download(url: urlstr)
-        self.imageCharacter.downloadedFrom(link: urlstr)
+//        self.imageCharacter.downloadedFrom(link: urlstr)
     }
 
 }

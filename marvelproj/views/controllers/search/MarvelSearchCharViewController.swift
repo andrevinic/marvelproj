@@ -75,7 +75,7 @@ extension MarvelSearchCharViewController{
                 
                 self?.NoFoundSearch.isHidden = false
                 self?.initialSearchScreen.isHidden = true
-                
+                self?.searchedCharacters = []
                 
             }else{
                 
@@ -88,10 +88,13 @@ extension MarvelSearchCharViewController{
         }
         
         group.notify(queue: .main) {
-            
-            self.setupCollectionView()
-            self.loadingActivity.stopAnimating()
-            
+            if(self.searchedCharacters.isEmpty){
+                self.NoFoundSearch.isHidden = false
+                self.initialSearchScreen.isHidden = true
+            }else{
+                self.setupCollectionView()
+                self.loadingActivity.stopAnimating()
+            }
         }
 
     }

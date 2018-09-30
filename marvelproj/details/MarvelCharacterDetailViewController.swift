@@ -44,10 +44,13 @@ extension MarvelCharacterDetailViewController{
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        //TODO R.swift
+        
         self.tableView.register(UINib(nibName:MarvelDetailTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelDetailTableViewCell.className)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.className)
-        self.tableView.register(UINib(nibName: MarvelComicsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelComicsNotFoundTableViewCell.className)
-        self.tableView.register(UINib(nibName: MarvelSeriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelSeriesNotFoundTableViewCell.className)
+        self.tableView.register(UINib(nibName: R.reuseIdentifier.marvelComicsNotFoundTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: MarvelComicsNotFoundTableViewCell.className)
+        self.tableView.register(UINib(nibName: R.reuseIdentifier.marvelSeriesNotFoundTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: MarvelSeriesNotFoundTableViewCell.className)
         self.tableView.register(UINib(nibName: MarvelEventsNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelEventsNotFoundTableViewCell.className)
         self.tableView.register(UINib(nibName: MarvelStoriesNotFoundTableViewCell.className, bundle: nil), forCellReuseIdentifier: MarvelStoriesNotFoundTableViewCell.className)
         self.tableView.register(UINib(nibName:MarvelDetailTableViewHeaderCellTableViewCell.className, bundle:nil), forCellReuseIdentifier: MarvelDetailTableViewHeaderCellTableViewCell.className)
@@ -55,7 +58,7 @@ extension MarvelCharacterDetailViewController{
         
          self.tableView.reloadData()
     }
-    func performSegueToReturnBack(){
+    @objc func performSegueToReturnBack(){
         if let nav = self.navigationController{
             nav.popToRootViewController(animated: true)
         }else{

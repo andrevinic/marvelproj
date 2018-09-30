@@ -7,33 +7,40 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 extension MarvelHTTPManager{
     
-    func fetchEvents(characterID: Int, completion: @escaping (_ events: [Events], _ error: Error?) -> Void){
-        let dict: KeyDict = MarvelService.getKeys()
+    func fetchEvents(characterID: Int, completion: @escaping (_ events: [Events]?, _ error: Error?) -> Void){
         let ts = NSDate().timeIntervalSince1970.description
-        let hash = (ts + dict.privateKey + dict.publicKey).md5
+        let hash = (ts + MarvelAPIService.apikey + MarvelAPIService.publicKey).md5
         let queryBuilder = QueryBuilder.shared
-        let url = queryBuilder.query(ts: ts, apikey: dict.publicKey, hash: hash, characterID: characterID, detailExtension: "events", limit: LIMIT_OF_FETCH_COLLECTION_VIEW_EVENTS)
-        let session = URLSession.shared
-        
+        let url = queryBuilder.query(ts: ts, apikey: MarvelAPIService.publicKey, hash: hash, characterID: characterID, detailExtension: "events", limit: LIMIT_OF_FETCH_COLLECTION_VIEW_EVENTS)
         guard let requestUrl = URL(string:url) else { return }
-        let request = URLRequest(url:requestUrl)
         
-        let task = session.dataTask(with: request) {
-            (data, response, error) in
-            if error == nil {
-                //JSONSerialization
-                
-                if let jsonWithObjectRoot = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]{
-                    
-                    let events = self.parseToEvents(jsonWithObjectRoot: jsonWithObjectRoot)
-                    completion(events, error)
+        Alamofire.request(requestUrl).responseJSON { (response) in
+            do {
+                switch response.result{
+                case .failure(_):
+                    completion(nil, response.error)
+                case .success(_):
+                    if let json = response.result.value{
+                        let swifty = try JSON(json)
+                        let characters = swifty["data"]["results"].rawString()!
+                        
+                        let data = characters.data(using: .utf8)!
+                        
+                        let response =  try JSONDecoder().decode([Events].self, from: data)
+                        completion(response, nil)
+                    }
                 }
             }
+                
+            catch{
+                print("Error creating the database")
+                
+            }
         }
-        
-        task.resume()
     }
 }

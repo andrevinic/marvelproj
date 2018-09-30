@@ -22,6 +22,8 @@ class MarvelDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        //TODO R.swift
+        
         collectionView.register(UINib(nibName:MarvelDetailCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: MarvelDetailCollectionViewCell.className)
         
         collectionView.backgroundColor = UIColor.clear

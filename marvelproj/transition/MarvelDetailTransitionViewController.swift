@@ -29,7 +29,9 @@ extension MarvelDetailTransitionViewController{
 
         let group = DispatchGroup()
         
-        
+        guard let character = self.character else{
+            return
+        }
         ////////////////////////////////////////////////////////////////
         //MARK:-
         //MARK: Threads to fetch the comics/series/stories/events
@@ -37,32 +39,42 @@ extension MarvelDetailTransitionViewController{
         ////////////////////////////////////////////////////////////////
 
         group.enter()
-        MarvelHTTPManager().fetchComics(characterID: character!.id) { [weak self](comics, error) in
-            self?.comics = comics
+        MarvelHTTPManager().fetchComics(characterID: character.id) { [weak self](comics, error) in
+            
+            if let comics = comics{
+                self?.comics = comics
+            }
             
             group.leave()
             
         }
         group.enter()
-        MarvelHTTPManager().fetchSeries(characterID: character!.id) { [weak self](series, error) in
-            self?.series = series
+        MarvelHTTPManager().fetchSeries(characterID: character.id) { [weak self](series, error) in
+            if let series = series{
+                self?.series = series
+            }
             
             group.leave()
-            
+
         }
         group.enter()
-        MarvelHTTPManager().fetchEvents(characterID: character!.id) { [weak self](events, error) in
-            self?.events = events
+        MarvelHTTPManager().fetchEvents(characterID: character.id) { [weak self](events, error) in
             
+            if let events = events{
+                self?.events = events
+            }
             group.leave()
-            
+
         }
         group.enter()
-        MarvelHTTPManager().fetchStories(characterID: character!.id) { [weak self](stories, error) in
-            self?.stories = stories
+        MarvelHTTPManager().fetchStories(characterID: character.id) { [weak self](stories, error) in
+            
+            if let stories = stories{
+                self?.stories = stories
+            }
             
             group.leave()
-            
+
         }
         group.notify(queue: .main) {
             let nextController = MarvelRouter.instantiateMarvelCharacterDetailViewController()

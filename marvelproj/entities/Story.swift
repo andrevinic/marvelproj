@@ -9,32 +9,26 @@
 import UIKit
 //import ObjectMapper
 
-struct Story{
+struct Story: Details, Codable{
 
     var id: Int?
     var title: String?
     var description: String?
     var thumbnail: Thumbnail?
-}
-
-extension Story{
-    init?(json: [String: Any]) {
-        
-        if let id = json["id"] as? Int{
-            self.id = id
-        }
-        if let title = json["title"] as? String{
-            self.title = title
-        }
-        if let description = json["description"] as? String{
-            self.description = description
-        }else{
-            self.description = "No description"
-        }
-        
-        if let thumbnail = json["thumbnail"] as? [String:Any]{
-            self.thumbnail = Thumbnail(json: thumbnail)
-        }
+    
+    private enum CodingKeys: String, CodingKey{
+        case id
+        case title
+        case description
+        case thumbnail
+    }
+    
+    func encode(to encoder: Encoder) throws
+    {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(description, forKey: .description)
+//        try container.encode(thumbnail, forKey: .thumbnail)
     }
 }
-

@@ -44,7 +44,9 @@ extension CharacterTableViewCell{
         let thumbnail = char.thumbnail!
         
         let urlstr = thumbnail.fullPath()
-        self.imageCharacter.downloadedFrom(link: urlstr)
+        self.imageCharacter.download(image: urlstr)
+
+//        self.imageCharacter.downloadedFrom(link: urlstr)
     }
 }
 

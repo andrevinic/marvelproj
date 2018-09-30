@@ -21,7 +21,8 @@ class CharacterDetailView: UIView {
         let thumbnail = character.thumbnail
         self.characterName.text = character.name
         let urlstr = (thumbnail?.fullPath())!
-        self.characterImage.downloadedFrom(link: urlstr)
+        self.characterImage.download(image: urlstr)
+//        self.characterImage.downloadedFrom(link: urlstr)
 
     }
     

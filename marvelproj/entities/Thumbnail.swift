@@ -8,24 +8,19 @@
 
 import UIKit
 
-struct Thumbnail{
+
+struct Thumbnail: Decodable{
     
     var tExtension: String = ""
     var path: String = ""
-}
-
-extension Thumbnail{
-    init?(json: [String: Any]) {
-        guard let tExtension = json["extension"] as? String,
-            let path = json["path"] as? String
-            else{
-                return nil
-        }
-        self.tExtension = tExtension
-        self.path = path
+    
+    private enum CodingKeys: String, CodingKey{
+        case tExtension = "extension"
+        case path = "path"
     }
-
+    
 }
+
 
 extension Thumbnail{
     func securePath() -> String {

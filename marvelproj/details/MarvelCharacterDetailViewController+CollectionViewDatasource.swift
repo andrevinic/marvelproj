@@ -13,13 +13,13 @@ extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch(collectionView.tag){
-        case 1:
+        case KindCell.comics.rawValue:
             return self.comics.count
-        case 2:
+        case KindCell.series.rawValue:
             return self.series.count
-        case 3:
+        case KindCell.events.rawValue:
             return self.events.count
-        case 4:
+        case KindCell.stories.rawValue:
             return self.stories.count
         default:
             return 0
@@ -30,11 +30,11 @@ extension MarvelCharacterDetailViewController:UICollectionViewDataSource{
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MarvelDetailCollectionViewCell.className, for: indexPath) as! MarvelDetailCollectionViewCell
         
-        if(collectionView.tag == 1){
+        if(collectionView.tag == KindCell.comics.rawValue){
             configureComicsCell(cell: cell, indexPath: indexPath)
-        }else if(collectionView.tag == 2){
+        }else if(collectionView.tag == KindCell.series.rawValue){
             configureSeriesCell(cell: cell, indexPath: indexPath)
-        }else if(collectionView.tag == 3){
+        }else if(collectionView.tag == KindCell.events.rawValue){
             configureEventsCell(cell: cell, indexPath: indexPath)
         }
 
@@ -108,22 +108,28 @@ extension MarvelCharacterDetailViewController{
     func configureCellComic(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
 
         let comic = self.comics[indexPath.row] as Comics
-        let img_url = (comic.thumbnail?.fullPath())!
-        cell.collectionCellImage.downloadedFrom(link: img_url)
+        guard let img_url = (comic.thumbnail?.fullPath()) else{
+            return
+        }
+        cell.collectionCellImage.download(image: img_url)
         
     }
     func configureCellEvent(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
         
         let event = events[indexPath.row] as Events
-            let img_url = (event.thumbnail?.fullPath())!
-            cell.collectionCellImage.downloadedFrom(link: img_url)
+        guard let img_url = (event.thumbnail?.fullPath()) else{
+            return
+        }
+        cell.collectionCellImage.download(image: img_url)
+
         
     }
     func configureCellSerie(cell: MarvelDetailCollectionViewCell, forItemAt indexPath: IndexPath) {
 
          let serie = series[indexPath.row] as Series
-            let img_url = (serie.thumbnail?.fullPath())!
-            cell.collectionCellImage.downloadedFrom(link: img_url)
+        if let img_url = (serie.thumbnail?.fullPath()){
+            cell.collectionCellImage.download(image: img_url)
+        }
         
     }
 }

@@ -26,7 +26,7 @@ class MarvelCharacterDetailPopupViewController: UIViewController {
         self.descriptionDetail.text = details?.description ?? "No description"
         if let thumbnail = self.details?.thumbnail {
             let fullPath = thumbnail.fullPath()
-            self.detailImage.downloadedFrom(link: fullPath)
+            self.detailImage.download(image: fullPath)
         }
         
     }

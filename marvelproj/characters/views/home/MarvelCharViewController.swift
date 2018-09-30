@@ -82,7 +82,8 @@ extension MarvelCharViewController{
         self.tableView.dataSource = self
         self.tableView.isHidden = false
         self.collectionView.isHidden = true
-        self.tableView.register(UINib(nibName:CharacterTableViewCell.className, bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.className)
+        self.tableView.register(UINib(nibName:R.reuseIdentifier.characterTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.className)
+        
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.tableView.reloadData()

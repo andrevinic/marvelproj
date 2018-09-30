@@ -18,6 +18,7 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
         nextController.isFavorite = true
         self.navigationController?.pushViewController(nextController, animated: true)
     }
+    
     func didSelectCharacter(index: IndexPath) {
         
         let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
@@ -37,8 +38,9 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
         self.activityIndicator.startAnimating()
         
         MarvelHTTPManager().fetchCharacters(offset: self.offset) { (characters, error) in
-            self.characters += characters
-            
+            if let characters = characters {
+                self.characters += characters
+            }
             self.offset += LIMIT_FETCH
             if(self.showDataWithList){
                 self.setupTableView()

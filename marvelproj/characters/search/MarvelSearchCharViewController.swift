@@ -71,7 +71,7 @@ extension MarvelSearchCharViewController{
         group.enter()
         MarvelHTTPManager().fetchSearchByNameStartsWith(nameStartsWith: nameStartsWith) { [weak self] (characters, error) in
             
-            if(characters.count == 0){
+            if(characters!.count == 0){
                 
                 self?.NoFoundSearch.isHidden = false
                 self?.initialSearchScreen.isHidden = true
@@ -80,7 +80,7 @@ extension MarvelSearchCharViewController{
             }else{
                 
                 self?.searchedCharacters = []
-                self?.searchedCharacters+=characters
+                self?.searchedCharacters+=characters!
                 
             }
             

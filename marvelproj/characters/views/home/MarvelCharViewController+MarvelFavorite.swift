@@ -30,7 +30,9 @@ extension MarvelCharViewController:MarvelFavorite{
             group.enter()
             MarvelHTTPManager().fetchCharacterByID(characterID: charID) { [weak self] (character, error) in
                 
-                if let contains = (self?.favoriteCharactersFetched.contains(character)){
+                if
+                let character = character,
+                let contains = (self?.favoriteCharactersFetched.contains(character)){
                     do {
                         if(!contains){
                             self?.favoriteCharactersFetched.append(character)

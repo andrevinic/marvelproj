@@ -103,7 +103,7 @@ extension MarvelCharacterDetailViewController:UITableViewDataSource{
         cell.characterName.text = self.character?.name
         let path = self.character?.thumbnail?.fullPath()
        
-        cell.characterImage.downloadedFrom(link: path!)
+        cell.characterImage.download(image: path!)
         cell.characterImage.setCircularImageView()
         
         cell.characterDescription.text = (self.character?.description.isEmpty)! ? "No description" : character?.description

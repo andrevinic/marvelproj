@@ -19,10 +19,8 @@ extension MarvelHTTPManager{
         let queryBuilder = QueryBuilder.shared
         
         let url = queryBuilder.query(ts: ts, apikey: MarvelAPIService.publicKey, hash: hash, nameStartsWith:nameStartsWith, path: CHARACTER_EXT)
-        let session = URLSession.shared
         
         guard let requestUrl = URL(string:url) else { return }
-        let request = URLRequest(url:requestUrl)
         
         if let requestUrl = URL(string:url){
             

@@ -18,9 +18,7 @@ extension MarvelHTTPManager{
         let hash = (ts + MarvelAPIService.apikey + MarvelAPIService.publicKey).md5
         let queryBuilder = QueryBuilder.shared
         let url = queryBuilder.query(ts: ts, apikey: MarvelAPIService.publicKey, hash: hash, characterID: characterID)
-        
-        guard let requestUrl = URL(string:url) else { return }
-        
+                
         if let requestUrl = URL(string:url){
             
             Alamofire.request(requestUrl).responseJSON { (response) in

@@ -178,17 +178,17 @@ extension MarvelCharacterDetailViewController:UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
-        if(indexPath.section == 1 && self.comics.count > 0){
+        if(indexPath.section == KindCell.comics.rawValue && self.comics.count > 0){
             guard let tableViewCell = cell as? MarvelDetailTableViewCell else {return}
             tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forSection: indexPath.section)
         }
         
-        if(indexPath.section == 2 && self.series.count > 0){
+        if(indexPath.section == KindCell.series.rawValue && self.series.count > 0){
             guard let tableViewCell = cell as? MarvelDetailTableViewCell else {return}
             tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forSection: indexPath.section)
         }
         
-        if(indexPath.section == 3 && self.events.count > 0){
+        if(indexPath.section == KindCell.events.rawValue && self.events.count > 0){
             guard let tableViewCell = cell as? MarvelDetailTableViewCell else {return}
             tableViewCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forSection: indexPath.section)
         }

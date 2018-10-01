@@ -85,11 +85,11 @@ extension MarvelCharacterDetailViewController:UICollectionViewDelegate{
     
     func getDetails(collectionView: UICollectionView, at indexPath: IndexPath)->Details{
         switch(collectionView.tag){
-            case 1:
+            case KindCell.comics.rawValue:
                 return self.comics[indexPath.row]
-            case 2:
+            case KindCell.series.rawValue:
                 return self.series[indexPath.row]
-            case 3:
+            case KindCell.events.rawValue:
                 return self.events[indexPath.row]
             
             default:

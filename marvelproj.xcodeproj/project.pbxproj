@@ -86,6 +86,7 @@
 		F0B83E8421606CBF00927D19 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B83E8321606CBF00927D19 /* CoreGraphics.framework */; };
 		F0B83E8621606CC700927D19 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B83E8521606CC700927D19 /* QuartzCore.framework */; };
 		F0B83E8821606DD800927D19 /* KIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B83E8721606DD800927D19 /* KIF.framework */; };
+		F0B83E982161ACA900927D19 /* MainUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B83E972161ACA900927D19 /* MainUITests.swift */; };
 		F0C146CF20A8B68D009F57BD /* comics.json in Resources */ = {isa = PBXBuildFile; fileRef = F0C146CE20A8B68D009F57BD /* comics.json */; };
 		F0C146D120A8B6BA009F57BD /* ComicsEntityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C146D020A8B6BA009F57BD /* ComicsEntityTest.swift */; };
 		F0D0EBFF20A75CA100484E3A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D0EBFE20A75CA100484E3A /* CoreDataManager.swift */; };
@@ -201,6 +202,7 @@
 		F0B83E8321606CBF00927D19 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F0B83E8521606CC700927D19 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F0B83E8721606DD800927D19 /* KIF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KIF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0B83E972161ACA900927D19 /* MainUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUITests.swift; sourceTree = "<group>"; };
 		F0C146CE20A8B68D009F57BD /* comics.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = comics.json; sourceTree = "<group>"; };
 		F0C146D020A8B6BA009F57BD /* ComicsEntityTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsEntityTest.swift; sourceTree = "<group>"; };
 		F0D0EBFE20A75CA100484E3A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -583,6 +585,14 @@
 			path = header;
 			sourceTree = "<group>";
 		};
+		F0B83E962161AC9900927D19 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F0B83E972161ACA900927D19 /* MainUITests.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		F0D0EBFC20A75AC400484E3A /* managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +671,7 @@
 		F0DE0A16209D346E0006CDC2 /* marvelprojTests */ = {
 			isa = PBXGroup;
 			children = (
+				F0B83E962161AC9900927D19 /* UI */,
 				F09A1A2820A89B1E00101E55 /* service */,
 				F09A1A2120A88D7400101E55 /* jsons */,
 				F09A1A1D20A88B1800101E55 /* entities */,
@@ -902,10 +913,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-marvelprojTests/Pods-marvelprojTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/KIF/KIF.framework",
+				"${BUILT_PRODUCTS_DIR}/KIF-Quick/KIF_Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KIF_Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -983,6 +998,7 @@
 			files = (
 				F03333ED20A8C88E00488FDE /* SeriesEntityTest.swift in Sources */,
 				F09A1A2A20A89B4100101E55 /* MockHelper.swift in Sources */,
+				F0B83E982161ACA900927D19 /* MainUITests.swift in Sources */,
 				F0D0EC1720A8889100484E3A /* UIColor+Marvel+Test.swift in Sources */,
 				F03333EF20A8C92200488FDE /* EventsEntityTest.swift in Sources */,
 				F0C146D120A8B6BA009F57BD /* ComicsEntityTest.swift in Sources */,

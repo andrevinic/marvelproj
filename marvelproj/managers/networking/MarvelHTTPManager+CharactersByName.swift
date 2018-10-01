@@ -19,9 +19,7 @@ extension MarvelHTTPManager{
         let queryBuilder = QueryBuilder.shared
         
         let url = queryBuilder.query(ts: ts, apikey: MarvelAPIService.publicKey, hash: hash, nameStartsWith:nameStartsWith, path: CHARACTER_EXT)
-        
-        guard let requestUrl = URL(string:url) else { return }
-        
+                
         if let requestUrl = URL(string:url){
             
             Alamofire.request(requestUrl).responseJSON { (response) in

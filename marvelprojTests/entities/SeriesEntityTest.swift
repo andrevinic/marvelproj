@@ -43,6 +43,7 @@ class SeriesEntityTest: XCTestCase {
         var series:[marvelproj.Series] = []
         
         for item in result{
+            
             guard let serie = marvelproj.Series(json: item) else{
                 return XCTFail("Couldnt create model of \(item)")
             }

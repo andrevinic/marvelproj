@@ -20,6 +20,7 @@ target 'marvelproj' do
   target 'marvelprojTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'KIF-Quick'
      pod 'KIF', :configurations => ['Debug']
   end
 

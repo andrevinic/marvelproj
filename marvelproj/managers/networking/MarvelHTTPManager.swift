@@ -15,6 +15,7 @@ import Alamofire
 
 class MarvelHTTPManager: NSObject {
     
+    let disposeBag = DisposeBag()
     internal struct MarvelAPIService {
         fileprivate static let keys = MarvelprojKeys()
         static let apikey = keys.marvelprojAPIClientPrivate

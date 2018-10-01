@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RxAlamofire
+import RxSwift
 
 extension MarvelHTTPManager{
     
@@ -44,6 +46,22 @@ extension MarvelHTTPManager{
 
                 }}
             
+//            _ = json(.get, requestUrl)
+//                .observeOn(MainScheduler.instance)
+//                .subscribe {
+//                    
+//                    print($0) }
+//            
+//            _ = request(.get, requestUrl)
+//                .flatMap { request in
+//                    return request.validate(statusCode: 200..<300)
+//                        .validate(contentType: ["text/json"])
+//                        .rx.json()
+//                }
+//                .observeOn(MainScheduler.instance)
+//                .subscribe { print($0) }
+
+            
 //            json(.get, requestUrl)
 //                .observeOn(MainScheduler.instance)
 //                .mapArray(type: [Character].self)
@@ -75,50 +93,7 @@ extension MarvelHTTPManager{
         
 //        return Observable.just(Character())
     }
-    //
-    //        RxAlamofire.requestJSON(.get, requestUrl)
-    //            .debug()
-    //            .subscribe(onNext: { [weak self] (r, json) in
-    //                    print(json)
-    //                }, onError: { [weak self] (error) in
-    //                    print(error)
-    //            })
-    //            .disposed(by: disposeBag)
-    
-    //        let json = requestUrl.asyncDownload { (data, response, error) in
-    //            guard
-    //                let data = data,
-    //                let dic =  (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [String: Any],
-    //                let results = dic["data"] as? [[String: Any]]
-    //                else{
-    //                    print("error:", error ?? "nil")
-    //                    return
-    //            }
-    //            DispatchQueue.main.async {
-    //                print(results)
-    //                //        self.tableData = results
-    //                //        self.Indextableview.reloadData()
-    //            }
-    //        }
-    //        let task = session.dataTask(with: request) {
-    //            (data, response, error) in
-    //            if error == nil {
-    //                let decoder = JSONDecoder()
-    //
-    //                //JSONSerialization
-    //                let gitData = try decoder.decode(Character.self, from: data)
-    
-    //                if let jsonWithObjectRoot = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]{
-    //
-    //
-    //                    let characters = self.parseToCharacters(jsonWithObjectRoot: jsonWithObjectRoot)
-    //                    completion(characters, error)
-    //                }
-    
-    //            }
-    //        }
-    
-    //        task.resume()
+ 
     
 }
 

@@ -13,6 +13,15 @@ import RxSwift
 
 extension MarvelHTTPManager{
     
+    func rx_fetchCharacters(offset: Int, completion: @escaping (_ characters: [Character]?, _ error: Error?) -> Void) {//-> Observable<[Character]>{
+        let ts = NSDate().timeIntervalSince1970.description
+        let hash = (ts + MarvelAPIService.apikey + MarvelAPIService.publicKey).md5
+        let offset = "\(offset)"
+        let queryBuilder = QueryBuilder.shared
+        let url = queryBuilder.query(ts: ts, apikey: MarvelAPIService.publicKey, hash: hash, offset:offset, path: CHARACTER_EXT)
+        
+    }
+
     func fetchCharacters(offset: Int, completion: @escaping (_ characters: [Character]?, _ error: Error?) -> Void){// -> //Observable<Character>{
 
         let ts = NSDate().timeIntervalSince1970.description
@@ -45,13 +54,18 @@ extension MarvelHTTPManager{
                     print("Error creating the database")
 
                 }}
-            
+//            _ = Alamofire.request(requestUrl).rx.responseJSON()
+//                .map {  }
+//                .subscribe(
+//                    onNext: { print("Origin:", $0) },
+//                    onError: { print("Received error:", $0) }
+//            )
 //            _ = json(.get, requestUrl)
 //                .observeOn(MainScheduler.instance)
 //                .subscribe {
-//                    
+//
 //                    print($0) }
-//            
+//
 //            _ = request(.get, requestUrl)
 //                .flatMap { request in
 //                    return request.validate(statusCode: 200..<300)

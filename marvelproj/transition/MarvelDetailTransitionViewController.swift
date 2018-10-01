@@ -77,7 +77,9 @@ extension MarvelDetailTransitionViewController{
 
         }
         group.notify(queue: .main) {
-            let nextController = MarvelRouter.instantiateMarvelCharacterDetailViewController()
+            
+            guard let nextController = R.storyboard.main.marvelCharacterDetailViewController()
+                else {return}
             nextController.character = self.character
             nextController.stories = self.stories
             nextController.comics = self.comics

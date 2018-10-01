@@ -134,7 +134,9 @@ extension MarvelSearchCharViewController: UISearchBarDelegate {
 extension MarvelSearchCharViewController: MarvelCharacterDelegate{
     
     func didSelectCharacter(index: IndexPath) {
-        let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
+        
+        guard let nextController = R.storyboard.main.marvelDetailTransitionViewController()
+            else {return}
         nextController.character = searchedCharacters[index.row]
         self.navigationController?.pushViewController(nextController, animated: true)
         

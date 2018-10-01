@@ -12,7 +12,8 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
     
     func didSelectCharacterFavorite(index: IndexPath){
         
-        let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
+        guard let nextController = R.storyboard.main.marvelDetailTransitionViewController()
+            else {return}
         let char = self.favoriteCharactersFetched[index.row]
         nextController.character = char
         nextController.isFavorite = true
@@ -21,7 +22,9 @@ extension MarvelCharViewController: MarvelCharacterDelegate{
     
     func didSelectCharacter(index: IndexPath) {
         
-        let nextController = MarvelRouter.instantiateMarvelDetailTransitionViewController()
+        guard let nextController = R.storyboard.main.marvelDetailTransitionViewController()
+            else {return}
+
         let char = characters[index.row]
         nextController.character = char
         

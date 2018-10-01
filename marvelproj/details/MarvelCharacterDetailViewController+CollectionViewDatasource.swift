@@ -75,8 +75,9 @@ extension MarvelCharacterDetailViewController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let details: Details? = self.getDetails(collectionView: collectionView, at: indexPath)
 
-        
-        let popUpViewController = MarvelRouter.instantiateMarvelCharacterDetailPopupViewController()
+       
+        guard let popUpViewController =  R.storyboard.main.marvelCharacterDetailPopupViewController()
+            else {return}
         popUpViewController.details = details
         self.navigationController?.pushViewController(popUpViewController, animated: false)
         
